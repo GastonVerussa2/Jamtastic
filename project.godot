@@ -11,10 +11,7 @@ config_version=5
 [application]
 
 config/name="Jamtastic JAM"
-<<<<<<< Updated upstream
-=======
-run/main_scene="uid://cpu2p4wy1q8ff"
->>>>>>> Stashed changes
+run/main_scene="uid://cwywqublnr6i1"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
