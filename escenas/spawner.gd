@@ -27,7 +27,7 @@ func spawn_enemy():
 	else:
 		center = Vector2.ZERO  # fallback
 
-	# generar posición aleatoria en círculo
+	
 	var angle = randf() * TAU
 	var distance = randf_range(spawn_radius_min, spawn_radius_max)
 
