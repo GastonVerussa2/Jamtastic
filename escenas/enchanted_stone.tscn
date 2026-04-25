@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://k516ysstkdlm"]
+
+[ext_resource type="Texture2D" uid="uid://dbau8k1q60q2i" path="res://icon.svg" id="1_4cg1m"]
+[ext_resource type="Script" uid="uid://csfhaoq5452hy" path="res://escenas/collision_shape_2d.gd" id="2_q4ae8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q4ae8"]
+
+[node name="EnchantedStone" type="CharacterBody2D" unique_id=169235792]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=357372691]
+texture = ExtResource("1_4cg1m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=677409852]
+shape = SubResource("RectangleShape2D_q4ae8")
+script = ExtResource("2_q4ae8")
