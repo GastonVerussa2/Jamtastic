@@ -16,7 +16,6 @@ script = ExtResource("1_a8p4t")
 area_prota = NodePath("Area2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=918598154]
-texture_filter = 1
 scale = Vector2(2, 2)
 texture = ExtResource("2_r5osk")
 

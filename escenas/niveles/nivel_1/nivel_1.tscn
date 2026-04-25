@@ -3,6 +3,7 @@
 [ext_resource type="TileSet" uid="uid://dnahkmnbclurl" path="res://tile_sets/mazmorra.tres" id="1_fw25m"]
 [ext_resource type="PackedScene" uid="uid://b6ivfjjb3m8er" path="res://escenas/protagonista/protagonista.tscn" id="2_w5axy"]
 [ext_resource type="PackedScene" uid="uid://do61qkjwwpid0" path="res://escenas/enemigos/1/enemigo1.tscn" id="3_w5axy"]
+[ext_resource type="PackedScene" uid="uid://5jng20mes8p4" path="res://escenas/collectables/comida.tscn" id="4_ngt1y"]
 
 [node name="level_1" type="Node2D" unique_id=2120848633]
 
@@ -14,3 +15,12 @@ tile_set = ExtResource("1_fw25m")
 
 [node name="enemigo" parent="." unique_id=110845386 instance=ExtResource("3_w5axy")]
 position = Vector2(-160, -161)
+
+[node name="Comida" parent="." unique_id=358810931 instance=ExtResource("4_ngt1y")]
+position = Vector2(142, -61)
+
+[node name="Comida3" parent="." unique_id=1602043233 instance=ExtResource("4_ngt1y")]
+position = Vector2(44, -124)
+
+[node name="Comida2" parent="." unique_id=677850276 instance=ExtResource("4_ngt1y")]
+position = Vector2(-51, 65)

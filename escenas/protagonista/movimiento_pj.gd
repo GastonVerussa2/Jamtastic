@@ -36,4 +36,5 @@ func _colision_enemigo(body: Node2D) -> void:
 	_vida -= body.daño
 	print(body.daño)
 	print(_vida)
-	PlayerHpManager.change_health(body.daño)
+	PlayerHpManager.change_health(-body.daño)
+	
