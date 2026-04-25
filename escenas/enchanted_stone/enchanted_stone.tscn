@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://k516ysstkdlm"]
 
 [ext_resource type="Texture2D" uid="uid://dbau8k1q60q2i" path="res://icon.svg" id="1_4cg1m"]
-[ext_resource type="Script" uid="uid://csfhaoq5452hy" path="res://escenas/collision_shape_2d.gd" id="2_q4ae8"]
+[ext_resource type="Script" uid="uid://csfhaoq5452hy" path="res://escenas/enemigos/enemigo/collision_shape_2d.gd" id="2_q4ae8"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4ae8"]
 

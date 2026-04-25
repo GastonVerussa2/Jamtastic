@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var speed: float = 100.0
+var damage: int = 5
 var player: Node2D
 var fake_target := Vector2(500,200)
 func _ready():

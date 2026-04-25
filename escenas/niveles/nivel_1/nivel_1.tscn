@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://b6ivfjjb3m8er" path="res://escenas/protagonista/protagonista.tscn" id="2_w5axy"]
 [ext_resource type="PackedScene" uid="uid://do61qkjwwpid0" path="res://escenas/enemigos/1/enemigo1.tscn" id="3_w5axy"]
 [ext_resource type="PackedScene" uid="uid://5jng20mes8p4" path="res://escenas/collectables/comida.tscn" id="4_ngt1y"]
+[ext_resource type="Script" uid="uid://cx24e6fd57kgv" path="res://escenas/enemigos/spawner/spwaner.gd" id="5_gia3d"]
+[ext_resource type="PackedScene" uid="uid://cpu2p4wy1q8ff" path="res://escenas/enemigos/spawner/spawner.tscn" id="6_7j4at"]
 
 [node name="level_1" type="Node2D" unique_id=2120848633]
 
@@ -24,3 +26,9 @@ position = Vector2(44, -124)
 
 [node name="Comida2" parent="." unique_id=677850276 instance=ExtResource("4_ngt1y")]
 position = Vector2(-51, 65)
+script = ExtResource("5_gia3d")
+spawn_interval = 1.5
+spawn_radius_min = 200.0
+spawn_radius_max = 400.0
+
+[node name="spawner" parent="." unique_id=698146440 instance=ExtResource("6_7j4at")]

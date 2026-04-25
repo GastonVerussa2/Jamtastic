@@ -1,6 +1,6 @@
 extends Node2D
 
-var enemy_scene = preload("res://escenas/enemy.tscn")
+var enemy_scene = preload("res://escenas/enemigos/enemigo/enemy.tscn")
 
 @export var spawn_interval: float = 1.5
 @export var spawn_radius_min: float = 200
