@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://b6ivfjjb3m8er"]
+
+[ext_resource type="Script" uid="uid://b7qj813epfljc" path="res://escenas/protagonista/movimiento_pj.gd" id="1_a8p4t"]
+[ext_resource type="Texture2D" uid="uid://d0ydaer3j77d8" path="res://sprites/hero.png" id="2_r5osk"]
+[ext_resource type="PackedScene" uid="uid://di4y22xvvr7fv" path="res://escenas/interfaz/hp.tscn" id="3_r5osk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5skp6"]
+size = Vector2(26, 38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a8p4t"]
+size = Vector2(26, 38)
+
+[node name="player" type="CharacterBody2D" unique_id=1441778440 node_paths=PackedStringArray("area_prota")]
+collision_layer = 4
+script = ExtResource("1_a8p4t")
+area_prota = NodePath("Area2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=918598154]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_r5osk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1434118407]
+shape = SubResource("RectangleShape2D_5skp6")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1282812944]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=644909471]
+shape = SubResource("RectangleShape2D_a8p4t")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1782687089]
+zoom = Vector2(2, 2)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1772062594]
+
+[node name="HP" parent="CanvasLayer" unique_id=2075548786 instance=ExtResource("3_r5osk")]
+z_index = -1
+offset_left = -24.0
+offset_top = -38.0
+offset_right = -24.0
+offset_bottom = -38.0
