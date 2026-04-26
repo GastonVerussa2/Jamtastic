@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://b3kybwosuciv1"]
+
+[ext_resource type="Script" uid="uid://twjktyq3g2d5" path="res://escenas/escena_principal/escena_principal.gd" id="1_2fgrq"]
+[ext_resource type="PackedScene" uid="uid://boqopslo0bpo3" path="res://escenas/niveles/introduccion/libro.tscn" id="2_snudr"]
+[ext_resource type="PackedScene" uid="uid://npmiktsd83pi" path="res://escenas/niveles/nivel_1/nivel_1.tscn" id="3_px3ix"]
+[ext_resource type="Texture2D" uid="uid://wfio73qfs63m" path="res://sprites/calavera.png" id="4_snudr"]
+
+[node name="main_scene" type="Node2D" unique_id=249913582 node_paths=PackedStringArray("kills_label")]
+script = ExtResource("1_2fgrq")
+niveles = Array[PackedScene]([ExtResource("2_snudr"), ExtResource("3_px3ix")])
+kills_label = NodePath("CanvasLayer/HBoxContainer/Kills")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=24304786]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=1507682000]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer" unique_id=1332526690]
+layout_mode = 2
+texture = ExtResource("4_snudr")
+
+[node name="Kills" type="Label" parent="CanvasLayer/HBoxContainer" unique_id=1192126706]
+layout_mode = 2
+text = "score:"
