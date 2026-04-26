@@ -140,3 +140,6 @@ func get_random_upgrades():
 	var pool = get_upgrade_pool()
 	pool.shuffle()
 	return pool.slice(0, 3)
+func avanzar_nivel():
+	_nivel_actual += 1
+	_reiniciar_nivel()

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bacwseq02rifv"
-path="res://.godot/imported/hero-stone-movement.png-fc638963c6f181dcc6798c38e7f33658.ctex"
+uid="uid://bseu5u8y7r4y"
+path="res://.godot/imported/Pj.png-09700b0e980dac3e7b1cd38f1ed14e96.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/protagonist/hero-stone-movement.png"
-dest_files=["res://.godot/imported/hero-stone-movement.png-fc638963c6f181dcc6798c38e7f33658.ctex"]
+source_file="res://sprites/protagonist/Pj.png"
+dest_files=["res://.godot/imported/Pj.png-09700b0e980dac3e7b1cd38f1ed14e96.ctex"]
 
 [params]
 

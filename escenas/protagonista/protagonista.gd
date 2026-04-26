@@ -46,7 +46,7 @@ func _ready() -> void:
 	_enchanted_stone = get_tree().get_first_node_in_group("stone")
 	dash_duration_timer.timeout.connect(_dash_finalizado)
 	dash_cd_timer.timeout.connect(_dash_replenished)
-	animacion.play("idle")
+	animacion.play("down_stone")
 
 
 func _process(delta: float) -> void:
@@ -58,6 +58,9 @@ func _process(delta: float) -> void:
 	_checkear_dash()
 	
 	# movimiento normal (si no está en dash)
+	_acomodar_animacion()
+	
+	# Si esta en pleno dash, ignora el resto
 	if dash_duration_timer.time_left == 0:
 		if Input.is_action_pressed("up"):
 			velocity.y = -_velocidad
@@ -91,6 +94,27 @@ func _checkear_ataque():
 		_enchanted_stone.throw(self.global_position, get_global_mouse_position(), self)
 
 
+func _acomodar_animacion():
+	
+	if not _enchanted_stone.is_attacking:
+		if velocity.x < 0:
+			animacion.play("left_stone")
+		elif velocity.x > 0:
+			animacion.play("right_stone")
+		elif velocity.y < 0:
+			animacion.play("up_stone")
+		elif velocity.y > 0:
+			animacion.play("down_stone")
+	else:
+		if velocity.x < 0:
+			animacion.play("left_no_stone")
+		elif velocity.x > 0:
+			animacion.play("right_no_stone")
+		elif velocity.y < 0:
+			animacion.play("up_no_stone")
+		elif velocity.y > 0:
+			animacion.play("down_no_stone")
+
 func _checkear_colisiones():
 	if area_prota.has_overlapping_bodies() && invunerability_timer.is_stopped():
 		var best_dmg = 0
@@ -112,7 +136,6 @@ func _checkear_colisiones():
 			personaje_muerto.emit()
 		else:
 			sonido_daño.play()
-
 
 func _checkear_dash():	
 	if Input.is_action_pressed("dash") && dash_cd_timer.is_stopped() && dash_duration_timer.is_stopped():
