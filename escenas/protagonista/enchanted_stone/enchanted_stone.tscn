@@ -17,7 +17,7 @@ size = Vector2(12, 10)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2qrtu"]
 size = Vector2(14, 12)
 
-[node name="EnchantedStone" type="CharacterBody2D" unique_id=169235792 node_paths=PackedStringArray("area_vuelta", "area_golpe", "hit_sound_1", "hit_sound_2", "solid_hit_sound", "throw_sound", "returning_sound")]
+[node name="EnchantedStone" type="CharacterBody2D" unique_id=169235792 node_paths=PackedStringArray("area_vuelta", "area_golpe", "hit_sound_1", "hit_sound_2", "solid_hit_sound", "throw_sound", "returning_sound") groups=["stone"]]
 collision_layer = 0
 script = ExtResource("2_q4ae8")
 area_vuelta = NodePath("AreaVuelta")

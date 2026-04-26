@@ -3,7 +3,7 @@ extends Node
 signal hp_change
 
 var health: int
-var max_health: int = 40
+var max_health: int = 100
 
 func _ready():
 	health = max_health

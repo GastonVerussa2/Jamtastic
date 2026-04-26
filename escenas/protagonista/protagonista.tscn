@@ -16,7 +16,7 @@ size = Vector2(10, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8p4t"]
 size = Vector2(12, 18)
 
-[node name="player" type="CharacterBody2D" unique_id=1441778440 node_paths=PackedStringArray("area_prota", "animacion", "sonido_muerte", "sonido_daño", "sonido_dash", "sonido_barra")]
+[node name="player" type="CharacterBody2D" unique_id=1441778440 node_paths=PackedStringArray("area_prota", "animacion", "sonido_muerte", "sonido_daño", "sonido_dash", "sonido_barra", "dash_cd_timer", "dash_duration_timer", "invunerability_timer") groups=["player"]]
 collision_layer = 4
 collision_mask = 33
 motion_mode = 1
@@ -29,11 +29,15 @@ sonido_muerte = NodePath("Sonidos/SonidoMuerte")
 "sonido_daño" = NodePath("Sonidos/DañoRecibido")
 sonido_dash = NodePath("Sonidos/Dasheo")
 sonido_barra = NodePath("Sonidos/Barra")
+dash_cd_timer = NodePath("Timers/DashCDTimer")
+dash_duration_timer = NodePath("Timers/DashDurationTimer")
+invunerability_timer = NodePath("Timers/InvunerabilityTimer")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=918598154]
 texture = ExtResource("2_r5osk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1434118407]
+visible = false
 shape = SubResource("RectangleShape2D_5skp6")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1282812944]
@@ -41,10 +45,11 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=644909471]
+visible = false
 shape = SubResource("RectangleShape2D_a8p4t")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1782687089]
-zoom = Vector2(6, 6)
+zoom = Vector2(5, 5)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1772062594]
 
@@ -71,3 +76,14 @@ stream = ExtResource("9_qaul3")
 volume_db = 24.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=1307494847]
+
+[node name="Timers" type="Node" parent="." unique_id=2094224763]
+
+[node name="DashCDTimer" type="Timer" parent="Timers" unique_id=473351853]
+one_shot = true
+
+[node name="DashDurationTimer" type="Timer" parent="Timers" unique_id=1043183123]
+one_shot = true
+
+[node name="InvunerabilityTimer" type="Timer" parent="Timers" unique_id=2028718403]
+one_shot = true

@@ -13,7 +13,7 @@ size = Vector2(46.666664, 53.333332)
 stream = ExtResource("1_3w2dw")
 max_distance = 4096.0
 
-[node name="enemy" type="CharacterBody2D" parent="." unique_id=1142249714 node_paths=PackedStringArray("sonido_spawn")]
+[node name="enemy" type="CharacterBody2D" parent="." unique_id=1142249714 node_paths=PackedStringArray("sonido_spawn") groups=["enemy"]]
 collision_layer = 2
 collision_mask = 39
 motion_mode = 1
