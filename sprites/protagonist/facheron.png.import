@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://luw25mq4f1pp"
-path="res://.godot/imported/hero-movement.png-201e88f5387cde44f430f00c0f65c868.ctex"
+uid="uid://dx71jtd1dv0p2"
+path="res://.godot/imported/facheron.png-84f526ab325c3341855953b9253bd444.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/protagonist/hero-movement.png"
-dest_files=["res://.godot/imported/hero-movement.png-201e88f5387cde44f430f00c0f65c868.ctex"]
+source_file="res://sprites/protagonist/facheron.png"
+dest_files=["res://.godot/imported/facheron.png-84f526ab325c3341855953b9253bd444.ctex"]
 
 [params]
 

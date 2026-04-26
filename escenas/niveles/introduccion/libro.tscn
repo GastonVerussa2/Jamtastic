@@ -1,0 +1,207 @@
+[gd_scene format=3 uid="uid://boqopslo0bpo3"]
+
+[ext_resource type="Script" uid="uid://dnfs81xslkg1w" path="res://escenas/niveles/introduccion/libro.gd" id="1_3juds"]
+[ext_resource type="Texture2D" uid="uid://c25vdlb4p6kmx" path="res://sprites/lore_book-export.png" id="1_aoyhj"]
+[ext_resource type="FontFile" uid="uid://yn83udj3escd" path="res://fonts/alagard.ttf" id="2_3juds"]
+[ext_resource type="AudioStream" uid="uid://lgch1mlpbuk5" path="res://sonidos/Escribiendo-001.wav" id="4_6umnp"]
+[ext_resource type="AudioStream" uid="uid://vcitbe0p2llu" path="res://sonidos/Escribiendo-002.wav" id="5_464a4"]
+[ext_resource type="Texture2D" uid="uid://dx71jtd1dv0p2" path="res://sprites/protagonist/facheron.png" id="6_gn6eq"]
+[ext_resource type="Texture2D" uid="uid://dt0fn2io2gcyb" path="res://sprites/Gregorio.png" id="7_fe14e"]
+[ext_resource type="Texture2D" uid="uid://c6tar5r6rxdct" path="res://sprites/protagonist/arfurro.png" id="8_rw2e2"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8msjx"]
+
+[node name="BookIntro" type="Node2D" unique_id=1683685789 node_paths=PackedStringArray("first_text", "second_text", "third_text", "forth_text", "tutorial_1", "tutorial_2", "writing_sound_1", "writing_sound_2", "gregorio_node", "protagonist", "arfurro")]
+position = Vector2(233, 235)
+script = ExtResource("1_3juds")
+first_text = NodePath("FirstText")
+second_text = NodePath("SecondText")
+third_text = NodePath("ThirdText")
+forth_text = NodePath("FourthText")
+tutorial_1 = NodePath("Tutorial1")
+tutorial_2 = NodePath("Tutorial2")
+writing_sound_1 = NodePath("Writing1")
+writing_sound_2 = NodePath("Writing2")
+gregorio_node = NodePath("GregoritoNode")
+protagonist = NodePath("Protagonist")
+arfurro = NodePath("Arfurro")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1982916748]
+scale = Vector2(9.44, 9.6)
+texture = ExtResource("1_aoyhj")
+
+[node name="ThirdText" type="Label" parent="." unique_id=804375946]
+offset_left = -197.0
+offset_top = -201.0
+offset_right = -30.0
+offset_bottom = 279.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_3juds")
+text = "Pero entonces sucede. 
+La piedra no cae. 
+Se detiene en el aire y gira hacia ti.
+
+En ese instante lo entiendes todo.
+
+La espada y la piedra no eran solo reliquias… 
+eran básicamente inseparables. 
+
+Y Arfurro había secuestrado a su otra mitad."
+autowrap_mode = 3
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="FirstText" type="Label" parent="." unique_id=1102749311]
+offset_left = -196.0
+offset_top = -204.0
+offset_right = -29.0
+offset_bottom = 276.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_3juds")
+text = "Sir Miauricio, 
+tú eras el héroe destinado a sacar la espada de la piedra.
+
+Por fin llegas. 
+Multitudes. 
+Tensión.
+Este es tu momento. 
+
+Extiendes la 
+mano pero…
+
+La espada ya no está..."
+autowrap_mode = 3
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="FourthText" type="Label" parent="." unique_id=633111093]
+offset_left = 31.0
+offset_top = -199.0
+offset_right = 198.0
+offset_bottom = 281.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_3juds")
+text = "No eras el elegido 
+de la espada,
+Sir Miauricio… 
+
+Eres el elegido de la piedra.
+
+Y ahora, con una piedra con 
+claros problemas emocionales y una necesidad urgente 
+de recuperar a su otra mitad,
+tu misión es recuperar la espada 
+y reunir a esta extraña pareja."
+autowrap_mode = 3
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="SecondText" type="Label" parent="." unique_id=1082491851]
+offset_left = 32.0
+offset_top = -204.0
+offset_right = 199.0
+offset_bottom = 276.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_3juds")
+text = "Se la llevó Arfurro, el Perro.
+
+Tu destino, robado por un perro con complejo de rey.
+
+La furia te consume. 
+
+Sin pensarlo, arrancas la piedra del suelo y la lanzas contra los guardias, porque claramente ellos tienen la culpa de todo."
+autowrap_mode = 3
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Tutorial1" type="Label" parent="." unique_id=86896815]
+offset_left = -197.0
+offset_top = -201.0
+offset_right = -30.0
+offset_bottom = 279.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_3juds")
+text = "Ayuda para su aventura:
+
+
+Moverse -> WASD 
+		             o flechas
+
+
+Dash -> Barra Espaciadora
+
+
+Lanzar a la magnífica Excalistone para destruir a los herejes y reunirla con su ansiada espada
+-> Click Izquierdo"
+autowrap_mode = 3
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Tutorial2" type="Label" parent="." unique_id=545425611]
+offset_left = 29.0
+offset_top = -204.0
+offset_right = 196.0
+offset_bottom = 276.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_3juds")
+autowrap_mode = 3
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=705252753]
+zoom = Vector2(1.325, 1.325)
+
+[node name="Writing1" type="AudioStreamPlayer2D" parent="." unique_id=1838788868]
+stream = ExtResource("4_6umnp")
+volume_db = 4.0
+
+[node name="Writing2" type="AudioStreamPlayer2D" parent="." unique_id=1449435977]
+stream = ExtResource("5_464a4")
+volume_db = 4.0
+
+[node name="Timer" type="Timer" parent="." unique_id=483402091]
+
+[node name="Protagonist" type="Sprite2D" parent="." unique_id=442005719]
+visible = false
+modulate = Color(1.1759251, 1.1759251, 1.1759251, 1)
+material = SubResource("CanvasItemMaterial_8msjx")
+position = Vector2(114.99999, -98.00001)
+scale = Vector2(0.29, 0.29)
+texture = ExtResource("6_gn6eq")
+
+[node name="GregoritoNode" type="Node2D" parent="." unique_id=1971902483]
+visible = false
+
+[node name="Label" type="Label" parent="GregoritoNode" unique_id=637562196]
+offset_left = 52.0
+offset_top = 67.0
+offset_right = 155.0
+offset_bottom = 122.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Do it for
+               him"
+
+[node name="Gregorio" type="Sprite2D" parent="GregoritoNode" unique_id=1804920535]
+position = Vector2(145, 72)
+scale = Vector2(1.5333323, 1.3999994)
+texture = ExtResource("7_fe14e")
+
+[node name="Gregorio" type="Sprite2D" parent="GregoritoNode/Gregorio" unique_id=509021114]
+position = Vector2(-55.434807, 29.28572)
+scale = Vector2(-0.7001902, 0.7476191)
+texture = ExtResource("7_fe14e")
+
+[node name="Gregorio2" type="Sprite2D" parent="GregoritoNode/Gregorio" unique_id=1767604557]
+position = Vector2(-23.478275, 52.142887)
+scale = Vector2(1.2231884, 1.2476186)
+texture = ExtResource("7_fe14e")
+
+[node name="Gregorio" type="Sprite2D" parent="GregoritoNode/Gregorio/Gregorio2" unique_id=713411043]
+position = Vector2(29.324669, -11.450394)
+scale = Vector2(-0.7001902, 0.7476191)
+texture = ExtResource("7_fe14e")
+
+[node name="Arfurro" type="Sprite2D" parent="." unique_id=885614894]
+visible = false
+modulate = Color(1.1755697, 1.1755697, 1.1755697, 1)
+position = Vector2(113.999985, 108.000015)
+scale = Vector2(0.21, 0.21)
+texture = ExtResource("8_rw2e2")
