@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dgt5kusk7oyxr"
+path="res://.godot/imported/Vuelve Piedra.wav-a21e4f8483d6a962ff2bed3bbddfdf4a.sample"
+
+[deps]
+
+source_file="res://sonidos/Vuelve Piedra.wav"
+dest_files=["res://.godot/imported/Vuelve Piedra.wav-a21e4f8483d6a962ff2bed3bbddfdf4a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

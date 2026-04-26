@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://k516ysstkdlm"]
+
+[ext_resource type="Texture2D" uid="uid://b1pcexiac8mgh" path="res://sprites/mesa.png" id="1_akqp6"]
+[ext_resource type="Script" uid="uid://csfhaoq5452hy" path="res://escenas/protagonista/enchanted_stone/enchanted_stone.gd" id="2_q4ae8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q4ae8"]
+size = Vector2(10, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_akqp6"]
+size = Vector2(12, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2qrtu"]
+size = Vector2(14, 12)
+
+[node name="EnchantedStone" type="CharacterBody2D" unique_id=169235792]
+collision_layer = 0
+script = ExtResource("2_q4ae8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=357372691]
+modulate = Color(0.2961637, 0.2034412, 0.053081714, 1)
+scale = Vector2(0.18666665, 0.39999998)
+texture = ExtResource("1_akqp6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=677409852]
+modulate = Color(0.54497427, 0.5449743, 0.5449741, 1)
+shape = SubResource("RectangleShape2D_q4ae8")
+
+[node name="AreaVuelta" type="Area2D" parent="." unique_id=1784701319]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaVuelta" unique_id=1108838357]
+shape = SubResource("RectangleShape2D_akqp6")
+
+[node name="AreaGolpe" type="Area2D" parent="." unique_id=1374602802]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaGolpe" unique_id=21920070]
+shape = SubResource("RectangleShape2D_2qrtu")

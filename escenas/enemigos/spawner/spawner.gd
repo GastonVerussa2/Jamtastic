@@ -18,6 +18,7 @@ func start_spawning():
 		await get_tree().create_timer(spawn_interval).timeout
 
 func spawn_enemy():
+	
 	var enemy = enemy_scene.instantiate()
 
 	var center: Vector2
@@ -36,3 +37,5 @@ func spawn_enemy():
 	enemy.global_position = center + offset
 
 	add_child(enemy)
+	
+	#spawn_sound.play()

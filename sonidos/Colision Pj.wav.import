@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dg0m1js0qwlct"
+path="res://.godot/imported/Colision Pj.wav-1ad6014333b40e0691c7b2a8a4407052.sample"
+
+[deps]
+
+source_file="res://sonidos/Colision Pj.wav"
+dest_files=["res://.godot/imported/Colision Pj.wav-1ad6014333b40e0691c7b2a8a4407052.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

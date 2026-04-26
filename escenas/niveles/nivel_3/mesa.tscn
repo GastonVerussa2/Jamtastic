@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://drouppkd26ehg"]
+
+[ext_resource type="Texture2D" uid="uid://c2170bmu4y4j7" path="res://sprites/mesa_Terminada.png" id="1_v46yi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cgure"]
+size = Vector2(76, 30)
+
+[node name="Mesa" type="StaticBody2D" unique_id=1837936766]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1422161903]
+texture = ExtResource("1_v46yi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1807678664]
+shape = SubResource("RectangleShape2D_cgure")

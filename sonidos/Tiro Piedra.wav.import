@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://by1t435c6vmnd"
+path="res://.godot/imported/Tiro Piedra.wav-19bb55d20604fbc773ead280db2799e3.sample"
+
+[deps]
+
+source_file="res://sonidos/Tiro Piedra.wav"
+dest_files=["res://.godot/imported/Tiro Piedra.wav-19bb55d20604fbc773ead280db2799e3.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
