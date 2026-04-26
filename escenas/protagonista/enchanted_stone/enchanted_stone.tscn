@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://k516ysstkdlm"]
 
-[ext_resource type="Texture2D" uid="uid://b1pcexiac8mgh" path="res://sprites/mesa.png" id="1_akqp6"]
+[ext_resource type="Texture2D" uid="uid://kfqbty5skb62" path="res://sprites/Stone.png" id="2_10uyp"]
 [ext_resource type="Script" uid="uid://csfhaoq5452hy" path="res://escenas/protagonista/enchanted_stone/enchanted_stone.gd" id="2_q4ae8"]
 [ext_resource type="AudioStream" uid="uid://dqh8byqs01scr" path="res://sonidos/Golpe1.wav" id="3_10uyp"]
 [ext_resource type="AudioStream" uid="uid://dnq2lna6o72jb" path="res://sonidos/Golpe2.wav" id="4_w1y23"]
@@ -29,9 +29,8 @@ throw_sound = NodePath("Sonidos/ThrowSound")
 returning_sound = NodePath("Sonidos/ReturningSound")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=357372691]
-modulate = Color(0.2961637, 0.2034412, 0.053081714, 1)
-scale = Vector2(0.18666665, 0.39999998)
-texture = ExtResource("1_akqp6")
+scale = Vector2(1.1666667, 1.2000002)
+texture = ExtResource("2_10uyp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=677409852]
 modulate = Color(0.54497427, 0.5449743, 0.5449741, 1)

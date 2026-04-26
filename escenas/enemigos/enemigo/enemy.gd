@@ -17,6 +17,7 @@ func _ready():
 	sonido_spawn.play()
 
 func _physics_process(delta):
+	
 	var target_position: Vector2
 
 	if player:

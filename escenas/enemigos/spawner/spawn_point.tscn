@@ -5,4 +5,5 @@
 [node name="SpawnPoint" type="Node2D" unique_id=1536353727 groups=["spawn_point"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=12124493]
+visible = false
 texture = ExtResource("1_1l2ep")

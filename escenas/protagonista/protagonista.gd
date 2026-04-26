@@ -1,3 +1,5 @@
+class_name Protagonist
+
 extends CharacterBody2D
 
 signal personaje_muerto
@@ -5,7 +7,7 @@ signal personaje_muerto
 @export var area_prota: Area2D
 @export var material_personaje_rojo: ShaderMaterial
 @export var material_personaje_blanco: ShaderMaterial
-@export var animacion: Sprite2D
+@export var animacion: AnimatedSprite2D
 @export var sonido_muerte: AudioStreamPlayer2D
 @export var sonido_daño: AudioStreamPlayer2D
 @export var sonido_dash: AudioStreamPlayer2D
@@ -38,6 +40,7 @@ func _ready() -> void:
 	_enchanted_stone = get_tree().get_first_node_in_group("stone")
 	dash_duration_timer.timeout.connect(_dash_finalizado)
 	dash_cd_timer.timeout.connect(_dash_replenished)
+	animacion.play("idle")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

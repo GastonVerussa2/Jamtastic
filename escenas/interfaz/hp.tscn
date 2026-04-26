@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://di4y22xvvr7fv"]
 
 [ext_resource type="Script" uid="uid://dih7fss2l4ap0" path="res://escenas/interfaz/hp.gd" id="1_kxpdh"]
+[ext_resource type="FontFile" uid="uid://yn83udj3escd" path="res://fonts/alagard.ttf" id="2_b15pf"]
+[ext_resource type="Texture2D" uid="uid://cstt34cpplseu" path="res://sprites/xp_bar_vacia.png" id="2_pbeeu"]
+[ext_resource type="Texture2D" uid="uid://7fidbbfwym20" path="res://sprites/xp_bar.png" id="3_b15pf"]
 
-[node name="HP" type="Control" unique_id=2075548786 node_paths=PackedStringArray("label", "progress_bar")]
+[node name="HP" type="Control" unique_id=2075548786 node_paths=PackedStringArray("label", "progress_bar", "texture_progress_bar")]
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
@@ -14,19 +17,36 @@ grow_vertical = 0
 script = ExtResource("1_kxpdh")
 label = NodePath("Label")
 progress_bar = NodePath("ProgressBar")
+texture_progress_bar = NodePath("TextureProgressBar")
 
 [node name="Label" type="Label" parent="." unique_id=232002701]
 z_index = -1
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = -182.0
+offset_top = -252.0
+offset_right = 281.0
+offset_bottom = -110.0
+theme_override_fonts/font = ExtResource("2_b15pf")
+theme_override_font_sizes/font_size = 150
 text = "HP: 100"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=2063451680]
+layout_mode = 0
+offset_left = -323.00003
+offset_top = -108.999985
+offset_right = -251.00003
+offset_bottom = -99.999985
+scale = Vector2(10, 10)
+texture_under = ExtResource("2_pbeeu")
+texture_over = ExtResource("2_pbeeu")
+texture_progress = ExtResource("3_b15pf")
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=484966486]
 modulate = Color(14.222716, 2.102283, 1.4500688, 1)
 z_index = -2
 layout_mode = 0
-offset_top = 1.0
-offset_right = 67.0
-offset_bottom = 27.0
+offset_left = -556.0
+offset_top = -494.0
+offset_right = -477.0
+offset_bottom = -252.0
 show_percentage = false
