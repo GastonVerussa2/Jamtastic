@@ -49,6 +49,8 @@ func _eliminar_nivel():
 
 func _reiniciar_nivel():
 	_eliminar_nivel()
+	_kills = 0
+	update_kills_label()
 	_crear_nivel.call_deferred(_nivel_actual)
 	PlayerHpManager.reset_life()
 

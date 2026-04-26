@@ -47,4 +47,4 @@ func _notificar_muerte():
 	var main = get_tree().get_first_node_in_group("main")
 	if main:
 		main.add_kill()
-		main.add_xp(1) # 👈 XP por enemigo
+		main.add_xp(1) 
