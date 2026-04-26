@@ -3,6 +3,7 @@
 [ext_resource type="AudioStream" uid="uid://bogvp8ahbhoup" path="res://sonidos/Spawn.wav" id="1_3w2dw"]
 [ext_resource type="Script" uid="uid://if817o5e6yd7" path="res://escenas/enemigos/enemigo/enemy.gd" id="1_27yb0"]
 [ext_resource type="Texture2D" uid="uid://dsmmxes0hfh4u" path="res://sprites/Enemigo_lvl_tres_terminado.png" id="3_3w2dw"]
+[ext_resource type="Material" uid="uid://l47yfp615nd8" path="res://escenas/protagonista/material_personaje_rojo.tres" id="3_h2frt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vs78y"]
 size = Vector2(46.666664, 53.333332)
@@ -13,12 +14,14 @@ size = Vector2(46.666664, 53.333332)
 stream = ExtResource("1_3w2dw")
 max_distance = 4096.0
 
-[node name="enemy" type="CharacterBody2D" parent="." unique_id=1142249714 node_paths=PackedStringArray("sonido_spawn")]
+[node name="enemy" type="CharacterBody2D" parent="." unique_id=1142249714 node_paths=PackedStringArray("sonido_spawn", "sprite") groups=["enemy"]]
 collision_layer = 2
 collision_mask = 39
 motion_mode = 1
 script = ExtResource("1_27yb0")
 sonido_spawn = NodePath("../sonido_spawn")
+material_personaje_rojo = ExtResource("3_h2frt")
+sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="enemy" unique_id=366780198]
 texture = ExtResource("3_3w2dw")

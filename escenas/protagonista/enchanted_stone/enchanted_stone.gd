@@ -4,16 +4,22 @@ extends CharacterBody2D
 
 signal hit_enemies(damage: int, enemies: Array[Node2D])
 
+# areas
 @export var area_vuelta: Area2D
 @export var area_golpe: Area2D
-@export var speed: float = 250.0
-@export var return_speed: float = 150.0
-@export var max_distance: float = 200.0
+
+#Sonidos
 @export var hit_sound_1: AudioStreamPlayer2D
 @export var hit_sound_2: AudioStreamPlayer2D
 @export var solid_hit_sound: AudioStreamPlayer2D
 @export var throw_sound: AudioStreamPlayer2D
 @export var returning_sound: AudioStreamPlayer2D
+
+#datos
+@export var speed: float = 250.0
+@export var return_acceleration: float = 300.0
+@export var return_speed: float = 0.0
+@export var max_distance: float = 150.0
 
 var direction: Vector2
 var start_position: Vector2
@@ -24,25 +30,12 @@ var damage = 1
 var last_sound = 1
 
 func _ready() -> void:
-	add_to_group("stone")
+	area_golpe.body_entered.connect(hit_enemy)
 	_disappear()
-	print("me meti al grupitooo")
-	print(get_groups())
 
 func _physics_process(delta):
 	if is_attacking:
 		
-		# Si golpea un enemigo o terreno, vuelve
-		if area_golpe.has_overlapping_bodies():
-			go_back()
-			# Random boolean
-			if randi_range(0, 1):
-				hit_sound_1.play()
-			else:
-				hit_sound_2.play()
-			for e in area_golpe.get_overlapping_bodies():
-				if e.is_in_group("enemy"):
-					e.get_hit(damage)
 			# Tambien debe hacerle daño al enemigo
 		if area_vuelta.has_overlapping_bodies():
 			if not returning:
@@ -58,14 +51,26 @@ func _physics_process(delta):
 				go_back()
 		else:
 			if player:
+				return_speed += return_acceleration * delta
 				var dir_to_player = (player.global_position - global_position).normalized()
 				velocity = dir_to_player * return_speed
 
 				# cuando llega al player → desaparece
 				if global_position.distance_to(player.global_position) < 20:
+					return_speed = 0
 					_disappear()
 		move_and_slide()
-		
+
+func hit_enemy(body: Node2D):
+	# Random boolean
+	if randi_range(0, 1):
+		hit_sound_1.play()
+	else:
+		hit_sound_2.play()
+	body.get_hit(damage)
+	go_back()
+	
+
 func go_back():
 	if not returning:
 		returning = true

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dcvjfv1emq3yt"]
+
+[ext_resource type="Texture2D" uid="uid://dt0fn2io2gcyb" path="res://sprites/Gregorio.png" id="1_1l2ep"]
+
+[node name="SpawnPoint" type="Node2D" unique_id=1536353727 groups=["spawn_point"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=12124493]
+visible = false
+texture = ExtResource("1_1l2ep")

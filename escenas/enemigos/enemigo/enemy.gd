@@ -1,22 +1,24 @@
 class_name Enemy
 extends CharacterBody2D
 
-@export var speed: float = 100.0
+@export var speed: float = 75.0
 @export var sonido_spawn: AudioStreamPlayer2D
+@export var material_personaje_rojo: ShaderMaterial
+@export var sprite: Sprite2D
 
-var damage: int = 5
+var damage: int = 10
 var player: Node2D
 var fake_target := Vector2(500,200)
-var health: int = 1
+var health: int = 2
 
 
 func _ready():
-	add_to_group("enemy")
 	player = get_tree().get_first_node_in_group("player")
 	sonido_spawn.play()
 
 
 func _physics_process(delta):
+	
 	var target_position: Vector2
 
 	if player:
@@ -30,6 +32,10 @@ func _physics_process(delta):
 
 
 func get_hit(damage: int):
+	sprite.material = material_personaje_rojo
+	await get_tree().create_timer(0.1).timeout
+	sprite.material = null
+	await get_tree().create_timer(0.1).timeout
 	health -= damage
 	
 	if health <= 0:
