@@ -28,3 +28,7 @@ func _reiniciar_nivel():
 	_eliminar_nivel()
 	_crear_nivel.call_deferred(_nivel_actual)
 	PlayerHpManager.reset_life()
+
+func avanzar_nivel():
+	_nivel_actual += 1
+	_reiniciar_nivel()

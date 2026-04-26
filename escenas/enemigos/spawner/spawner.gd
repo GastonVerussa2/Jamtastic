@@ -9,7 +9,7 @@ var enemy_scene = preload("res://escenas/enemigos/enemigo/enemy.tscn")
 @export var spawn_radius_max: float = 400
 
 var player: Node2D
-var spawning := false
+var spawning := true
 var spawn_points: Array[Node]
 
 func _ready():

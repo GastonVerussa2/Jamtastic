@@ -70,5 +70,5 @@ func _pasar_pagina():
 		left_text.visible_ratio = 0
 		right_text.visible_ratio = 0
 	else:
-		pass
+		get_parent().avanzar_nivel()
 		# va al juegaso
