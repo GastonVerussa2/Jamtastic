@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://dt2fru3et062g"]
+
+[ext_resource type="Script" uid="uid://dpdblmfrt4uef" path="res://control.gd" id="1_vo03h"]
+
+[node name="UpgradeMenu" type="Control" unique_id=883324197]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vo03h")
+
+[node name="Panel" type="Panel" parent="." unique_id=1282820472]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -179.16753
+offset_top = -115.70002
+offset_right = 179.16753
+offset_bottom = 115.70002
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.0400012, 1.04)
+pivot_offset = Vector2(166.71594, 247.1154)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=61155534]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -148.63861
+offset_top = -96.25662
+offset_right = 148.63861
+offset_bottom = 96.25662
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="Button" type="Button" parent="Panel/VBoxContainer" unique_id=907163801]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "upgrade1"
+
+[node name="Button2" type="Button" parent="Panel/VBoxContainer" unique_id=1448366537]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "upgrade2"
+
+[node name="Button3" type="Button" parent="Panel/VBoxContainer" unique_id=1436730099]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "upgrade3"
