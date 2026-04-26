@@ -1,5 +1,4 @@
 class_name Enemy
-
 extends CharacterBody2D
 
 @export var speed: float = 75.0
@@ -12,9 +11,11 @@ var player: Node2D
 var fake_target := Vector2(500,200)
 var health: int = 2
 
+
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	sonido_spawn.play()
+
 
 func _physics_process(delta):
 	
@@ -23,11 +24,12 @@ func _physics_process(delta):
 	if player:
 		target_position = player.global_position
 	else:
-		target_position = fake_target  # fallback
+		target_position = fake_target
 
 	var direction = (target_position - global_position).normalized()
 	velocity = direction * speed
 	move_and_slide()
+
 
 func get_hit(damage: int):
 	sprite.material = material_personaje_rojo
@@ -35,5 +37,14 @@ func get_hit(damage: int):
 	sprite.material = null
 	await get_tree().create_timer(0.1).timeout
 	health -= damage
-	if(health <= 0):
+	
+	if health <= 0:
+		_notificar_muerte()
 		queue_free()
+
+
+func _notificar_muerte():
+	var main = get_tree().get_first_node_in_group("main")
+	if main:
+		main.add_kill()
+		main.add_xp(1) 

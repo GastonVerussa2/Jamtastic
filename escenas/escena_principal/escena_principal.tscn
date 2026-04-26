@@ -4,6 +4,28 @@
 [ext_resource type="PackedScene" uid="uid://npmiktsd83pi" path="res://escenas/niveles/nivel_1/nivel_1.tscn" id="2_snxy5"]
 [ext_resource type="PackedScene" uid="uid://boqopslo0bpo3" path="res://escenas/niveles/introduccion/libro.tscn" id="2_yoxmf"]
 
-[node name="main_scene" type="Node2D" unique_id=151545037]
+[node name="main_scene" type="Node2D" unique_id=151545037 node_paths=PackedStringArray("kills_label")]
 script = ExtResource("1_pdctq")
+kills_label = NodePath("CanvasLayer/HBoxContainer/kills")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1347043566]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=792189638]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -62.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer" unique_id=569104866]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("3_yoxmf")
+stretch_mode = 5
+
+[node name="kills" type="Label" parent="CanvasLayer/HBoxContainer" unique_id=102525051]
+layout_mode = 2
+text = "score"
+horizontal_alignment = 2
 niveles = Array[PackedScene]([ExtResource("2_yoxmf"), ExtResource("2_snxy5")])
