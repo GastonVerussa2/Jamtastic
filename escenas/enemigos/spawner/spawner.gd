@@ -1,3 +1,5 @@
+class_name EnemySpawner
+
 extends Node2D
 
 var enemy_scene = preload("res://escenas/enemigos/enemigo/enemy.tscn")
@@ -7,17 +9,21 @@ var enemy_scene = preload("res://escenas/enemigos/enemigo/enemy.tscn")
 @export var spawn_radius_max: float = 400
 
 var player: Node2D
+var spawning := true
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	start_spawning()
 
 func start_spawning():
-	while true:
+	while spawning:
 		spawn_enemy()
 		await get_tree().create_timer(spawn_interval).timeout
 
 func spawn_enemy():
+	
+	if Input.is_action_pressed("disable_spawn"):
+		spawning = false
 	
 	var enemy = enemy_scene.instantiate()
 

@@ -15,7 +15,8 @@ max_distance = 4096.0
 
 [node name="enemy" type="CharacterBody2D" parent="." unique_id=1142249714 node_paths=PackedStringArray("sonido_spawn")]
 collision_layer = 2
-collision_mask = 7
+collision_mask = 39
+motion_mode = 1
 script = ExtResource("1_27yb0")
 sonido_spawn = NodePath("../sonido_spawn")
 

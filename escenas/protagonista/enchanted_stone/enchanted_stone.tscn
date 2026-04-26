@@ -2,6 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://b1pcexiac8mgh" path="res://sprites/mesa.png" id="1_akqp6"]
 [ext_resource type="Script" uid="uid://csfhaoq5452hy" path="res://escenas/protagonista/enchanted_stone/enchanted_stone.gd" id="2_q4ae8"]
+[ext_resource type="AudioStream" uid="uid://dqh8byqs01scr" path="res://sonidos/Golpe1.wav" id="3_10uyp"]
+[ext_resource type="AudioStream" uid="uid://dnq2lna6o72jb" path="res://sonidos/Golpe2.wav" id="4_w1y23"]
+[ext_resource type="AudioStream" uid="uid://crfxhdjcwwu8d" path="res://sonidos/Rebote Piedra.wav" id="5_01hj4"]
+[ext_resource type="AudioStream" uid="uid://by1t435c6vmnd" path="res://sonidos/Tiro Piedra.wav" id="6_ho0en"]
+[ext_resource type="AudioStream" uid="uid://dgt5kusk7oyxr" path="res://sonidos/Vuelve Piedra.wav" id="7_cy58p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4ae8"]
 size = Vector2(10, 8)
@@ -12,9 +17,16 @@ size = Vector2(12, 10)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2qrtu"]
 size = Vector2(14, 12)
 
-[node name="EnchantedStone" type="CharacterBody2D" unique_id=169235792]
+[node name="EnchantedStone" type="CharacterBody2D" unique_id=169235792 node_paths=PackedStringArray("area_vuelta", "area_golpe", "hit_sound_1", "hit_sound_2", "solid_hit_sound", "throw_sound", "returning_sound")]
 collision_layer = 0
 script = ExtResource("2_q4ae8")
+area_vuelta = NodePath("AreaVuelta")
+area_golpe = NodePath("AreaGolpe")
+hit_sound_1 = NodePath("Sonidos/HitSound1")
+hit_sound_2 = NodePath("Sonidos/HitSound2")
+solid_hit_sound = NodePath("Sonidos/SolidHitSound")
+throw_sound = NodePath("Sonidos/ThrowSound")
+returning_sound = NodePath("Sonidos/ReturningSound")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=357372691]
 modulate = Color(0.2961637, 0.2034412, 0.053081714, 1)
@@ -36,3 +48,20 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaGolpe" unique_id=21920070]
 shape = SubResource("RectangleShape2D_2qrtu")
+
+[node name="Sonidos" type="Node" parent="." unique_id=511406172]
+
+[node name="HitSound1" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=21498048]
+stream = ExtResource("3_10uyp")
+
+[node name="HitSound2" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=1692493707]
+stream = ExtResource("4_w1y23")
+
+[node name="SolidHitSound" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=296109887]
+stream = ExtResource("5_01hj4")
+
+[node name="ThrowSound" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=1457570901]
+stream = ExtResource("6_ho0en")
+
+[node name="ReturningSound" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=740886915]
+stream = ExtResource("7_cy58p")

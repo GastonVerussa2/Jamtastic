@@ -18,6 +18,8 @@ size = Vector2(12, 18)
 
 [node name="player" type="CharacterBody2D" unique_id=1441778440 node_paths=PackedStringArray("area_prota", "animacion", "sonido_muerte", "sonido_daño", "sonido_dash", "sonido_barra")]
 collision_layer = 4
+collision_mask = 33
+motion_mode = 1
 script = ExtResource("1_a8p4t")
 area_prota = NodePath("Area2D")
 material_personaje_rojo = ExtResource("2_5skp6")
@@ -42,7 +44,7 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_a8p4t")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1782687089]
-zoom = Vector2(3, 3)
+zoom = Vector2(6, 6)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1772062594]
 

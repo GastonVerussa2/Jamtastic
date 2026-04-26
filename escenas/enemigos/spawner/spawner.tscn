@@ -3,9 +3,8 @@
 [ext_resource type="Script" uid="uid://cx24e6fd57kgv" path="res://escenas/enemigos/spawner/spawner.gd" id="1_qsyl4"]
 [ext_resource type="AudioStream" uid="uid://bogvp8ahbhoup" path="res://sonidos/Spawn.wav" id="2_uvls0"]
 
-[node name="spawner" type="Node2D" unique_id=698146440 node_paths=PackedStringArray("sonido_muerte")]
+[node name="spawner" type="Node2D" unique_id=698146440]
 script = ExtResource("1_qsyl4")
-sonido_muerte = NodePath("spawn_audio")
 
 [node name="spawn_audio" type="AudioStreamPlayer2D" parent="." unique_id=587648669]
 stream = ExtResource("2_uvls0")
