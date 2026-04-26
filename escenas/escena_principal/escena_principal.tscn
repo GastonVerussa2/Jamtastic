@@ -3,6 +3,17 @@
 [ext_resource type="Script" uid="uid://twjktyq3g2d5" path="res://escenas/escena_principal/escena_principal.gd" id="1_pdctq"]
 [ext_resource type="PackedScene" uid="uid://npmiktsd83pi" path="res://escenas/niveles/nivel_1/nivel_1.tscn" id="2_snxy5"]
 
-[node name="main_scene" type="Node2D" unique_id=151545037]
+[node name="main_scene" type="Node2D" unique_id=151545037 node_paths=PackedStringArray("kills_label")]
 script = ExtResource("1_pdctq")
 niveles = Array[PackedScene]([ExtResource("2_snxy5")])
+kills_label = NodePath("CanvasLayer/kills")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1347043566]
+
+[node name="kills" type="Label" parent="CanvasLayer" unique_id=102525051]
+offset_left = 1069.0
+offset_top = 19.0
+offset_right = 1111.0
+offset_bottom = 47.0
+text = "score"
+horizontal_alignment = 2

@@ -1,5 +1,4 @@
 class_name Enemy
-
 extends CharacterBody2D
 
 @export var speed: float = 100.0
@@ -29,5 +28,12 @@ func _physics_process(delta):
 
 func get_hit(damage: int):
 	health -= damage
-	if(health <= 0):
+	
+	if health <= 0:
+		_notificar_muerte()
 		queue_free()
+
+func _notificar_muerte():
+	var main = get_tree().get_first_node_in_group("main")
+	if main:
+		main.add_kill()
