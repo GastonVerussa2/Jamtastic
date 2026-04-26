@@ -3,7 +3,7 @@ extends Node2D
 @export var niveles: Array[PackedScene]
 @export var kills_label: Label
 
-const UpgradeMenu = preload("res://escenas/UpgradeMenu/control.tscn") # ⚠️ ajustá ruta si hace falta
+const UpgradeMenu = preload("res://escenas/UpgradeMenu/control.tscn") 
 
 var _nivel_actual: int = 1
 var _nivel_instanciado: Node
@@ -122,7 +122,7 @@ func get_upgrade_pool():
 		},
 		{
 			"text": "+Vida",
-			"apply": func(): PlayerHpManager.max_hp += 10
+			"apply": func(): PlayerHpManager.add_max_hp(10)
 		}
 	]
 
