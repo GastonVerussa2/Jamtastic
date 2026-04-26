@@ -5,6 +5,10 @@ extends Node2D
 
 const UpgradeMenu = preload("res://escenas/UpgradeMenu/control.tscn") 
 
+const ICON_SPEED = preload("res://sprites/SPEED_UP.png")
+const ICON_DAMAGE = preload("res://sprites/dano_up.png")
+const ICON_HEALTH = preload("res://sprites/Corazon_hp_up.png")
+
 var _nivel_actual: int = 1
 var _nivel_instanciado: Node
 
@@ -114,14 +118,17 @@ func get_upgrade_pool():
 	return [
 		{
 			"text": "+Speed",
+			"icon": ICON_SPEED,
 			"apply": func(): player.speed += 20
 		},
 		{
 			"text": "+Daño",
+			"icon": ICON_DAMAGE,
 			"apply": func(): player.damage += 1
 		},
 		{
 			"text": "+Vida",
+			"icon": ICON_HEALTH,
 			"apply": func(): PlayerHpManager.add_max_hp(10)
 		}
 	]

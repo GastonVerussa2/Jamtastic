@@ -12,13 +12,18 @@ func setup(options: Array, main_ref):
 	upgrades = options
 	main = main_ref
 	
-	btn1.text = options[0]["text"]
-	btn2.text = options[1]["text"]
-	btn3.text = options[2]["text"]
+	_configurar_boton(btn1, options[0])
+	_configurar_boton(btn2, options[1])
+	_configurar_boton(btn3, options[2])
 	
 	btn1.pressed.connect(func(): _on_selected(0))
 	btn2.pressed.connect(func(): _on_selected(1))
 	btn3.pressed.connect(func(): _on_selected(2))
+
+
+func _configurar_boton(btn: Button, data):
+	btn.text = data["text"]
+	btn.icon = data.get("icon", null)
 
 
 func _on_selected(index):

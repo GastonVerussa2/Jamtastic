@@ -39,7 +39,7 @@ func _ready() -> void:
 	dash_duration_timer.wait_time = _dash_time
 	invunerability_timer.wait_time = _tiempo_invulnerabilidad
 	
-	_velocidad =
+	_velocidad = speed # 👈 clave
 	
 	print(_vida)
 	
