@@ -1,7 +1,6 @@
 [gd_scene format=4 uid="uid://npmiktsd83pi"]
 
 [ext_resource type="PackedScene" uid="uid://b6ivfjjb3m8er" path="res://escenas/protagonista/protagonista.tscn" id="2_w5axy"]
-[ext_resource type="PackedScene" uid="uid://5jng20mes8p4" path="res://escenas/collectables/comida.tscn" id="4_ngt1y"]
 [ext_resource type="PackedScene" uid="uid://dcvjfv1emq3yt" path="res://escenas/enemigos/spawner/spawn_point.tscn" id="5_xjemj"]
 [ext_resource type="PackedScene" uid="uid://cpu2p4wy1q8ff" path="res://escenas/enemigos/spawner/spawner.tscn" id="6_7j4at"]
 [ext_resource type="PackedScene" uid="uid://drouppkd26ehg" path="res://escenas/niveles/nivel_3/mesa.tscn" id="6_gia3d"]
@@ -12,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://do36w7sl1nmn8" path="res://sprites/new_lvl_3/sombras-piso.png" id="9_fiili"]
 [ext_resource type="Texture2D" uid="uid://b8rowu03756dq" path="res://sprites/new_lvl_3/glow-big.png" id="11_4saa1"]
 [ext_resource type="Texture2D" uid="uid://dfyd5517cxc7y" path="res://sprites/new_lvl_3/glow-small.png" id="12_2hd03"]
+[ext_resource type="AudioStream" uid="uid://kudpjjfjjuca" path="res://musica/hero.wav" id="13_2hd03"]
+[ext_resource type="Script" uid="uid://c1tjrjgmafnbu" path="res://escenas/niveles/nivel_1/food_spawner.gd" id="14_0nesf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uq0ld"]
 texture = ExtResource("9_fiili")
@@ -202,15 +203,6 @@ sources/2 = SubResource("TileSetAtlasSource_xjemj")
 [node name="protagonista" parent="." unique_id=1441778440 instance=ExtResource("2_w5axy")]
 position = Vector2(16, -24)
 
-[node name="Comida" parent="." unique_id=358810931 instance=ExtResource("4_ngt1y")]
-position = Vector2(-99, -48)
-
-[node name="Comida4" parent="." unique_id=1955523944 instance=ExtResource("4_ngt1y")]
-position = Vector2(60, -73)
-
-[node name="Comida3" parent="." unique_id=1602043233 instance=ExtResource("4_ngt1y")]
-position = Vector2(-41, 54)
-
 [node name="spawner" parent="." unique_id=698146440 instance=ExtResource("6_7j4at")]
 
 [node name="SpawnPoint" parent="spawner" unique_id=1536353727 instance=ExtResource("5_xjemj")]
@@ -319,3 +311,45 @@ texture = ExtResource("11_4saa1")
 [node name="GlowSmall8" type="Sprite2D" parent="Mapa/Brillos" unique_id=1399493930]
 position = Vector2(142, -18)
 texture = ExtResource("12_2hd03")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1503651789]
+stream = ExtResource("13_2hd03")
+volume_db = -9.0
+autoplay = true
+
+[node name="food_spawner" type="Node2D" parent="." unique_id=1246348888 node_paths=PackedStringArray("poligones", "timer")]
+script = ExtResource("14_0nesf")
+poligones = [NodePath("poligon"), NodePath("poligon2"), NodePath("poligon3"), NodePath("poligon4")]
+timer = NodePath("Timer")
+
+[node name="poligon4" type="Polygon2D" parent="food_spawner" unique_id=1268370980]
+visible = false
+modulate = Color(1, 0.25882354, 1, 0.39215687)
+position = Vector2(-122.70318, 34)
+scale = Vector2(0.8515901, 0.7037037)
+polygon = PackedVector2Array(2, 0, 285, 0, 285, 108, 2, 107)
+
+[node name="poligon3" type="Polygon2D" parent="food_spawner" unique_id=1103557627]
+visible = false
+modulate = Color(1, 0.25882354, 1, 0.39215687)
+position = Vector2(-155.38202, -43.731712)
+scale = Vector2(0.752809, 0.85365856)
+polygon = PackedVector2Array(47, -86, 136, -87, 136, 159, 49, 159)
+
+[node name="poligon2" type="Polygon2D" parent="food_spawner" unique_id=387566052]
+visible = false
+modulate = Color(1, 0.25882354, 1, 0.39215687)
+position = Vector2(55.88889, -50.730034)
+scale = Vector2(0.7777778, 0.8707224)
+polygon = PackedVector2Array(-5, -83, 83, -83, 85, 180, -5, 180)
+
+[node name="poligon" type="Polygon2D" parent="food_spawner" unique_id=1324217774]
+visible = false
+modulate = Color(1, 0.25882354, 1, 0.39215687)
+position = Vector2(-103.44876, -124)
+scale = Vector2(0.7243816, 0.73015875)
+polygon = PackedVector2Array(2, 0, 285, 0, 283, 125, 3, 126)
+
+[node name="Timer" type="Timer" parent="food_spawner" unique_id=432491391]
+wait_time = 5.0
+autostart = true

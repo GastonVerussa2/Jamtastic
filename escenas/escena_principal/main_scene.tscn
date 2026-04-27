@@ -4,15 +4,19 @@
 [ext_resource type="PackedScene" uid="uid://boqopslo0bpo3" path="res://escenas/niveles/introduccion/libro.tscn" id="2_snudr"]
 [ext_resource type="PackedScene" uid="uid://npmiktsd83pi" path="res://escenas/niveles/nivel_1/nivel_1.tscn" id="3_px3ix"]
 [ext_resource type="Texture2D" uid="uid://wfio73qfs63m" path="res://sprites/calavera.png" id="4_snudr"]
+[ext_resource type="AudioStream" uid="uid://cr4yo1lhc2gne" path="res://sonidos/Subir de LVL.wav" id="5_px3ix"]
 
-[node name="main_scene" type="Node2D" unique_id=249913582 node_paths=PackedStringArray("kills_label")]
+[node name="main_scene" type="Node2D" unique_id=249913582 node_paths=PackedStringArray("kills_label", "xp_sound", "container") groups=["main"]]
 script = ExtResource("1_2fgrq")
 niveles = Array[PackedScene]([ExtResource("2_snudr"), ExtResource("3_px3ix")])
 kills_label = NodePath("CanvasLayer/HBoxContainer/Kills")
+xp_sound = NodePath("XPSound")
+container = NodePath("CanvasLayer/HBoxContainer")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=24304786]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=1507682000]
+visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -29,3 +33,7 @@ stretch_mode = 5
 [node name="Kills" type="Label" parent="CanvasLayer/HBoxContainer" unique_id=1192126706]
 layout_mode = 2
 text = "score:"
+
+[node name="XPSound" type="AudioStreamPlayer2D" parent="." unique_id=792690777]
+stream = ExtResource("5_px3ix")
+volume_db = 12.0

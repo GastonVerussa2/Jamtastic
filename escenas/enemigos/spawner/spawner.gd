@@ -4,9 +4,10 @@ extends Node2D
 
 var enemy_scene = preload("res://escenas/enemigos/enemigo/enemy.tscn")
 
-@export var spawn_interval: float = 0.5
+@export var spawn_interval: float = 1.5
 @export var spawn_radius_min: float = 200
 @export var spawn_radius_max: float = 400
+@export var time_before_spawns: float = 2
 
 var player: Node2D
 var spawning := true
@@ -15,9 +16,8 @@ var spawn_points: Array[Node]
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	spawn_points = get_tree().get_nodes_in_group("spawn_point")
-	# Oculta los spawn
-	for point in spawn_points:
-		point.z_index = -25
+	
+	await get_tree().create_timer(time_before_spawns).timeout
 	
 	start_spawning()
 

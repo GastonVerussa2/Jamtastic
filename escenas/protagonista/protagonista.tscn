@@ -993,11 +993,6 @@ zoom = Vector2(3, 3)
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1772062594]
 
 [node name="HP" parent="CanvasLayer" unique_id=2075548786 instance=ExtResource("3_r5osk")]
-z_index = -1
-offset_left = -24.0
-offset_top = -38.0
-offset_right = -24.0
-offset_bottom = -38.0
 
 [node name="Sonidos" type="Node" parent="." unique_id=536706194]
 

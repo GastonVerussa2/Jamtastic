@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cr4yo1lhc2gne"
+path="res://.godot/imported/Subir de LVL.wav-cae5f99a57b84ba2bd52dc43835d73f3.sample"
+
+[deps]
+
+source_file="res://sonidos/Subir de LVL.wav"
+dest_files=["res://.godot/imported/Subir de LVL.wav-cae5f99a57b84ba2bd52dc43835d73f3.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

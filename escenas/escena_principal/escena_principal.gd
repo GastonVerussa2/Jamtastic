@@ -1,7 +1,11 @@
+class_name MainScene
+
 extends Node2D
 
 @export var niveles: Array[PackedScene]
 @export var kills_label: Label
+@export var xp_sound: AudioStreamPlayer2D
+@export var container: HBoxContainer
 
 const UpgradeMenu = preload("res://escenas/UpgradeMenu/control.tscn") 
 
@@ -11,6 +15,7 @@ const ICON_HEALTH = preload("res://sprites/Corazon_hp_up.png")
 
 var _nivel_actual: int = 1
 var _nivel_instanciado: Node
+
 
 # -------------------
 # SCORE
@@ -23,12 +28,17 @@ var _kills: int = 0
 var xp: int = 0
 var level: int = 1
 var xp_to_next: int = 5
+var _leveling_up := false
 
 
 func _ready() -> void:
-	add_to_group("main")
 	_crear_nivel(_nivel_actual)
 	update_kills_label()
+
+
+func _process(_delta: float):
+	if Input.is_action_just_pressed("close"):
+		get_tree().quit()
 
 
 func _crear_nivel(numero_nivel: int):
@@ -54,6 +64,10 @@ func _reiniciar_nivel():
 	_crear_nivel.call_deferred(_nivel_actual)
 	PlayerHpManager.reset_life()
 
+func avanzar_nivel():
+	_nivel_actual += 1
+	_reiniciar_nivel()
+	container.visible = true
 
 # -------------------
 # KILLS
@@ -80,7 +94,10 @@ func add_xp(amount: int):
 
 
 func level_up():
+	
 	level += 1
+	
+	xp_sound.play()
 	
 	# mantiene XP sobrante
 	xp -= xp_to_next
@@ -97,6 +114,8 @@ func level_up():
 # MENU DE MEJORAS
 # -------------------
 func abrir_menu_mejoras():
+	_leveling_up = true
+	
 	get_tree().paused = true
 	
 	var menu = UpgradeMenu.instantiate()
@@ -108,6 +127,7 @@ func abrir_menu_mejoras():
 
 
 func cerrar_menu_mejoras():
+	_leveling_up = false
 	get_tree().paused = false
 
 
@@ -140,6 +160,4 @@ func get_random_upgrades():
 	var pool = get_upgrade_pool()
 	pool.shuffle()
 	return pool.slice(0, 3)
-func avanzar_nivel():
-	_nivel_actual += 1
-	_reiniciar_nivel()
+	

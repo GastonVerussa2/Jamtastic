@@ -8,6 +8,7 @@ extends Node2D
 @export var tutorial_2: Label
 @export var writing_sound_1: AudioStreamPlayer2D
 @export var writing_sound_2: AudioStreamPlayer2D
+@export var page_sound: AudioStreamPlayer2D
 @export var gregorio_node: Node2D
 @export var protagonist: Sprite2D
 @export var arfurro: Sprite2D
@@ -16,6 +17,7 @@ var writing_speed: float = 0.2
 
 var left_text: Label
 var right_text: Label
+var pasando_lvl: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -62,6 +64,7 @@ func _pasar_pagina():
 		right_text = forth_text
 		left_text.visible_ratio = 0
 		right_text.visible_ratio = 0
+		page_sound.play()
 	elif left_text == third_text:
 		left_text.visible_ratio = 0
 		right_text.visible_ratio = 0
@@ -69,6 +72,17 @@ func _pasar_pagina():
 		right_text = tutorial_2
 		left_text.visible_ratio = 0
 		right_text.visible_ratio = 0
+		page_sound.play()
 	else:
-		get_parent().avanzar_nivel()
+		_siguiente_nivel()
 		# va al juegaso
+
+func _siguiente_nivel():
+	if not pasando_lvl:
+		page_sound.play()
+		pasando_lvl = true
+		while self.modulate.a > 0:
+			self.modulate.a -= 0.01
+			await get_tree().create_timer(0.005).timeout
+		await get_tree().create_timer(1).timeout
+		get_parent().avanzar_nivel()

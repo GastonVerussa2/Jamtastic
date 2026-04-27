@@ -6,12 +6,14 @@
 [ext_resource type="AudioStream" uid="uid://lgch1mlpbuk5" path="res://sonidos/Escribiendo-001.wav" id="4_6umnp"]
 [ext_resource type="AudioStream" uid="uid://vcitbe0p2llu" path="res://sonidos/Escribiendo-002.wav" id="5_464a4"]
 [ext_resource type="Texture2D" uid="uid://dx71jtd1dv0p2" path="res://sprites/protagonist/facheron.png" id="6_gn6eq"]
+[ext_resource type="AudioStream" uid="uid://b8reuycf5iva1" path="res://sonidos/Pasar Hoja.wav" id="6_rw2e2"]
 [ext_resource type="Texture2D" uid="uid://dt0fn2io2gcyb" path="res://sprites/Gregorio.png" id="7_fe14e"]
 [ext_resource type="Texture2D" uid="uid://c6tar5r6rxdct" path="res://sprites/protagonist/arfurro.png" id="8_rw2e2"]
+[ext_resource type="AudioStream" uid="uid://daagah5kmh2ic" path="res://musica/intro.wav" id="9_fe14e"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8msjx"]
 
-[node name="BookIntro" type="Node2D" unique_id=1683685789 node_paths=PackedStringArray("first_text", "second_text", "third_text", "forth_text", "tutorial_1", "tutorial_2", "writing_sound_1", "writing_sound_2", "gregorio_node", "protagonist", "arfurro")]
+[node name="BookIntro" type="Node2D" unique_id=1683685789 node_paths=PackedStringArray("first_text", "second_text", "third_text", "forth_text", "tutorial_1", "tutorial_2", "writing_sound_1", "writing_sound_2", "page_sound", "gregorio_node", "protagonist", "arfurro")]
 position = Vector2(233, 235)
 script = ExtResource("1_3juds")
 first_text = NodePath("FirstText")
@@ -22,6 +24,7 @@ tutorial_1 = NodePath("Tutorial1")
 tutorial_2 = NodePath("Tutorial2")
 writing_sound_1 = NodePath("Writing1")
 writing_sound_2 = NodePath("Writing2")
+page_sound = NodePath("NextPage")
 gregorio_node = NodePath("GregoritoNode")
 protagonist = NodePath("Protagonist")
 arfurro = NodePath("Arfurro")
@@ -54,12 +57,12 @@ visible_ratio = 0.0
 [node name="FirstText" type="Label" parent="." unique_id=1102749311]
 offset_left = -196.0
 offset_top = -204.0
-offset_right = -29.0
-offset_bottom = 276.0
+offset_right = -45.0
+offset_bottom = 311.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_3juds")
-text = "Sir Miauricio, 
-tú eras el héroe destinado a sacar la espada de la piedra.
+text = "Sir Miauricio,
+ tú eras el héroe destinado a sacar la espada de la piedra.
 
 Por fin llegas. 
 Multitudes. 
@@ -70,7 +73,7 @@ Extiendes la
 mano pero…
 
 La espada ya no está..."
-autowrap_mode = 3
+autowrap_mode = 2
 visible_characters = 0
 visible_ratio = 0.0
 
@@ -157,6 +160,10 @@ volume_db = 4.0
 stream = ExtResource("5_464a4")
 volume_db = 4.0
 
+[node name="NextPage" type="AudioStreamPlayer2D" parent="." unique_id=427684907]
+stream = ExtResource("6_rw2e2")
+volume_db = 17.196
+
 [node name="Timer" type="Timer" parent="." unique_id=483402091]
 
 [node name="Protagonist" type="Sprite2D" parent="." unique_id=442005719]
@@ -190,12 +197,12 @@ scale = Vector2(-0.7001902, 0.7476191)
 texture = ExtResource("7_fe14e")
 
 [node name="Gregorio2" type="Sprite2D" parent="GregoritoNode/Gregorio" unique_id=1767604557]
-position = Vector2(-23.478275, 52.142887)
+position = Vector2(-29.347845, 60.71432)
 scale = Vector2(1.2231884, 1.2476186)
 texture = ExtResource("7_fe14e")
 
 [node name="Gregorio" type="Sprite2D" parent="GregoritoNode/Gregorio/Gregorio2" unique_id=713411043]
-position = Vector2(29.324669, -11.450394)
+position = Vector2(36.78913, -14.312992)
 scale = Vector2(-0.7001902, 0.7476191)
 texture = ExtResource("7_fe14e")
 
@@ -205,3 +212,16 @@ modulate = Color(1.1755697, 1.1755697, 1.1755697, 1)
 position = Vector2(113.999985, 108.000015)
 scale = Vector2(0.21, 0.21)
 texture = ExtResource("8_rw2e2")
+
+[node name="Label" type="Label" parent="." unique_id=1379228025]
+offset_left = -230.0
+offset_top = 242.0
+offset_right = -190.0
+offset_bottom = 265.0
+theme_override_fonts/font = ExtResource("2_3juds")
+text = "Presione D o Espacio para avanzar"
+
+[node name="IntroMusic" type="AudioStreamPlayer2D" parent="." unique_id=1185577302]
+stream = ExtResource("9_fe14e")
+volume_db = -4.0
+autoplay = true

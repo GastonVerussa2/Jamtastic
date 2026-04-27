@@ -6,6 +6,8 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	print(get_parent())
+	print(get_children())
 	PlayerHpManager.hp_change.connect(_refresh_text)
 	progress_bar.max_value = float(PlayerHpManager.health)
 	progress_bar.value = float(PlayerHpManager.health)
