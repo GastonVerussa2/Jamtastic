@@ -14,39 +14,40 @@ anchor_right = 0.5
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_kxpdh")
-label = NodePath("Label")
-progress_bar = NodePath("ProgressBar")
-texture_progress_bar = NodePath("TextureProgressBar")
+label = NodePath("CanvasLayer/MarginContainer/VBoxContainer/Label")
+progress_bar = NodePath("CanvasLayer/MarginContainer/VBoxContainer/ProgressBar")
+texture_progress_bar = NodePath("CanvasLayer/MarginContainer/VBoxContainer/TextureProgressBar")
 
-[node name="Label" type="Label" parent="." unique_id=232002701]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1547669651]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=133133747]
+custom_minimum_size = Vector2(50, 50)
+offset_right = 200.0
+offset_bottom = 55.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=1303644239]
+custom_minimum_size = Vector2(300, 20)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=232002701]
 z_index = -1
-layout_mode = 0
-offset_left = -182.0
-offset_top = -252.0
-offset_right = 281.0
-offset_bottom = -110.0
+layout_mode = 2
 theme_override_fonts/font = ExtResource("2_b15pf")
-theme_override_font_sizes/font_size = 150
+theme_override_font_sizes/font_size = 32
 text = "HP: 100"
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=2063451680]
-layout_mode = 0
-offset_left = -323.00003
-offset_top = -108.999985
-offset_right = -251.00003
-offset_bottom = -99.999985
-scale = Vector2(10, 10)
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=2063451680]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+size_flags_vertical = 3
 texture_under = ExtResource("2_pbeeu")
 texture_over = ExtResource("2_pbeeu")
 texture_progress = ExtResource("3_b15pf")
 
-[node name="ProgressBar" type="ProgressBar" parent="." unique_id=484966486]
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=484966486]
 modulate = Color(14.222716, 2.102283, 1.4500688, 1)
 z_index = -2
-layout_mode = 0
-offset_left = -556.0
-offset_top = -494.0
-offset_right = -477.0
-offset_bottom = -252.0
+layout_mode = 2
 show_percentage = false

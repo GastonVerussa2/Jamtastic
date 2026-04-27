@@ -13,12 +13,18 @@ kills_label = NodePath("CanvasLayer/HBoxContainer/Kills")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=24304786]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=1507682000]
-offset_right = 40.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -83.0
 offset_bottom = 40.0
+grow_horizontal = 0
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer" unique_id=1332526690]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("4_snudr")
+stretch_mode = 5
 
 [node name="Kills" type="Label" parent="CanvasLayer/HBoxContainer" unique_id=1192126706]
 layout_mode = 2
