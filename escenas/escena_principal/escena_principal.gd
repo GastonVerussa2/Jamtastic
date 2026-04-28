@@ -16,6 +16,7 @@ const ICON_HEALTH = preload("res://sprites/Corazon_hp_up.png")
 var _nivel_actual: int = 1
 var _nivel_instanciado: Node
 
+var hp: HpControl
 
 # -------------------
 # SCORE
@@ -87,10 +88,18 @@ func update_kills_label():
 func add_xp(amount: int):
 	xp += amount
 	
+	if hp == null:
+		hp = get_tree().get_first_node_in_group("hp")
+		hp.set_max_xp(xp_to_next)
+	
+	hp.set_xp(xp)
+	
 	print("XP:", xp, "/", xp_to_next)
 	
 	if xp >= xp_to_next:
 		level_up()
+	
+	
 
 
 func level_up():
@@ -129,6 +138,8 @@ func abrir_menu_mejoras():
 func cerrar_menu_mejoras():
 	_leveling_up = false
 	get_tree().paused = false
+	hp.set_xp(xp)
+	hp.set_max_xp(xp_to_next)
 
 
 # -------------------
