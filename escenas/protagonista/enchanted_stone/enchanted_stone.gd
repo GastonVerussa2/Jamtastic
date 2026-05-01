@@ -26,11 +26,16 @@ var start_position: Vector2
 var player: Node2D
 var returning := false
 var is_attacking := false
-var damage = 1
+var damage = 5
 var last_sound = 1
 
 func _ready() -> void:
 	area_golpe.body_entered.connect(hit_enemy)
+	hit_sound_1.volume_linear = SoundManager.get_sound()
+	hit_sound_2.volume_linear = SoundManager.get_sound()
+	solid_hit_sound.volume_linear = SoundManager.get_sound()
+	throw_sound.volume_linear = SoundManager.get_sound()
+	returning_sound.volume_linear = SoundManager.get_sound()
 	_disappear()
 
 func _physics_process(delta):
@@ -42,6 +47,7 @@ func _physics_process(delta):
 				solid_hit_sound.play()
 			go_back()
 	
+		
 		if not returning:
 			velocity = direction * speed
 			rotation += 10 * delta
@@ -50,13 +56,14 @@ func _physics_process(delta):
 			if global_position.distance_to(start_position) > max_distance:
 				go_back()
 		else:
+			rotation += 5 * delta
 			if player:
 				return_speed += return_acceleration * delta
 				var dir_to_player = (player.global_position - global_position).normalized()
 				velocity = dir_to_player * return_speed
 
 				# cuando llega al player → desaparece
-				if global_position.distance_to(player.global_position) < 20:
+				if global_position.distance_to(player.global_position) < 10:
 					return_speed = 0
 					_disappear()
 		move_and_slide()

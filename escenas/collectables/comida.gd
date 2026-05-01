@@ -7,6 +7,7 @@ var _healing: int = 25
 
 func _ready() -> void:
 	area_2d.body_entered.connect(_picked_up)
+	bite_sound.volume_linear = SoundManager.get_sound()
 	pass
 
 func _picked_up(_body):

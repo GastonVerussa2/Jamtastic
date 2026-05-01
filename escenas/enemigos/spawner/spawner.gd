@@ -8,18 +8,28 @@ var enemy_scene = preload("res://escenas/enemigos/enemigo/enemy.tscn")
 @export var spawn_radius_min: float = 200
 @export var spawn_radius_max: float = 400
 @export var time_before_spawns: float = 2
+@export var timer: Timer
 
 var player: Node2D
 var spawning := true
 var spawn_points: Array[Node]
+var main: MainScene
 
 func _ready():
+	await get_tree().create_timer(0.2).timeout
 	player = get_tree().get_first_node_in_group("player")
 	spawn_points = get_tree().get_nodes_in_group("spawn_point")
-	
+	main = get_tree().get_first_node_in_group("main")
+	main.level_up_pj.connect(level_up)
+	timer.wait_time = spawn_interval
+	timer.timeout.connect(spawn_enemy)
 	await get_tree().create_timer(time_before_spawns).timeout
-	
-	start_spawning()
+	timer.start()
+	#start_spawning()
+
+func level_up():
+	#spawn_interval *= 0.9
+	timer.wait_time *= 0.9
 
 func start_spawning():
 	while spawning:

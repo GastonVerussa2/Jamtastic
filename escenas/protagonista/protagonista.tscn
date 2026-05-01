@@ -786,7 +786,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ojj3w")
 }],
-"loop": false,
+"loop": true,
 "name": &"right_no_stone",
 "speed": 15.0
 }, {
@@ -956,7 +956,7 @@ size = Vector2(10, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8p4t"]
 size = Vector2(12, 18)
 
-[node name="player" type="CharacterBody2D" unique_id=1441778440 node_paths=PackedStringArray("area_prota", "animacion", "sonido_muerte", "sonido_daño", "sonido_dash", "sonido_barra", "dash_cd_timer", "dash_duration_timer", "invunerability_timer") groups=["player"]]
+[node name="player" type="CharacterBody2D" unique_id=1441778440 node_paths=PackedStringArray("area_prota", "animacion", "sonido_muerte", "sonido_daño", "sonido_dash", "sonido_barra", "dash_cd_timer", "dash_duration_timer", "invunerability_timer", "blink_timer", "death_timer") groups=["player"]]
 collision_layer = 4
 collision_mask = 33
 motion_mode = 1
@@ -972,10 +972,12 @@ sonido_barra = NodePath("Sonidos/Barra")
 dash_cd_timer = NodePath("Timers/DashCDTimer")
 dash_duration_timer = NodePath("Timers/DashDurationTimer")
 invunerability_timer = NodePath("Timers/InvunerabilityTimer")
+blink_timer = NodePath("Timers/BlinkTimer")
+death_timer = NodePath("Timers/DeathTimer")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1651926019]
 sprite_frames = SubResource("SpriteFrames_xndew")
-animation = &"up_no_stone"
+animation = &"right_no_stone"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1434118407]
 shape = SubResource("RectangleShape2D_5skp6")
@@ -996,20 +998,19 @@ zoom = Vector2(3, 3)
 
 [node name="Sonidos" type="Node" parent="." unique_id=536706194]
 
-[node name="SonidoMuerte" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=721994541]
+[node name="SonidoMuerte" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=721994541 groups=["sound"]]
 stream = ExtResource("6_n62vp")
 
-[node name="DañoRecibido" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=2030958379]
+[node name="DañoRecibido" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=2030958379 groups=["sound"]]
 stream = ExtResource("7_n62vp")
 
-[node name="Dasheo" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=1747114656]
+[node name="Dasheo" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=1747114656 groups=["sound"]]
 stream = ExtResource("8_n62vp")
-
-[node name="Barra" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=1496417475]
-stream = ExtResource("9_qaul3")
 volume_db = 24.0
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=1307494847]
+[node name="Barra" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=1496417475 groups=["sound"]]
+stream = ExtResource("9_qaul3")
+volume_db = 24.0
 
 [node name="Timers" type="Node" parent="." unique_id=2094224763]
 
@@ -1020,4 +1021,11 @@ one_shot = true
 one_shot = true
 
 [node name="InvunerabilityTimer" type="Timer" parent="Timers" unique_id=2028718403]
+one_shot = true
+
+[node name="BlinkTimer" type="Timer" parent="Timers" unique_id=968297449]
+wait_time = 0.1
+
+[node name="DeathTimer" type="Timer" parent="Timers" unique_id=1433839469]
+wait_time = 1.5
 one_shot = true

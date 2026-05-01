@@ -10,7 +10,7 @@ size = Vector2(46.666664, 53.333332)
 
 [node name="enemy" type="Node2D" unique_id=726940585]
 
-[node name="sonido_spawn" type="AudioStreamPlayer2D" parent="." unique_id=1183346513]
+[node name="sonido_spawn" type="AudioStreamPlayer2D" parent="." unique_id=1183346513 groups=["sound"]]
 stream = ExtResource("1_3w2dw")
 max_distance = 4096.0
 

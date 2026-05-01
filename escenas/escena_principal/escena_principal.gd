@@ -2,12 +2,16 @@ class_name MainScene
 
 extends Node2D
 
+signal level_up_pj
+
 @export var niveles: Array[PackedScene]
 @export var kills_label: Label
 @export var xp_sound: AudioStreamPlayer2D
 @export var container: HBoxContainer
+@export var pause_menu: PauseMenu
 
-const UpgradeMenu = preload("res://escenas/UpgradeMenu/control.tscn") 
+
+const UpgradeMenu = preload("res://escenas/UpgradeMenu/upgrade_menu.tscn") 
 
 const ICON_SPEED = preload("res://sprites/SPEED_UP.png")
 const ICON_DAMAGE = preload("res://sprites/dano_up.png")
@@ -35,14 +39,21 @@ var _leveling_up := false
 func _ready() -> void:
 	_crear_nivel(_nivel_actual)
 	update_kills_label()
+	xp_sound.volume_linear = SoundManager.get_sound()
 
 
 func _process(_delta: float):
-	if Input.is_action_just_pressed("close"):
-		get_tree().quit()
+	if Input.is_action_just_pressed("pausasa"):
+		pause_menu.pausar()
+		get_tree().paused = true
 
 
 func _crear_nivel(numero_nivel: int):
+	if _nivel_actual == 1:
+		container.visible = false
+	else:
+		container.visible = true
+	
 	_nivel_instanciado = niveles[numero_nivel - 1].instantiate()
 	add_child(_nivel_instanciado)
 	
@@ -52,7 +63,7 @@ func _crear_nivel(numero_nivel: int):
 		if hijos[i].is_in_group("player"):
 			hijos[i].personaje_muerto.connect(_reiniciar_nivel)
 			break
-
+			
 
 func _eliminar_nivel():
 	_nivel_instanciado.queue_free()
@@ -117,7 +128,8 @@ func level_up():
 	print("LEVEL UP:", level)
 	
 	abrir_menu_mejoras()
-
+	
+	level_up_pj.emit()
 
 # -------------------
 # MENU DE MEJORAS
@@ -147,17 +159,18 @@ func cerrar_menu_mejoras():
 # -------------------
 func get_upgrade_pool():
 	var player = get_tree().get_first_node_in_group("player")
+	var stone = get_tree().get_first_node_in_group("stone")
 	
 	return [
 		{
 			"text": "+Speed",
 			"icon": ICON_SPEED,
-			"apply": func(): player.speed += 20
+			"apply": func(): player.upgrade_speed(20)
 		},
 		{
 			"text": "+Daño",
 			"icon": ICON_DAMAGE,
-			"apply": func(): player.damage += 1
+			"apply": func(): stone.damage += 4
 		},
 		{
 			"text": "+Vida",
@@ -171,4 +184,3 @@ func get_random_upgrades():
 	var pool = get_upgrade_pool()
 	pool.shuffle()
 	return pool.slice(0, 3)
-	

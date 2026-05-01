@@ -14,8 +14,6 @@ bite_sound = NodePath("BiteSound")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=471688884]
 modulate = Color(0.5537159, 0.27780348, 0.21307987, 1)
-light_mask = 8
-visibility_layer = 8
 texture = ExtResource("2_3u7fy")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=768852963]
@@ -25,5 +23,5 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1487512948]
 shape = SubResource("RectangleShape2D_3u7fy")
 
-[node name="BiteSound" type="AudioStreamPlayer2D" parent="." unique_id=2088766042]
+[node name="BiteSound" type="AudioStreamPlayer2D" parent="." unique_id=2088766042 groups=["sound"]]
 stream = ExtResource("3_lyaof")

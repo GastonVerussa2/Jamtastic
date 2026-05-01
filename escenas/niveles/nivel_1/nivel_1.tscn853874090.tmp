@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://cav7en0wscpmn" path="res://sprites/new_lvl_3/entrada-side.png" id="9_dj1lt"]
 [ext_resource type="Texture2D" uid="uid://do36w7sl1nmn8" path="res://sprites/new_lvl_3/sombras-piso.png" id="9_fiili"]
 [ext_resource type="Texture2D" uid="uid://b8rowu03756dq" path="res://sprites/new_lvl_3/glow-big.png" id="11_4saa1"]
-[ext_resource type="Script" uid="uid://djfhop8ifkxut" path="res://escenas/niveles/nivel_1/level_music.gd" id="12_0nesf"]
 [ext_resource type="Texture2D" uid="uid://dfyd5517cxc7y" path="res://sprites/new_lvl_3/glow-small.png" id="12_2hd03"]
 [ext_resource type="AudioStream" uid="uid://kudpjjfjjuca" path="res://musica/hero.wav" id="13_2hd03"]
 [ext_resource type="Script" uid="uid://c1tjrjgmafnbu" path="res://escenas/niveles/nivel_1/food_spawner.gd" id="14_0nesf"]
@@ -123,10 +122,10 @@ texture_region_size = Vector2i(18, 18)
 0:6/0 = 0
 0:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
 1:6/0 = 0
-1:6/0/z_index = 30
+1:6/0/z_index = 15
 1:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(9, 9, 9, 4, -9, 4, -9, 9)
 2:6/0 = 0
-2:6/0/z_index = 30
+2:6/0/z_index = 15
 2:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(9, 9, 9, 4, -9, 4, -9, 9)
 3:6/0 = 0
 3:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
@@ -209,13 +208,11 @@ sources/1 = SubResource("TileSetAtlasSource_67iee")
 sources/2 = SubResource("TileSetAtlasSource_xjemj")
 
 [node name="level_1" type="Node2D" unique_id=2120848633]
-process_mode = 1
 
-[node name="EnchantedStone" parent="." unique_id=169235792 instance=ExtResource("7_7j4at")]
-position = Vector2(18, 0)
+[node name="protagonista" parent="." unique_id=1441778440 instance=ExtResource("2_w5axy")]
+position = Vector2(16, -24)
 
-[node name="spawner" parent="." unique_id=698146440 node_paths=PackedStringArray("timer") instance=ExtResource("6_7j4at")]
-timer = NodePath("Timer")
+[node name="spawner" parent="." unique_id=698146440 instance=ExtResource("6_7j4at")]
 
 [node name="SpawnPoint" parent="spawner" unique_id=1536353727 instance=ExtResource("5_xjemj")]
 position = Vector2(0, -136)
@@ -229,10 +226,11 @@ position = Vector2(136, 0)
 [node name="SpawnPoint4" parent="spawner" unique_id=576299192 instance=ExtResource("5_xjemj")]
 position = Vector2(0, 128)
 
-[node name="Timer" type="Timer" parent="spawner" unique_id=230544045]
-
 [node name="Mesa" parent="." unique_id=131387098 groups=["mesa"] instance=ExtResource("6_gia3d")]
 position = Vector2(0, 1)
+
+[node name="EnchantedStone" parent="." unique_id=169235792 instance=ExtResource("7_7j4at")]
+position = Vector2(18, 0)
 
 [node name="Mapa" type="Node" parent="." unique_id=1804574656]
 
@@ -323,22 +321,41 @@ texture = ExtResource("11_4saa1")
 position = Vector2(142, -18)
 texture = ExtResource("12_2hd03")
 
-[node name="LevelMusic" type="AudioStreamPlayer2D" parent="." unique_id=1503651789 groups=["music"]]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1503651789]
 stream = ExtResource("13_2hd03")
 volume_db = -9.0
 autoplay = true
-script = ExtResource("12_0nesf")
 
-[node name="food_spawner" type="Node2D" parent="." unique_id=1246348888 node_paths=PackedStringArray("timer", "mesa")]
+[node name="food_spawner" type="Node2D" parent="." unique_id=1246348888 node_paths=PackedStringArray("poligones", "timer")]
 position = Vector2(-158, 0)
 script = ExtResource("14_0nesf")
+poligones = [NodePath("poligon"), NodePath("poligon2"), NodePath("poligon3"), NodePath("poligon4")]
 timer = NodePath("Timer")
-mesa = NodePath("../Mesa")
+
+[node name="poligon4" type="Polygon2D" parent="food_spawner" unique_id=1268370980]
+modulate = Color(1, 0.25882354, 1, 0.39215687)
+position = Vector2(-122.70318, 34)
+scale = Vector2(0.8515901, 0.7037037)
+polygon = PackedVector2Array(2, 0, 285, 0, 285, 108, 2, 107)
+
+[node name="poligon3" type="Polygon2D" parent="food_spawner" unique_id=1103557627]
+modulate = Color(1, 0.25882354, 1, 0.39215687)
+position = Vector2(-155.38202, -43.731712)
+scale = Vector2(0.752809, 0.85365856)
+polygon = PackedVector2Array(47, -86, 136, -87, 136, 159, 49, 159)
+
+[node name="poligon2" type="Polygon2D" parent="food_spawner" unique_id=387566052]
+modulate = Color(1, 0.25882354, 1, 0.39215687)
+position = Vector2(55.88889, -50.730034)
+scale = Vector2(0.7777778, 0.8707224)
+polygon = PackedVector2Array(-5, -83, 83, -83, 85, 180, -5, 180)
+
+[node name="poligon" type="Polygon2D" parent="food_spawner" unique_id=1324217774]
+modulate = Color(1, 0.25882354, 1, 0.39215687)
+position = Vector2(-103.44876, -124)
+scale = Vector2(0.7243816, 0.73015875)
+polygon = PackedVector2Array(2, 0, 285, 0, 283, 125, 3, 126)
 
 [node name="Timer" type="Timer" parent="food_spawner" unique_id=432491391]
-process_mode = 1
-wait_time = 5.0
+wait_time = 0.2
 autostart = true
-
-[node name="protagonista" parent="." unique_id=1441778440 instance=ExtResource("2_w5axy")]
-position = Vector2(16, -24)

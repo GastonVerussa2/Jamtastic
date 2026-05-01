@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://crfxhdjcwwu8d" path="res://sonidos/Rebote Piedra.wav" id="5_01hj4"]
 [ext_resource type="AudioStream" uid="uid://by1t435c6vmnd" path="res://sonidos/Tiro Piedra.wav" id="6_ho0en"]
 [ext_resource type="AudioStream" uid="uid://dgt5kusk7oyxr" path="res://sonidos/Vuelve Piedra.wav" id="7_cy58p"]
+[ext_resource type="Texture2D" uid="uid://b8rowu03756dq" path="res://sprites/new_lvl_3/glow-big.png" id="8_w1y23"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4ae8"]
 size = Vector2(10, 8)
@@ -50,17 +51,22 @@ shape = SubResource("RectangleShape2D_2qrtu")
 
 [node name="Sonidos" type="Node" parent="." unique_id=511406172]
 
-[node name="HitSound1" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=21498048]
+[node name="HitSound1" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=21498048 groups=["sound"]]
 stream = ExtResource("3_10uyp")
 
-[node name="HitSound2" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=1692493707]
+[node name="HitSound2" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=1692493707 groups=["sound"]]
 stream = ExtResource("4_w1y23")
 
-[node name="SolidHitSound" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=296109887]
+[node name="SolidHitSound" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=296109887 groups=["sound"]]
 stream = ExtResource("5_01hj4")
 
-[node name="ThrowSound" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=1457570901]
+[node name="ThrowSound" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=1457570901 groups=["sound"]]
 stream = ExtResource("6_ho0en")
 
-[node name="ReturningSound" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=740886915]
+[node name="ReturningSound" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=740886915 groups=["sound"]]
 stream = ExtResource("7_cy58p")
+
+[node name="GlowBig" type="Sprite2D" parent="." unique_id=54363398]
+modulate = Color(9.806819, 5.58108, 9.032101, 0.3529412)
+z_index = -1
+texture = ExtResource("8_w1y23")

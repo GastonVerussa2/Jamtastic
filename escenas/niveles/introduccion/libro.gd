@@ -25,6 +25,9 @@ func _ready() -> void:
 	right_text = second_text
 	first_text.visible_ratio = 0
 	second_text.visible_ratio = 0
+	writing_sound_1.volume_linear = SoundManager.get_sound()
+	writing_sound_2.volume_linear = SoundManager.get_sound()
+	page_sound.volume_linear = SoundManager.get_sound()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

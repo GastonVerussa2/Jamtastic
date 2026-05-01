@@ -14,6 +14,8 @@ signal personaje_muerto
 @export var dash_cd_timer: Timer
 @export var dash_duration_timer: Timer
 @export var invunerability_timer: Timer
+@export var blink_timer: Timer
+@export var death_timer: Timer
 
 # -------------------
 # STATS (IMPORTANTE)
@@ -41,20 +43,28 @@ func _ready() -> void:
 	
 	_velocidad = speed # 👈 clave
 	
-	print(_vida)
-	
 	_enchanted_stone = get_tree().get_first_node_in_group("stone")
 	dash_duration_timer.timeout.connect(_dash_finalizado)
 	dash_cd_timer.timeout.connect(_dash_replenished)
+	death_timer.timeout.connect(personaje_muerto.emit)
 	animacion.play("down_stone")
+	
+	sonido_muerte.volume_linear = SoundManager.get_sound()
+	sonido_barra.volume_linear = SoundManager.get_sound()
+	sonido_dash.volume_linear = SoundManager.get_sound()
+	sonido_daño.volume_linear = SoundManager.get_sound()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	
 	if _muerto:
 		return
 	
+	if _enchanted_stone == null:
+		_enchanted_stone = get_tree().get_first_node_in_group("stone")
+	
 	_checkear_ataque()
+	
 	_checkear_dash()
 	
 	# movimiento normal (si no está en dash)
@@ -90,33 +100,34 @@ func _dash_finalizado():
 
 
 func _checkear_ataque():
-	if Input.is_action_pressed("attack") && !_enchanted_stone.is_attacking:
+	if not _muerto && Input.is_action_pressed("attack") && !_enchanted_stone.is_attacking:
 		_enchanted_stone.throw(self.global_position, get_global_mouse_position(), self)
 
 
 func _acomodar_animacion():
 	
-	if not _enchanted_stone.is_attacking:
-		if velocity.x < 0:
-			animacion.play("left_stone")
-		elif velocity.x > 0:
-			animacion.play("right_stone")
-		elif velocity.y < 0:
-			animacion.play("up_stone")
-		elif velocity.y > 0:
-			animacion.play("down_stone")
-	else:
-		if velocity.x < 0:
-			animacion.play("left_no_stone")
-		elif velocity.x > 0:
-			animacion.play("right_no_stone")
-		elif velocity.y < 0:
-			animacion.play("up_no_stone")
-		elif velocity.y > 0:
-			animacion.play("down_no_stone")
+	if not _muerto:
+		if not _enchanted_stone.is_attacking:
+			if velocity.x < 0:
+				animacion.play("left_stone")
+			elif velocity.x > 0:
+				animacion.play("right_stone")
+			elif velocity.y < 0:
+				animacion.play("up_stone")
+			elif velocity.y > 0:
+				animacion.play("down_stone")
+		else:
+			if velocity.x < 0:
+				animacion.play("left_no_stone")
+			elif velocity.x > 0:
+				animacion.play("right_no_stone")
+			elif velocity.y < 0:
+				animacion.play("up_no_stone")
+			elif velocity.y > 0:
+				animacion.play("down_no_stone")
 
 func _checkear_colisiones():
-	if area_prota.has_overlapping_bodies() && invunerability_timer.is_stopped():
+	if not _muerto && area_prota.has_overlapping_bodies() && invunerability_timer.is_stopped():
 		var best_dmg = 0
 		var bodies = area_prota.get_overlapping_bodies()
 		
@@ -129,13 +140,24 @@ func _checkear_colisiones():
 		
 		if PlayerHpManager.health == 0:
 			animacion.material = material_personaje_rojo
+			animacion.stop()
 			_muerto = true
 			sonido_muerte.play()
 			
-			await get_tree().create_timer(1.5).timeout
-			personaje_muerto.emit()
+			death_timer.start()
 		else:
 			sonido_daño.play()
+			blink_timer.start()
+			while invunerability_timer.time_left > 0.1:
+				if animacion.material == null:
+					animacion.material = material_personaje_rojo
+				else:
+					animacion.material = null
+				await blink_timer.timeout
+			blink_timer.stop()
+			if not _muerto:
+				animacion.material = null
+
 
 func _checkear_dash():	
 	if Input.is_action_pressed("dash") && dash_cd_timer.is_stopped() && dash_duration_timer.is_stopped():
@@ -163,10 +185,21 @@ func _checkear_dash():
 			dash_duration_timer.start()
 			sonido_dash.play()
 
+func upgrade_speed(amount: int):
+	speed += amount
+	if dash_duration_timer.is_stopped():
+		_velocidad += amount
+	else:
+		_velocidad += amount * _dash_multiplier
+
 
 func _dash_replenished():
+	blink_timer.start()
 	for i in 2:
-		animacion.material = material_personaje_blanco
-		await get_tree().create_timer(0.1).timeout
-		animacion.material = null
-		await get_tree().create_timer(0.1).timeout
+		if not _muerto:
+			animacion.material = material_personaje_blanco
+		await blink_timer.timeout
+		if not _muerto:
+			animacion.material = null
+		await blink_timer.timeout
+	blink_timer.stop()
