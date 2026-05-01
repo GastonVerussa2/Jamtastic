@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://di4y22xvvr7fv" path="res://escenas/interfaz/hp.tscn" id="3_r5osk"]
 [ext_resource type="Texture2D" uid="uid://b07mxqtl7kadr" path="res://sprites/protagonist/hero_no-stone_40x40_v2.png" id="4_f2ygf"]
 [ext_resource type="Texture2D" uid="uid://8d00xm07oo06" path="res://sprites/protagonist/hero_stone_40x40_v2.png" id="5_35q7x"]
+[ext_resource type="PackedScene" uid="uid://b83oa58q3prbw" path="res://escenas/light.tscn" id="6_f2ygf"]
 [ext_resource type="AudioStream" uid="uid://37ricpe4ojk" path="res://sonidos/Muerte Pj2.wav" id="6_n62vp"]
 [ext_resource type="AudioStream" uid="uid://1mgjvxj1lamf" path="res://sonidos/Daño a Pj.wav" id="7_n62vp"]
 [ext_resource type="AudioStream" uid="uid://cumdfgqgujpa2" path="res://sonidos/Dash2.wav" id="8_n62vp"]
@@ -786,7 +787,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ojj3w")
 }],
-"loop": false,
+"loop": true,
 "name": &"right_no_stone",
 "speed": 15.0
 }, {
@@ -953,6 +954,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5skp6"]
 size = Vector2(10, 16)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_f2ygf"]
+polygon = PackedVector2Array(3, 8, 3, -3, 1, -4, 0, -4, -2, -3, -2, 8, 0, 8, 0, 7, 1, 7, 1, 8)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8p4t"]
 size = Vector2(12, 18)
 
@@ -975,10 +979,17 @@ invunerability_timer = NodePath("Timers/InvunerabilityTimer")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1651926019]
 sprite_frames = SubResource("SpriteFrames_xndew")
-animation = &"up_no_stone"
+animation = &"down_no_stone"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1434118407]
 shape = SubResource("RectangleShape2D_5skp6")
+
+[node name="light" parent="." unique_id=691904600 instance=ExtResource("6_f2ygf")]
+scale = Vector2(2, 2)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=115859267]
+visible = false
+occluder = SubResource("OccluderPolygon2D_f2ygf")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1282812944]
 collision_layer = 0

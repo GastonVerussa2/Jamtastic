@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b6ivfjjb3m8er" path="res://escenas/protagonista/protagonista.tscn" id="2_w5axy"]
 [ext_resource type="PackedScene" uid="uid://dcvjfv1emq3yt" path="res://escenas/enemigos/spawner/spawn_point.tscn" id="5_xjemj"]
 [ext_resource type="PackedScene" uid="uid://cpu2p4wy1q8ff" path="res://escenas/enemigos/spawner/spawner.tscn" id="6_7j4at"]
-[ext_resource type="PackedScene" uid="uid://drouppkd26ehg" path="res://escenas/niveles/nivel_3/mesa.tscn" id="6_gia3d"]
+[ext_resource type="PackedScene" uid="uid://drouppkd26ehg" path="res://escenas/niveles/nivel_1/mesa.tscn" id="6_gia3d"]
 [ext_resource type="PackedScene" uid="uid://k516ysstkdlm" path="res://escenas/protagonista/enchanted_stone/enchanted_stone.tscn" id="7_7j4at"]
 [ext_resource type="Texture2D" uid="uid://bdjogmn2wgyu6" path="res://sprites/new_lvl_3/tileset-new-fixed-final-last-one-v2.png" id="7_k2nsr"]
 [ext_resource type="Texture2D" uid="uid://biuy81qr4krco" path="res://sprites/new_lvl_3/alfombra.png" id="8_k2nsr"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dfyd5517cxc7y" path="res://sprites/new_lvl_3/glow-small.png" id="12_2hd03"]
 [ext_resource type="AudioStream" uid="uid://kudpjjfjjuca" path="res://musica/hero.wav" id="13_2hd03"]
 [ext_resource type="Script" uid="uid://c1tjrjgmafnbu" path="res://escenas/niveles/nivel_1/food_spawner.gd" id="14_0nesf"]
+[ext_resource type="PackedScene" uid="uid://b83oa58q3prbw" path="res://escenas/light.tscn" id="14_67iee"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uq0ld"]
 texture = ExtResource("9_fiili")
@@ -234,6 +235,9 @@ position = Vector2(18, 0)
 
 [node name="Mapa" type="Node" parent="." unique_id=1804574656]
 
+[node name="CanvasModulate" type="CanvasModulate" parent="Mapa" unique_id=623456782]
+color = Color(0.34408742, 0.35441875, 0.4553169, 1)
+
 [node name="Sombras" type="TileMapLayer" parent="Mapa" unique_id=1812693363]
 z_index = -11
 tile_map_data = PackedByteArray("AAD4//j/AAAAAAAAAAD5//j/AAABAAAAAAD6//j/AAABAAAAAAD7//j/AAABAAAAAAD8//j/AAABAAAAAAD9//j/AAABAAAAAAD+//j/AAABAAAAAAABAPj/AAABAAAAAAACAPj/AAABAAAAAAADAPj/AAABAAAAAAAEAPj/AAABAAAAAAAFAPj/AAABAAAAAAAGAPj/AAABAAAAAAAHAPj/AAACAAAAAAD///j/AAABAAAAAAAAAPj/AAABAAAAAAAHAPn/AAACAAEAAAAHAPr/AAACAAEAAAAHAPv/AAACAAEAAAAHAPz/AAACAAEAAAAHAP3/AAACAAEAAAAHAP7/AAACAAEAAAAHAP//AAACAAEAAAAHAAAAAAACAAEAAAAHAAEAAAACAAEAAAAHAAIAAAACAAEAAAAHAAMAAAACAAEAAAAHAAQAAAACAAEAAAAHAAUAAAACAAEAAAAHAAYAAAACAAEAAAD4/wYAAAAAAAEAAAD4/wUAAAAAAAEAAAD4/wQAAAAAAAEAAAD4/wMAAAAAAAEAAAD4/wIAAAAAAAEAAAD4/wEAAAAAAAEAAAD4/wAAAAAAAAEAAAD4////AAAAAAEAAAD4//7/AAAAAAEAAAD4//3/AAAAAAEAAAD4//z/AAAAAAEAAAD4//v/AAAAAAEAAAD4//r/AAAAAAEAAAD4//n/AAAAAAEAAAD4/wcAAAAAAAEAAAAHAAcAAAACAAEAAAA=")
@@ -362,3 +366,34 @@ polygon = PackedVector2Array(2, 0, 285, 0, 283, 125, 3, 126)
 [node name="Timer" type="Timer" parent="food_spawner" unique_id=432491391]
 wait_time = 5.0
 autostart = true
+
+[node name="lights" type="Node2D" parent="." unique_id=1500475710]
+
+[node name="light11" parent="lights" unique_id=691904600 instance=ExtResource("14_67iee")]
+position = Vector2(108, 127)
+
+[node name="light12" parent="lights" unique_id=2106077647 instance=ExtResource("14_67iee")]
+position = Vector2(1, 128)
+
+[node name="light10" parent="lights" unique_id=576792090 instance=ExtResource("14_67iee")]
+position = Vector2(-107, 128)
+
+[node name="light mesa" parent="lights" unique_id=2098585039 instance=ExtResource("14_67iee")]
+visible = false
+position = Vector2(-1, -4)
+
+[node name="light8" parent="lights" unique_id=1651457378 instance=ExtResource("14_67iee")]
+position = Vector2(-143, -9)
+
+[node name="light6" parent="lights" unique_id=1412891674 instance=ExtResource("14_67iee")]
+position = Vector2(142, -8)
+rotation = -1.5707964
+
+[node name="light4" parent="lights" unique_id=297904408 instance=ExtResource("14_67iee")]
+position = Vector2(108, -157)
+
+[node name="light" parent="lights" unique_id=996191539 instance=ExtResource("14_67iee")]
+position = Vector2(-107, -157)
+
+[node name="light3" parent="lights" unique_id=533149356 instance=ExtResource("14_67iee")]
+position = Vector2(0, -155)
