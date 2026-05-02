@@ -26,13 +26,14 @@ polygon = PackedVector2Array(-4, 9, 3, 9, 3, 3, -4, 3)
 stream = ExtResource("1_2hkyt")
 max_distance = 4096.0
 
-[node name="enemy" type="CharacterBody2D" parent="." unique_id=1142249714 node_paths=PackedStringArray("sonido_spawn", "sprite") groups=["enemy"]]
+[node name="enemy" type="CharacterBody2D" parent="." unique_id=1142249714 node_paths=PackedStringArray("sonido_spawn", "sprite", "change_direction_timer") groups=["enemy"]]
 collision_layer = 2
 collision_mask = 39
 motion_mode = 1
 script = ExtResource("2_k71ir")
 sonido_spawn = NodePath("../sonido_spawn")
 sprite = NodePath("Sprite2D")
+change_direction_timer = NodePath("ChangeDirection")
 
 [node name="PointLight2D" type="PointLight2D" parent="enemy" unique_id=765514006]
 visible = false
@@ -64,4 +65,5 @@ occluder = SubResource("OccluderPolygon2D_h2frt")
 occluder_light_mask = 3
 
 [node name="ChangeDirection" type="Timer" parent="enemy" unique_id=1798222535]
+wait_time = 2.0
 autostart = true

@@ -16,7 +16,7 @@ const ICON_SPEED = preload("res://sprites/SPEED_UP.png")
 const ICON_DAMAGE = preload("res://sprites/dano_up.png")
 const ICON_HEALTH = preload("res://sprites/Corazon_hp_up.png")
 
-var _nivel_actual: int = 1
+var _nivel_actual: int = 2
 var _nivel_instanciado: Node
 
 var hp: HpControl

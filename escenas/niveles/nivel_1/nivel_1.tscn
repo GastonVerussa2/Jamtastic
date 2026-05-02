@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b6ivfjjb3m8er" path="res://escenas/protagonista/protagonista.tscn" id="2_w5axy"]
 [ext_resource type="PackedScene" uid="uid://dcvjfv1emq3yt" path="res://escenas/enemigos/spawner/spawn_point.tscn" id="5_xjemj"]
 [ext_resource type="PackedScene" uid="uid://cpu2p4wy1q8ff" path="res://escenas/enemigos/spawner/spawner.tscn" id="6_7j4at"]
-[ext_resource type="PackedScene" uid="uid://drouppkd26ehg" path="res://escenas/niveles/nivel_1/mesa.tscn" id="6_gia3d"]
+[ext_resource type="PackedScene" uid="uid://phmaxcg6fwbp" path="res://escenas/niveles/nivel_1/mesa.tscn" id="6_gia3d"]
 [ext_resource type="PackedScene" uid="uid://k516ysstkdlm" path="res://escenas/protagonista/enchanted_stone/enchanted_stone.tscn" id="7_7j4at"]
 [ext_resource type="Texture2D" uid="uid://bdjogmn2wgyu6" path="res://sprites/new_lvl_3/tileset-new-fixed-final-last-one-v2.png" id="7_k2nsr"]
 [ext_resource type="Texture2D" uid="uid://biuy81qr4krco" path="res://sprites/new_lvl_3/alfombra.png" id="8_k2nsr"]
@@ -14,7 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://dfyd5517cxc7y" path="res://sprites/new_lvl_3/glow-small.png" id="12_2hd03"]
 [ext_resource type="Script" uid="uid://djwh2f5dmu6wf" path="res://escenas/niveles/nivel_1/main_music.gd" id="13_67iee"]
 [ext_resource type="Script" uid="uid://c1tjrjgmafnbu" path="res://escenas/niveles/nivel_1/food_spawner.gd" id="14_0nesf"]
-[ext_resource type="PackedScene" path="res://escenas/light.tscn" id="14_67iee"]
+[ext_resource type="PackedScene" uid="uid://b83oa58q3prbw" path="res://escenas/light.tscn" id="14_67iee"]
+[ext_resource type="PackedScene" uid="uid://bjamnxj3mc2mw" path="res://escenas/enemigos/enemigo/enemy_ranged.tscn" id="16_xjemj"]
 
 [sub_resource type="Environment" id="Environment_67iee"]
 background_mode = 3
@@ -257,11 +258,11 @@ texture_region_size = Vector2i(18, 18)
 0:6/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_kqfcl")
 0:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
 1:6/0 = 0
-1:6/0/z_index = 15
+1:6/0/z_index = 30
 1:6/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_nh5gx")
 1:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(9, 9, 9, 4, -9, 4, -9, 9)
 2:6/0 = 0
-2:6/0/z_index = 15
+2:6/0/z_index = 30
 2:6/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_lptvh")
 2:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(9, 9, 9, 4, -9, 4, -9, 9)
 3:6/0 = 0
@@ -442,7 +443,7 @@ fill_to = Vector2(0.92608696, 0.25652173)
 [node name="level_1" type="Node2D" unique_id=2120848633]
 
 [node name="protagonista" parent="." unique_id=1441778440 instance=ExtResource("2_w5axy")]
-position = Vector2(16, -24)
+position = Vector2(19, -25)
 
 [node name="spawner" parent="." unique_id=698146440 instance=ExtResource("6_7j4at")]
 
@@ -679,3 +680,6 @@ position = Vector2(-108, -167)
 
 [node name="light3" parent="lights" unique_id=533149356 instance=ExtResource("14_67iee")]
 position = Vector2(0, -163)
+
+[node name="enemy" parent="." unique_id=726940585 instance=ExtResource("16_xjemj")]
+position = Vector2(-66, -112)

@@ -17,27 +17,21 @@ var direction: Vector2
 func _ready():
 	main = get_tree().get_first_node_in_group("main")
 	health = 4 + main.level
-	speed = 50.0 + 3 * main.level
+	speed = 35.0 + 3 * main.level
 	player = get_tree().get_first_node_in_group("player")
 	sonido_spawn.volume_linear = SoundManager.get_sound()
 	sonido_spawn.play()
+	direction = Vector2.RIGHT.rotated(randf_range(0.0, 360.0))
+	change_direction_timer.timeout.connect(change_direction)
 
 
 func _physics_process(_delta):
-	
-	var target_position: Vector2
-
-	if player:
-		target_position = player.global_position
-	else:
-		target_position = fake_target
 
 	velocity = direction * speed
 	move_and_slide()
 
 func change_direction():
-	pass
-	#var direction = Vector2.RIGHT.rotated()
+	direction = Vector2.RIGHT.rotated(randf_range(0.0, 360.0))
 
 func get_hit(damage: int):
 	health -= damage
