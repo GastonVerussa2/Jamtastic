@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://4fx3qnmgknu3"
+path="res://.godot/imported/Spawn Rango.wav-b0652aad7e9fb45d1186520d125ebb3a.sample"
+
+[deps]
+
+source_file="res://sonidos/Spawn Rango.wav"
+dest_files=["res://.godot/imported/Spawn Rango.wav-b0652aad7e9fb45d1186520d125ebb3a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

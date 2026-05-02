@@ -9,10 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://biuy81qr4krco" path="res://sprites/new_lvl_3/alfombra.png" id="8_k2nsr"]
 [ext_resource type="Texture2D" uid="uid://cav7en0wscpmn" path="res://sprites/new_lvl_3/entrada-side.png" id="9_dj1lt"]
 [ext_resource type="Texture2D" uid="uid://do36w7sl1nmn8" path="res://sprites/new_lvl_3/sombras-piso.png" id="9_fiili"]
+[ext_resource type="AudioStream" uid="uid://dkxmf0iojrqps" path="res://sonidos/herofix.mp3" id="11_0nesf"]
 [ext_resource type="Texture2D" uid="uid://b8rowu03756dq" path="res://sprites/new_lvl_3/glow-big.png" id="11_4saa1"]
 [ext_resource type="Script" uid="uid://djfhop8ifkxut" path="res://escenas/niveles/nivel_1/level_music.gd" id="12_0nesf"]
 [ext_resource type="Texture2D" uid="uid://dfyd5517cxc7y" path="res://sprites/new_lvl_3/glow-small.png" id="12_2hd03"]
-[ext_resource type="AudioStream" uid="uid://kudpjjfjjuca" path="res://musica/hero.wav" id="13_2hd03"]
 [ext_resource type="Script" uid="uid://c1tjrjgmafnbu" path="res://escenas/niveles/nivel_1/food_spawner.gd" id="14_0nesf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uq0ld"]
@@ -324,7 +324,7 @@ position = Vector2(142, -18)
 texture = ExtResource("12_2hd03")
 
 [node name="LevelMusic" type="AudioStreamPlayer2D" parent="." unique_id=1503651789 groups=["music"]]
-stream = ExtResource("13_2hd03")
+stream = ExtResource("11_0nesf")
 volume_db = -9.0
 autoplay = true
 script = ExtResource("12_0nesf")
