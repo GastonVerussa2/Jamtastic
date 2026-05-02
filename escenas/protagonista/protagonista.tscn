@@ -998,16 +998,16 @@ shape = SubResource("RectangleShape2D_5skp6")
 light_mask = 0
 visibility_layer = 0
 occluder = SubResource("OccluderPolygon2D_f2ygf")
-occluder_light_mask = 2
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=758101355]
 light_mask = 0
 scale = Vector2(0.23437499, 0.23437497)
 energy = 0.66
-range_item_cull_mask = 3
+range_item_cull_mask = 7
 shadow_enabled = true
 shadow_filter = 2
 shadow_filter_smooth = 0.6
+shadow_item_cull_mask = 2
 texture = SubResource("GradientTexture2D_35q7x")
 texture_scale = 10.0
 
@@ -1020,6 +1020,8 @@ shape = SubResource("RectangleShape2D_a8p4t")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1782687089]
 zoom = Vector2(3, 3)
+process_callback = 0
+position_smoothing_enabled = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1772062594]
 

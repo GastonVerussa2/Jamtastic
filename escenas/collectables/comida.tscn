@@ -16,7 +16,7 @@ area_2d = NodePath("Area2D")
 bite_sound = NodePath("BiteSound")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=471688884]
-modulate = Color(0.5537159, 0.27780348, 0.21307987, 1)
+modulate = Color(1.224, 1.224, 1.224, 1)
 light_mask = 2
 texture = ExtResource("2_3u7fy")
 
