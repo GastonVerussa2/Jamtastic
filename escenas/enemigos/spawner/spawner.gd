@@ -3,6 +3,7 @@ class_name EnemySpawner
 extends Node2D
 
 var enemy_scene = preload("res://escenas/enemigos/enemigo/enemy.tscn")
+var ranged_enemy_scene = preload("res://escenas/enemigos/enemigo/enemy_ranged.tscn")
 
 @export var spawn_interval: float = 1.5
 @export var spawn_radius_min: float = 200
@@ -14,6 +15,7 @@ var player: Node2D
 var spawning := true
 var spawn_points: Array[Node]
 var main: MainScene
+var ranged_chance: float = 0.25
 
 func _ready():
 	await get_tree().create_timer(0.2).timeout
@@ -30,6 +32,9 @@ func _ready():
 func level_up():
 	#spawn_interval *= 0.9
 	timer.wait_time *= 0.9
+	ranged_chance += 0.05
+	if ranged_chance > 0.9:
+		ranged_chance = 0.9
 
 func start_spawning():
 	while spawning:
@@ -41,10 +46,18 @@ func spawn_enemy():
 	
 	var spawn: int = randi_range(0, spawn_points.size() - 1)
 	
+	
 	if Input.is_action_pressed("disable_spawn"):
 		spawning = false
 	
-	var enemy = enemy_scene.instantiate()
+	var type: float = randf_range(0, 1)
+	
+	var enemy: Node2D
+	
+	if type <= ranged_chance:
+		enemy = ranged_enemy_scene.instantiate()
+	else:
+		enemy = enemy_scene.instantiate()
 	
 	enemy.global_position = spawn_points[spawn].global_position
 	

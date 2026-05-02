@@ -192,6 +192,31 @@ func upgrade_speed(amount: int):
 	else:
 		_velocidad += amount * _dash_multiplier
 
+func get_hit(damage):
+	if not _muerto && invunerability_timer.is_stopped():
+		PlayerHpManager.change_health(-damage)
+		invunerability_timer.start()
+		
+		if PlayerHpManager.health == 0:
+			animacion.material = material_personaje_rojo
+			animacion.stop()
+			_muerto = true
+			sonido_muerte.play()
+			
+			death_timer.start()
+		else:
+			sonido_daño.play()
+			blink_timer.start()
+			while invunerability_timer.time_left > 0.1:
+				if animacion.material == null:
+					animacion.material = material_personaje_rojo
+				else:
+					animacion.material = null
+				await blink_timer.timeout
+			blink_timer.stop()
+			if not _muerto:
+				animacion.material = null
+
 
 func _dash_replenished():
 	blink_timer.start()

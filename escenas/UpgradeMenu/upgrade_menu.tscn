@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://bdyo2sxko8m7q"]
+[gd_scene format=3 uid="uid://dt2fru3et062g"]
 
-[ext_resource type="AudioStream" path="res://sonidos/Eleccion-001.wav" id="2_38wwx"]
-[ext_resource type="AudioStream" path="res://sonidos/Eleccion-002.wav" id="3_f6ri0"]
-[ext_resource type="AudioStream" path="res://sonidos/Eleccion-003.wav" id="4_glok1"]
+[ext_resource type="AudioStream" uid="uid://daeo5isclow77" path="res://sonidos/Eleccion-001.wav" id="2_38wwx"]
+[ext_resource type="AudioStream" uid="uid://ckgn3yi8dsn8h" path="res://sonidos/Eleccion-002.wav" id="3_f6ri0"]
+[ext_resource type="AudioStream" uid="uid://bls8ksmpbmx27" path="res://sonidos/Eleccion-003.wav" id="4_glok1"]
 
 [sub_resource type="GDScript" id="GDScript_nw1fb"]
 script/source = "extends Control

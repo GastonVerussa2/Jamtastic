@@ -20,7 +20,8 @@ func _spawn():
 	
 	var food = food_scene.instantiate()
 	
-	add_child(food)
-	
 	food.global_position.x = x
 	food.global_position.y = y
+	
+	add_child(food)
+	

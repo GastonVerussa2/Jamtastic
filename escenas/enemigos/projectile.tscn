@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://jaqi7n5sj8md"]
+
+[ext_resource type="Script" uid="uid://tmnf46ckwdr1" path="res://escenas/enemigos/projectile.gd" id="1_8tec6"]
+[ext_resource type="Texture2D" uid="uid://caktbeo8qam7v" path="res://sprites/Nivel_3/Torch Top.png" id="1_uejbt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8tec6"]
+size = Vector2(8, 3.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pg0jw"]
+size = Vector2(8, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fvw5r"]
+size = Vector2(10, 4)
+
+[node name="Projectile" type="CharacterBody2D" unique_id=653357116 node_paths=PackedStringArray("area_pared", "area_prota")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_8tec6")
+area_pared = NodePath("AreaPared")
+area_prota = NodePath("AreaProta")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2063546857]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_8tec6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=881229242]
+position = Vector2(-1.1799863e-09, 0.09895163)
+rotation = -1.5707964
+scale = Vector2(0.6329839, 0.6)
+texture = ExtResource("1_uejbt")
+
+[node name="AreaPared" type="Area2D" parent="." unique_id=2126901014]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaPared" unique_id=1309741173]
+shape = SubResource("RectangleShape2D_pg0jw")
+
+[node name="AreaProta" type="Area2D" parent="." unique_id=1309204587]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaProta" unique_id=239480941]
+shape = SubResource("RectangleShape2D_fvw5r")
