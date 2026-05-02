@@ -95,6 +95,9 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("barra"):
 		sonido_barra.play()
 	
+	# normaliza la velocidad
+	velocity = velocity.normalized() * _velocidad
+	
 	move_and_slide()
 	
 	_checkear_colisiones()
@@ -133,7 +136,7 @@ func _acomodar_animacion():
 				animacion.play("down_no_stone")
 
 func _checkear_colisiones():
-	if not _muerto && area_prota.has_overlapping_bodies() && invunerability_timer.is_stopped():
+	if not _muerto && area_prota.has_overlapping_bodies() && invunerability_timer.is_stopped() && dash_duration_timer.is_stopped():
 		var best_dmg = 0
 		var bodies = area_prota.get_overlapping_bodies()
 		
@@ -191,6 +194,8 @@ func _checkear_dash():
 			dash_duration_timer.start()
 			sonido_dash.play()
 
+	
+
 func upgrade_speed(amount: int):
 	speed += amount
 	if dash_duration_timer.is_stopped():
@@ -199,7 +204,7 @@ func upgrade_speed(amount: int):
 		_velocidad += amount * _dash_multiplier
 
 func get_hit(damage):
-	if not _muerto && invunerability_timer.is_stopped():
+	if not _muerto && invunerability_timer.is_stopped() && dash_duration_timer.is_stopped():
 		PlayerHpManager.change_health(-damage)
 		invunerability_timer.start()
 		
