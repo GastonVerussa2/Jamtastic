@@ -1029,7 +1029,7 @@ shape = SubResource("RectangleShape2D_a8p4t")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1782687089]
 zoom = Vector2(3, 3)
-process_callback = 0
+limit_enabled = false
 position_smoothing_enabled = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1772062594]
