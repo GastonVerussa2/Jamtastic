@@ -15,6 +15,7 @@ const UpgradeMenu = preload("res://escenas/UpgradeMenu/upgrade_menu.tscn")
 const ICON_SPEED = preload("res://sprites/SPEED_UP.png")
 const ICON_DAMAGE = preload("res://sprites/dano_up.png")
 const ICON_HEALTH = preload("res://sprites/Corazon_hp_up.png")
+const ICON_STONE = preload("res://sprites/Stone.png")
 
 var _nivel_actual: int = 2
 var _nivel_instanciado: Node
@@ -66,14 +67,19 @@ func _crear_nivel(numero_nivel: int):
 
 func _eliminar_nivel():
 	_nivel_instanciado.queue_free()
+	for nodo in get_tree().get_nodes_in_group("projectile"):
+		nodo.queue_free()
 
 
 func _reiniciar_nivel():
 	_eliminar_nivel()
 	_kills = 0
+	xp = 0
+	level = 1
+	xp_to_next = 5
 	update_kills_label()
-	_crear_nivel.call_deferred(_nivel_actual)
 	PlayerHpManager.reset_life()
+	_crear_nivel.call_deferred(_nivel_actual)
 
 func avanzar_nivel():
 	_nivel_actual += 1
@@ -157,8 +163,8 @@ func cerrar_menu_mejoras():
 # UPGRADES
 # -------------------
 func get_upgrade_pool():
-	var player = get_tree().get_first_node_in_group("player")
-	var stone = get_tree().get_first_node_in_group("stone")
+	var player = get_tree().get_first_node_in_group("player") as Protagonist
+	var stone = get_tree().get_first_node_in_group("stone") as EnchantedStone
 	
 	return [
 		{
@@ -175,8 +181,22 @@ func get_upgrade_pool():
 			"text": "+Vida",
 			"icon": ICON_HEALTH,
 			"apply": func(): PlayerHpManager.add_max_hp(10)
+		},
+		{
+			"text": "+Velocidad piedra",
+			"icon": ICON_STONE,
+			"apply": func(): improve_stone_speed(stone)
+		},
+		{
+			"text": "+Regeneración vida",
+			"icon": ICON_HEALTH,
+			"apply": func(): player.increase_regen(1)
 		}
 	]
+
+func improve_stone_speed(piedra: EnchantedStone):
+	piedra.return_acceleration += 150
+	piedra.speed += 100
 
 
 func get_random_upgrades():

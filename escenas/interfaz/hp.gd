@@ -2,7 +2,6 @@ class_name  HpControl
 
 extends Control
 
-@export var label: Label
 @export var progress_bar: ProgressBar
 @export var xp_bar: TextureProgressBar
 
@@ -15,7 +14,6 @@ func _ready() -> void:
 	var sb = StyleBoxFlat.new()
 	progress_bar.add_theme_stylebox_override("fill", sb)
 	sb.bg_color = Color("ff0000")
-	label.text = "HP: " + str(PlayerHpManager.health)
 	xp_bar.value = 0
 	xp_bar.max_value = 1
 	
@@ -23,7 +21,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _refresh_text():
-	label.text = "HP: " + str(PlayerHpManager.health)
 	progress_bar.value = float(PlayerHpManager.health)
 	
 

@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/herofix.mp3-e3a8513215d21fc88c79d10020558ad9.
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

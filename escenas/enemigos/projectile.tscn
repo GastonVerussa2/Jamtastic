@@ -12,7 +12,7 @@ size = Vector2(8, 2)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fvw5r"]
 size = Vector2(10, 4)
 
-[node name="Projectile" type="CharacterBody2D" unique_id=653357116 node_paths=PackedStringArray("area_pared", "area_prota")]
+[node name="Projectile" type="CharacterBody2D" unique_id=653357116 node_paths=PackedStringArray("area_pared", "area_prota") groups=["projectile"]]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_8tec6")

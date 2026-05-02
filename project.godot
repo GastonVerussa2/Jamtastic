@@ -37,6 +37,7 @@ hp=""
 mesa=""
 sound=""
 music=""
+projectile=""
 
 [input]
 

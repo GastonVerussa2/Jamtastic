@@ -4,6 +4,7 @@ extends Node2D
 
 var enemy_scene = preload("res://escenas/enemigos/enemigo/enemy.tscn")
 var ranged_enemy_scene = preload("res://escenas/enemigos/enemigo/enemy_ranged.tscn")
+var ranged_slow_enemy_scene = preload("res://escenas/enemigos/enemigo/enemy_ranged_slow.tscn")
 
 @export var spawn_interval: float = 1.5
 @export var spawn_radius_min: float = 200
@@ -55,7 +56,11 @@ func spawn_enemy():
 	var enemy: Node2D
 	
 	if type <= ranged_chance:
-		enemy = ranged_enemy_scene.instantiate()
+		var fast = randi_range(0,1)
+		if fast:
+			enemy = ranged_enemy_scene.instantiate()
+		else:
+			enemy = ranged_slow_enemy_scene.instantiate()
 	else:
 		enemy = enemy_scene.instantiate()
 	

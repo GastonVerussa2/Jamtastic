@@ -36,7 +36,7 @@ stretch_mode = 5
 layout_mode = 2
 text = "score:"
 
-[node name="XPSound" type="AudioStreamPlayer2D" parent="." unique_id=792690777]
+[node name="XPSound" type="AudioStreamPlayer2D" parent="." unique_id=792690777 groups=["sound"]]
 stream = ExtResource("5_px3ix")
 volume_db = 12.0
 

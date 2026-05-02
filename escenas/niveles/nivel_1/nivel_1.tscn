@@ -15,7 +15,6 @@
 [ext_resource type="Script" uid="uid://djwh2f5dmu6wf" path="res://escenas/niveles/nivel_1/main_music.gd" id="13_67iee"]
 [ext_resource type="Script" uid="uid://c1tjrjgmafnbu" path="res://escenas/niveles/nivel_1/food_spawner.gd" id="14_0nesf"]
 [ext_resource type="PackedScene" uid="uid://b83oa58q3prbw" path="res://escenas/light.tscn" id="14_67iee"]
-[ext_resource type="PackedScene" uid="uid://bjamnxj3mc2mw" path="res://escenas/enemigos/enemigo/enemy_ranged.tscn" id="16_xjemj"]
 
 [sub_resource type="Environment" id="Environment_67iee"]
 background_mode = 3
@@ -680,6 +679,3 @@ position = Vector2(-108, -167)
 
 [node name="light3" parent="lights" unique_id=533149356 instance=ExtResource("14_67iee")]
 position = Vector2(0, -163)
-
-[node name="enemy" parent="." unique_id=726940585 instance=ExtResource("16_xjemj")]
-position = Vector2(-66, -112)

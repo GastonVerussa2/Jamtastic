@@ -1,9 +1,8 @@
-[gd_scene format=3 uid="uid://c07sbmr60fsd5"]
+[gd_scene format=3 uid="uid://diyj5l5a6xhfa"]
 
-[ext_resource type="AudioStream" uid="uid://bogvp8ahbhoup" path="res://sonidos/Spawn.wav" id="1_3w2dw"]
-[ext_resource type="Script" uid="uid://if817o5e6yd7" path="res://escenas/enemigos/enemigo/enemy.gd" id="1_27yb0"]
-[ext_resource type="Texture2D" uid="uid://dsmmxes0hfh4u" path="res://sprites/Enemigo_lvl_tres_terminado.png" id="3_3w2dw"]
-[ext_resource type="Material" uid="uid://l47yfp615nd8" path="res://escenas/protagonista/material_personaje_rojo.tres" id="3_h2frt"]
+[ext_resource type="AudioStream" uid="uid://4fx3qnmgknu3" path="res://sonidos/Spawn Rango.wav" id="1_kkvj2"]
+[ext_resource type="Script" uid="uid://dljxddnyvd6ik" path="res://escenas/enemigos/enemigo/enemy_ranged_slow.gd" id="2_udygc"]
+[ext_resource type="Texture2D" uid="uid://dsmmxes0hfh4u" path="res://sprites/Enemigo_lvl_tres_terminado.png" id="4_xvdyk"]
 
 [sub_resource type="Gradient" id="Gradient_eaa0b"]
 interpolation_mode = 2
@@ -24,17 +23,19 @@ polygon = PackedVector2Array(-4, 9, 3, 9, 3, 3, -4, 3)
 [node name="enemy" type="Node2D" unique_id=726940585]
 
 [node name="sonido_spawn" type="AudioStreamPlayer2D" parent="." unique_id=1183346513 groups=["sound"]]
-stream = ExtResource("1_3w2dw")
+stream = ExtResource("1_kkvj2")
 max_distance = 4096.0
 
-[node name="enemy" type="CharacterBody2D" parent="." unique_id=1142249714 node_paths=PackedStringArray("sonido_spawn", "sprite") groups=["enemy"]]
-collision_layer = 2
+[node name="enemy" type="CharacterBody2D" parent="." unique_id=1142249714 node_paths=PackedStringArray("sonido_spawn", "sprite", "change_direction_timer", "attack_timer", "starting_timer") groups=["enemy"]]
+collision_layer = 64
 collision_mask = 103
 motion_mode = 1
-script = ExtResource("1_27yb0")
+script = ExtResource("2_udygc")
 sonido_spawn = NodePath("../sonido_spawn")
-material_personaje_rojo = ExtResource("3_h2frt")
 sprite = NodePath("Sprite2D")
+change_direction_timer = NodePath("ChangeDirection")
+attack_timer = NodePath("AttackTimer")
+starting_timer = NodePath("StartingTimer")
 
 [node name="PointLight2D" type="PointLight2D" parent="enemy" unique_id=765514006]
 visible = false
@@ -49,8 +50,9 @@ texture = SubResource("GradientTexture2D_h2frt")
 texture_scale = 2.23
 
 [node name="Sprite2D" type="Sprite2D" parent="enemy" unique_id=366780198]
+modulate = Color(0.62754905, 0.62754905, 2.055, 1)
 light_mask = 4
-texture = ExtResource("3_3w2dw")
+texture = ExtResource("4_xvdyk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy" unique_id=1250678375]
 light_mask = 2
@@ -63,3 +65,12 @@ light_mask = 0
 visibility_layer = 0
 occluder = SubResource("OccluderPolygon2D_h2frt")
 occluder_light_mask = 3
+
+[node name="ChangeDirection" type="Timer" parent="enemy" unique_id=1798222535]
+wait_time = 2.0
+autostart = true
+
+[node name="AttackTimer" type="Timer" parent="enemy" unique_id=1126309063]
+wait_time = 0.2
+
+[node name="StartingTimer" type="Timer" parent="enemy" unique_id=1013245586]

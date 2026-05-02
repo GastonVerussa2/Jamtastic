@@ -13,6 +13,8 @@ func _ready():
 	btn1.mouse_entered.connect(hovered_over)
 	btn2.mouse_entered.connect(hovered_over)
 	btn3.mouse_entered.connect(hovered_over)
+	for sound in choose_sounds:
+		sound.volume_linear = SoundManager.get_sound()
 
 func setup(options: Array, main_ref):
 	btn1.disabled = true

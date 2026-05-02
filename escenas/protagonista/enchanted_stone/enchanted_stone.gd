@@ -31,6 +31,7 @@ var is_attacking := false
 var damage = 5
 var last_sound = 1
 
+
 func _ready() -> void:
 	area_golpe.body_entered.connect(hit_enemy)
 	hit_sound_1.volume_linear = SoundManager.get_sound()
@@ -47,7 +48,7 @@ func _physics_process(delta):
 		if area_vuelta.has_overlapping_bodies():
 			if not returning:
 				solid_hit_sound.play()
-			go_back()
+				go_back()
 	
 		
 		if not returning:

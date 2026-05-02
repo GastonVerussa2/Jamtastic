@@ -17,7 +17,7 @@ var health: int
 var main: MainScene
 var experience_granted: int = 1
 var direction: Vector2
-var projectile_speed: float = 150
+var projectile_speed: float = 35
 var attack_speed: float = 2
 
 

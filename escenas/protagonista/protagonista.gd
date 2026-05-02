@@ -6,6 +6,7 @@ signal personaje_muerto
 @export var area_prota: Area2D
 @export var material_personaje_rojo: ShaderMaterial
 @export var material_personaje_blanco: ShaderMaterial
+@export var material_personaje_verde: ShaderMaterial
 @export var animacion: AnimatedSprite2D
 @export var sonido_muerte: AudioStreamPlayer2D
 @export var sonido_daño: AudioStreamPlayer2D
@@ -16,6 +17,8 @@ signal personaje_muerto
 @export var invunerability_timer: Timer
 @export var blink_timer: Timer
 @export var death_timer: Timer
+@export var regen_timer: Timer
+@export var camera: Camera2D
 
 # -------------------
 # STATS (IMPORTANTE)
@@ -25,7 +28,6 @@ var damage: int = 1
 
 # velocidad actual (puede cambiar con dash)
 var _velocidad: float = 100.0
-var _vida: int = 100
 
 var _tiempo_invulnerabilidad: float = 0.5
 var _dash_time: float = 0.15
@@ -35,6 +37,7 @@ var _dash_cd: float = 2
 
 var _enchanted_stone: EnchantedStone
 
+var regen_amount: float = 0.0
 
 func _ready() -> void:
 	dash_cd_timer.wait_time = _dash_cd
@@ -47,12 +50,15 @@ func _ready() -> void:
 	dash_duration_timer.timeout.connect(_dash_finalizado)
 	dash_cd_timer.timeout.connect(_dash_replenished)
 	death_timer.timeout.connect(personaje_muerto.emit)
+	regen_timer.timeout.connect(regen)
 	animacion.play("down_stone")
 	
 	sonido_muerte.volume_linear = SoundManager.get_sound()
 	sonido_barra.volume_linear = SoundManager.get_sound()
 	sonido_dash.volume_linear = SoundManager.get_sound()
 	sonido_daño.volume_linear = SoundManager.get_sound()
+	
+	camera.make_current()
 
 
 func _process(_delta: float) -> void:
@@ -228,3 +234,13 @@ func _dash_replenished():
 			animacion.material = null
 		await blink_timer.timeout
 	blink_timer.stop()
+
+func regen():
+	if not _muerto:
+		PlayerHpManager.change_health(1)
+
+func increase_regen(amount: float):
+	if regen_amount == 0:
+		regen_timer.start()
+	regen_amount += amount
+	regen_timer.wait_time = 1 / regen_amount

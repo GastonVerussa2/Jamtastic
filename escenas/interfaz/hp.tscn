@@ -1,11 +1,10 @@
 [gd_scene format=3 uid="uid://di4y22xvvr7fv"]
 
 [ext_resource type="Script" uid="uid://dih7fss2l4ap0" path="res://escenas/interfaz/hp.gd" id="1_kxpdh"]
-[ext_resource type="FontFile" uid="uid://yn83udj3escd" path="res://fonts/alagard.ttf" id="2_b15pf"]
 [ext_resource type="Texture2D" uid="uid://cstt34cpplseu" path="res://sprites/xp_bar_vacia.png" id="2_pbeeu"]
 [ext_resource type="Texture2D" uid="uid://7fidbbfwym20" path="res://sprites/xp_bar.png" id="3_b15pf"]
 
-[node name="HP" type="Control" unique_id=2075548786 node_paths=PackedStringArray("label", "progress_bar", "xp_bar") groups=["hp"]]
+[node name="HP" type="Control" unique_id=2075548786 node_paths=PackedStringArray("progress_bar", "xp_bar") groups=["hp"]]
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
@@ -16,7 +15,6 @@ grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_kxpdh")
-label = NodePath("CanvasLayer/MarginContainer/VBoxContainer/Label")
 progress_bar = NodePath("CanvasLayer/MarginContainer/VBoxContainer/ProgressBar")
 xp_bar = NodePath("CanvasLayer/MarginContainer/VBoxContainer/TextureProgressBar")
 
@@ -32,13 +30,6 @@ offset_bottom = 639.0
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=1303644239]
 custom_minimum_size = Vector2(300, 20)
 layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=232002701]
-z_index = -1
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_b15pf")
-theme_override_font_sizes/font_size = 32
-text = "HP: 100"
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=2063451680]
 custom_minimum_size = Vector2(200, 20)
