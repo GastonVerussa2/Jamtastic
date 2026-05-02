@@ -17,7 +17,7 @@ const ICON_DAMAGE = preload("res://sprites/dano_up.png")
 const ICON_HEALTH = preload("res://sprites/Corazon_hp_up.png")
 const ICON_STONE = preload("res://sprites/Stone.png")
 
-var _nivel_actual: int = 2
+var _nivel_actual: int = 1
 var _nivel_instanciado: Node
 
 var hp: HpControl
@@ -168,27 +168,27 @@ func get_upgrade_pool():
 	
 	return [
 		{
-			"text": "+Speed",
+			"text": "Aumenta tu velocidad",
 			"icon": ICON_SPEED,
 			"apply": func(): player.upgrade_speed(20)
 		},
 		{
-			"text": "+Daño",
+			"text": "Aumenta tu daño",
 			"icon": ICON_DAMAGE,
 			"apply": func(): stone.damage += 4
 		},
 		{
-			"text": "+Vida",
+			"text": "Aumenta tu vida actual y maxima",
 			"icon": ICON_HEALTH,
 			"apply": func(): PlayerHpManager.add_max_hp(10)
 		},
 		{
-			"text": "+Velocidad piedra",
+			"text": "Aumenta la velocidad de la piedra",
 			"icon": ICON_STONE,
 			"apply": func(): improve_stone_speed(stone)
 		},
 		{
-			"text": "+Regeneración vida",
+			"text": "Aumenta tu regeneración de vida",
 			"icon": ICON_HEALTH,
 			"apply": func(): player.increase_regen(1)
 		}

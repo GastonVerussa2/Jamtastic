@@ -996,7 +996,7 @@ color = Color(0, 1, 0.23529412, 0.3529412)
 color_ramp = SubResource("GradientTexture1D_o17gm")
 color_initial_ramp = SubResource("GradientTexture1D_w2cf2")
 
-[node name="player" type="CharacterBody2D" unique_id=1441778440 node_paths=PackedStringArray("area_prota", "animacion", "sonido_muerte", "sonido_daño", "sonido_dash", "sonido_barra", "dash_cd_timer", "dash_duration_timer", "invunerability_timer", "blink_timer", "death_timer", "regen_timer", "camera") groups=["player"]]
+[node name="player" type="CharacterBody2D" unique_id=1441778440 node_paths=PackedStringArray("area_prota", "animacion", "sonido_muerte", "sonido_daño", "sonido_dash", "sonido_barra", "dash_cd_timer", "dash_duration_timer", "invunerability_timer", "blink_timer", "death_timer", "regen_timer", "camera", "regen_particles") groups=["player"]]
 collision_layer = 4
 collision_mask = 33
 motion_mode = 1
@@ -1017,6 +1017,7 @@ blink_timer = NodePath("Timers/BlinkTimer")
 death_timer = NodePath("Timers/DeathTimer")
 regen_timer = NodePath("Timers/RegenTimer")
 camera = NodePath("Camera2D")
+regen_particles = NodePath("hpregen")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1651926019]
 light_mask = 4
@@ -1034,7 +1035,6 @@ occluder = SubResource("OccluderPolygon2D_f2ygf")
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=758101355]
 light_mask = 0
 scale = Vector2(0.23437499, 0.23437497)
-energy = 0.66
 range_item_cull_mask = 7
 shadow_enabled = true
 shadow_filter = 2
@@ -1071,7 +1071,7 @@ stream = ExtResource("7_n62vp")
 stream = ExtResource("8_n62vp")
 volume_db = 24.0
 
-[node name="Barra" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=1496417475 groups=["sound"]]
+[node name="Barra" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=1496417475]
 stream = ExtResource("9_qaul3")
 volume_db = 24.0
 
@@ -1096,4 +1096,5 @@ one_shot = true
 [node name="RegenTimer" type="Timer" parent="Timers" unique_id=508860138]
 
 [node name="hpregen" type="GPUParticles2D" parent="." unique_id=738093276]
+emitting = false
 process_material = SubResource("ParticleProcessMaterial_lbxgr")

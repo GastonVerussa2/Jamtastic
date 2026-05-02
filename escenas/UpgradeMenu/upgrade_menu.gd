@@ -3,45 +3,42 @@ extends Control
 var upgrades = []
 var main
 
-@onready var btn1: Button = $Panel/VBoxContainer/Button
-@onready var btn2: Button = $Panel/VBoxContainer/Button2
-@onready var btn3: Button  = $Panel/VBoxContainer/Button3
-
+@export var btns: Array[Button]
+@export var labels: Array[Label]
+@export var textures: Array[TextureRect]
 @export var choose_sounds: Array[AudioStreamPlayer2D]
+@export var patches: Array[NinePatchRect]
 
 func _ready():
-	btn1.mouse_entered.connect(hovered_over)
-	btn2.mouse_entered.connect(hovered_over)
-	btn3.mouse_entered.connect(hovered_over)
+	for i in btns.size():
+		btns[i].mouse_entered.connect(func(): hovered_over(i))
+		btns[i].mouse_exited.connect(func(): mouse_left(i))
 	for sound in choose_sounds:
 		sound.volume_linear = SoundManager.get_sound()
 
 func setup(options: Array, main_ref):
-	btn1.disabled = true
-	btn2.disabled = true
-	btn3.disabled = true
 	
 	upgrades = options
 	main = main_ref
 	
-	_configurar_boton(btn1, options[0])
-	_configurar_boton(btn2, options[1])
-	_configurar_boton(btn3, options[2])
-	
-	btn1.pressed.connect(func(): _on_selected(0))
-	btn2.pressed.connect(func(): _on_selected(1))
-	btn3.pressed.connect(func(): _on_selected(2))
+	for i in btns.size():
+		patches[i].modulate = Color(patches[i].modulate.r * 0.75, patches[i].modulate.g * 0.75, patches[i].modulate.b * 0.75, patches[i].modulate.a)
+		btns[i].disabled = true
+		_configurar_boton(i, options[i])
+		btns[i].pressed.connect(func(): _on_selected(i))
 	
 	await get_tree().create_timer(0.5).timeout
 	
-	btn1.disabled = false
-	btn2.disabled = false
-	btn3.disabled = false
+	for btn in btns:
+		btn.disabled = false
+	
+	for patch in patches:
+		patch.modulate = Color(patch.modulate.r / 0.75, patch.modulate.g / 0.75, patch.modulate.b / 0.75, patch.modulate.a)
 
 
-func _configurar_boton(btn: Button, data):
-	btn.text = data["text"]
-	btn.icon = data.get("icon", null)
+func _configurar_boton(i: int, data):
+	labels[i].text = data["text"]
+	textures[i].texture = data.get("icon", null)
 
 
 func _on_selected(index):
@@ -51,5 +48,11 @@ func _on_selected(index):
 	main.cerrar_menu_mejoras()
 	queue_free()
 
-func hovered_over():
+func mouse_left(i: int):
+	if btns[i].disabled == false:
+		patches[i].modulate = Color(patches[i].modulate.r / 1.35, patches[i].modulate.g / 1.35, patches[i].modulate.b / 1.35, patches[i].modulate.a) 
+
+func hovered_over(i: int):
 	choose_sounds[randi_range(0,choose_sounds.size() - 1)].play()
+	if btns[i].disabled == false:
+		patches[i].modulate = Color(patches[i].modulate.r * 1.35, patches[i].modulate.g * 1.35, patches[i].modulate.b * 1.35, patches[i].modulate.a) 

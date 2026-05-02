@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://b4iehwd8edxoi"]
+
+[ext_resource type="Script" uid="uid://dhcrdr0ki22bn" path="res://escenas/enemigos/projectile_slow.gd" id="1_1fm0d"]
+[ext_resource type="Texture2D" uid="uid://dnaebti3guars" path="res://sprites/mage_projectile.png" id="2_1fm0d"]
+
+[sub_resource type="Gradient" id="Gradient_4facu"]
+interpolation_mode = 2
+colors = PackedColorArray(0.8067032, 0.6452771, 0.34072414, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8tec6"]
+gradient = SubResource("Gradient_4facu")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.92608696, 0.25652173)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8tec6"]
+size = Vector2(8, 3.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4mqj5"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1jnjl"]
+radius = 6.0
+
+[node name="Projectile" type="CharacterBody2D" unique_id=653357116 node_paths=PackedStringArray("area_pared", "area_prota") groups=["projectile"]]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_1fm0d")
+area_pared = NodePath("AreaPared")
+area_prota = NodePath("AreaProta")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1209893629]
+position = Vector2(-1.1799863e-09, 0.09895163)
+rotation = -0.7853982
+scale = Vector2(0.09641542, 0.0960783)
+energy = 0.8
+shadow_enabled = true
+shadow_filter = 2
+shadow_filter_smooth = 0.6
+shadow_item_cull_mask = 7
+texture = SubResource("GradientTexture2D_8tec6")
+texture_scale = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2063546857]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_8tec6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=881229242]
+position = Vector2(-1.1799863e-09, 0.09895163)
+rotation = -0.7853982
+texture = ExtResource("2_1fm0d")
+
+[node name="AreaPared" type="Area2D" parent="." unique_id=2126901014]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaPared" unique_id=1309741173]
+shape = SubResource("CircleShape2D_4mqj5")
+
+[node name="AreaProta" type="Area2D" parent="." unique_id=1309204587]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaProta" unique_id=239480941]
+shape = SubResource("CircleShape2D_1jnjl")

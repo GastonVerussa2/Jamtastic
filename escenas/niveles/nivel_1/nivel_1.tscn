@@ -516,7 +516,7 @@ position = Vector2(18, 0)
 environment = SubResource("Environment_67iee")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Mapa" unique_id=623456782]
-color = Color(0.36357164, 0.39148897, 0.4712714, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="Merlin" type="Sprite2D" parent="Mapa" unique_id=1863841204]
 z_index = 1
@@ -665,6 +665,7 @@ amount = 20
 process_material = SubResource("ParticleProcessMaterial_0nesf")
 
 [node name="lights" type="Node2D" parent="." unique_id=1500475710]
+visible = false
 
 [node name="dimlights9" type="PointLight2D" parent="lights" unique_id=211468771]
 light_mask = 7

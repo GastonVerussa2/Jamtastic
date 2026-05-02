@@ -19,6 +19,7 @@ signal personaje_muerto
 @export var death_timer: Timer
 @export var regen_timer: Timer
 @export var camera: Camera2D
+@export var regen_particles: GPUParticles2D
 
 # -------------------
 # STATS (IMPORTANTE)
@@ -54,7 +55,6 @@ func _ready() -> void:
 	animacion.play("down_stone")
 	
 	sonido_muerte.volume_linear = SoundManager.get_sound()
-	sonido_barra.volume_linear = SoundManager.get_sound()
 	sonido_dash.volume_linear = SoundManager.get_sound()
 	sonido_daño.volume_linear = SoundManager.get_sound()
 	
@@ -246,6 +246,7 @@ func regen():
 
 func increase_regen(amount: float):
 	if regen_amount == 0:
+		regen_particles.emitting = true
 		regen_timer.start()
 	regen_amount += amount
 	regen_timer.wait_time = 1 / regen_amount

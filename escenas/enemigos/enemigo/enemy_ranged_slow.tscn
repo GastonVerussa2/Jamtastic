@@ -55,7 +55,6 @@ texture = SubResource("GradientTexture2D_h2frt")
 texture_scale = 2.23
 
 [node name="Sprite2D" type="Sprite2D" parent="enemy" unique_id=366780198]
-modulate = Color(2.055, 2.055, 2.055, 1)
 light_mask = 4
 texture = ExtResource("4_kkvj2")
 

@@ -16,7 +16,7 @@ var experience_granted: int = 1
 func _ready():
 	main = get_tree().get_first_node_in_group("main")
 	health = 8 + main.level
-	speed = 70.0 + 5 * main.level
+	speed = 40.0 + 5 * main.level
 	player = get_tree().get_first_node_in_group("player")
 	sonido_spawn.volume_linear = SoundManager.get_sound()
 	sonido_spawn.play()

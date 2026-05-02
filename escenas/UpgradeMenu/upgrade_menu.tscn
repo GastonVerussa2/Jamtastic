@@ -5,8 +5,9 @@
 [ext_resource type="AudioStream" uid="uid://ckgn3yi8dsn8h" path="res://sonidos/Eleccion-002.wav" id="3_f6ri0"]
 [ext_resource type="AudioStream" uid="uid://bls8ksmpbmx27" path="res://sonidos/Eleccion-003.wav" id="4_glok1"]
 [ext_resource type="Texture2D" uid="uid://knv1r3rncxxb" path="res://sprites/menu/menu_box1.png" id="5_f6ri0"]
+[ext_resource type="FontFile" uid="uid://yn83udj3escd" path="res://fonts/alagard.ttf" id="6_glok1"]
 
-[node name="UpgradeMenu" type="Control" unique_id=883324197 node_paths=PackedStringArray("choose_sounds")]
+[node name="UpgradeMenu" type="Control" unique_id=883324197 node_paths=PackedStringArray("btns", "labels", "textures", "choose_sounds", "patches")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 8
@@ -17,72 +18,41 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_q6hoe")
+btns = [NodePath("Node/Button"), NodePath("Node2/Button2"), NodePath("Node3/Button3")]
+labels = [NodePath("Node/Label"), NodePath("Node2/Label"), NodePath("Node3/Label")]
+textures = [NodePath("Node/TextureRect"), NodePath("Node2/TextureRect"), NodePath("Node3/TextureRect")]
 choose_sounds = [NodePath("Choose"), NodePath("Choose2"), NodePath("Choose3")]
-
-[node name="Panel" type="Panel" parent="." unique_id=1282820472]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -224.92108
-offset_top = -144.51184
-offset_right = 224.92108
-offset_bottom = 144.51184
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.0400012, 1.04)
-pivot_offset = Vector2(166.71594, 247.1154)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=61155534]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -227.8844
-offset_top = -139.90384
-offset_right = 227.8844
-offset_bottom = 139.90384
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 15
-
-[node name="Button" type="Button" parent="Panel/VBoxContainer" unique_id=907163801]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-text = "upgrade1"
-expand_icon = true
-
-[node name="Button2" type="Button" parent="Panel/VBoxContainer" unique_id=1448366537]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-text = "upgrade2"
-expand_icon = true
-
-[node name="Button3" type="Button" parent="Panel/VBoxContainer" unique_id=1436730099]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-text = "upgrade3"
-expand_icon = true
+patches = [NodePath("Node/NinePatchRect1"), NodePath("Node2/NinePatchRect1"), NodePath("Node3/NinePatchRect1")]
 
 [node name="Choose" type="AudioStreamPlayer2D" parent="." unique_id=1599439429 groups=["sound"]]
 stream = ExtResource("2_38wwx")
 
-[node name="Choose2" type="AudioStreamPlayer2D" parent="." unique_id=1693612131 groups=["sound"]]
+[node name="Choose2" type="AudioStreamPlayer2D" parent="." unique_id=1190301075 groups=["sound"]]
+position = Vector2(348, -1)
 stream = ExtResource("3_f6ri0")
 
-[node name="Choose3" type="AudioStreamPlayer2D" parent="." unique_id=1217045103 groups=["sound"]]
+[node name="Choose3" type="AudioStreamPlayer2D" parent="." unique_id=2083592139 groups=["sound"]]
+position = Vector2(689, 1)
 stream = ExtResource("4_glok1")
 
-[node name="NinePatchRect3" type="NinePatchRect" parent="." unique_id=94896134]
-layout_mode = 0
-offset_left = 200.0
-offset_top = -196.00002
-offset_right = 257.6001
-offset_bottom = -125.59999
+[node name="Node" type="Node" parent="." unique_id=816418526]
+
+[node name="Button" type="Button" parent="Node" unique_id=907163801]
+visibility_layer = 0
+custom_minimum_size = Vector2(0, 80)
+offset_left = 113.0
+offset_top = 150.0
+offset_right = 355.0
+offset_bottom = 458.0
+text = "upgrade1"
+expand_icon = true
+
+[node name="NinePatchRect1" type="NinePatchRect" parent="Node" unique_id=959232826]
+modulate = Color(0.39688897, 0.39688933, 0.39688924, 0.78431374)
+offset_left = 88.0
+offset_top = 128.0
+offset_right = 145.6
+offset_bottom = 198.40001
 scale = Vector2(5, 5)
 texture = ExtResource("5_f6ri0")
 patch_margin_left = 18
@@ -90,12 +60,40 @@ patch_margin_top = 18
 patch_margin_right = 18
 patch_margin_bottom = 18
 
-[node name="NinePatchRect2" type="NinePatchRect" parent="." unique_id=959232826]
-layout_mode = 0
-offset_left = -488.0
-offset_top = -196.0
-offset_right = -430.4
-offset_bottom = -125.59999
+[node name="Label" type="Label" parent="Node" unique_id=266088249]
+offset_left = 121.0
+offset_top = 315.0
+offset_right = 343.0
+offset_bottom = 424.0
+theme_override_fonts/font = ExtResource("6_glok1")
+theme_override_font_sizes/font_size = 35
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="Node" unique_id=2126061664]
+offset_left = 168.0
+offset_top = 170.0
+offset_right = 298.0
+offset_bottom = 300.0
+
+[node name="Node2" type="Node" parent="." unique_id=1363329381]
+
+[node name="Button2" type="Button" parent="Node2" unique_id=149312724]
+visibility_layer = 0
+custom_minimum_size = Vector2(0, 80)
+offset_left = 461.0
+offset_top = 149.0
+offset_right = 703.0
+offset_bottom = 457.0
+text = "upgrade1"
+expand_icon = true
+
+[node name="NinePatchRect1" type="NinePatchRect" parent="Node2" unique_id=777654858]
+modulate = Color(0.39688897, 0.39688933, 0.39688924, 0.78431374)
+offset_left = 436.0
+offset_top = 127.0
+offset_right = 493.6
+offset_bottom = 197.40001
 scale = Vector2(5, 5)
 texture = ExtResource("5_f6ri0")
 patch_margin_left = 18
@@ -103,15 +101,59 @@ patch_margin_top = 18
 patch_margin_right = 18
 patch_margin_bottom = 18
 
-[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=2028723293]
-layout_mode = 0
-offset_left = -136.0
-offset_top = -196.0
-offset_right = -80.0
-offset_bottom = -125.6
+[node name="TextureRect" type="TextureRect" parent="Node2" unique_id=334200543]
+offset_left = 516.0
+offset_top = 169.0
+offset_right = 646.0
+offset_bottom = 299.0
+
+[node name="Label" type="Label" parent="Node2" unique_id=1181991210]
+offset_left = 469.0
+offset_top = 314.0
+offset_right = 691.0
+offset_bottom = 423.0
+theme_override_fonts/font = ExtResource("6_glok1")
+theme_override_font_sizes/font_size = 35
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Node3" type="Node" parent="." unique_id=314967478]
+
+[node name="Button3" type="Button" parent="Node3" unique_id=175831888]
+visibility_layer = 0
+custom_minimum_size = Vector2(0, 80)
+offset_left = 802.0
+offset_top = 151.0
+offset_right = 1044.0
+offset_bottom = 459.0
+text = "upgrade1"
+expand_icon = true
+
+[node name="NinePatchRect1" type="NinePatchRect" parent="Node3" unique_id=832503113]
+modulate = Color(0.39688897, 0.39688933, 0.39688924, 0.78431374)
+offset_left = 777.0
+offset_top = 129.0
+offset_right = 834.6
+offset_bottom = 199.40001
 scale = Vector2(5, 5)
 texture = ExtResource("5_f6ri0")
 patch_margin_left = 18
 patch_margin_top = 18
 patch_margin_right = 18
 patch_margin_bottom = 18
+
+[node name="TextureRect" type="TextureRect" parent="Node3" unique_id=707024492]
+offset_left = 857.0
+offset_top = 171.0
+offset_right = 987.0
+offset_bottom = 301.0
+
+[node name="Label" type="Label" parent="Node3" unique_id=1410900325]
+offset_left = 810.0
+offset_top = 316.0
+offset_right = 1032.0
+offset_bottom = 425.0
+theme_override_fonts/font = ExtResource("6_glok1")
+theme_override_font_sizes/font_size = 35
+horizontal_alignment = 1
+autowrap_mode = 3

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var projectile_scene = preload("res://escenas/enemigos/projectile.tscn")
+var projectile_scene = preload("res://escenas/enemigos/projectile_slow.tscn")
 
 @export var speed: float = 75.0
 @export var sonido_spawn: AudioStreamPlayer2D
@@ -24,7 +24,7 @@ var attack_speed: float = 2
 func _ready():
 	main = get_tree().get_first_node_in_group("main")
 	health = 4 + main.level
-	speed = 35.0 + 3 * main.level
+	speed = 35.0 + 2.5 * main.level
 	player = get_tree().get_first_node_in_group("player")
 	sonido_spawn.volume_linear = SoundManager.get_sound()
 	sonido_spawn.play()
@@ -57,7 +57,7 @@ func get_hit(damage_taken: int):
 func attack():
 	if player == null:
 		player = get_tree().get_first_node_in_group("player")
-	var projectile = projectile_scene.instantiate() as Projectile
+	var projectile = projectile_scene.instantiate()
 	projectile.throw(self.global_position, player.global_position, projectile_speed, damage)
 	main.add_child(projectile)
 
