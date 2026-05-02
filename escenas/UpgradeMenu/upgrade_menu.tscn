@@ -1,8 +1,15 @@
 [gd_scene format=3 uid="uid://bdyo2sxko8m7q"]
 
+<<<<<<< Updated upstream
 [ext_resource type="AudioStream" path="res://sonidos/Eleccion-001.wav" id="2_38wwx"]
 [ext_resource type="AudioStream" path="res://sonidos/Eleccion-002.wav" id="3_f6ri0"]
 [ext_resource type="AudioStream" path="res://sonidos/Eleccion-003.wav" id="4_glok1"]
+=======
+[ext_resource type="Texture2D" uid="uid://knv1r3rncxxb" path="res://sprites/menu/menu_box1.png" id="1_38wwx"]
+[ext_resource type="AudioStream" uid="uid://daeo5isclow77" path="res://sonidos/Eleccion-001.wav" id="2_38wwx"]
+[ext_resource type="AudioStream" uid="uid://ckgn3yi8dsn8h" path="res://sonidos/Eleccion-002.wav" id="3_f6ri0"]
+[ext_resource type="AudioStream" uid="uid://bls8ksmpbmx27" path="res://sonidos/Eleccion-003.wav" id="4_glok1"]
+>>>>>>> Stashed changes
 
 [sub_resource type="GDScript" id="GDScript_nw1fb"]
 script/source = "extends Control
@@ -88,6 +95,45 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.0400012, 1.04)
 pivot_offset = Vector2(166.71594, 247.1154)
+
+[node name="NinePatchRect3" type="NinePatchRect" parent="Panel" unique_id=1674075227]
+layout_mode = 0
+offset_left = 422.68216
+offset_top = -70.772644
+offset_right = 478.06665
+offset_bottom = 15.38121
+scale = Vector2(5, 5)
+texture = ExtResource("1_38wwx")
+patch_margin_left = 18
+patch_margin_top = 18
+patch_margin_right = 18
+patch_margin_bottom = 18
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="Panel" unique_id=1988379783]
+layout_mode = 0
+offset_left = 84.22098
+offset_top = -70.77266
+offset_right = 139.60553
+offset_bottom = 15.381195
+scale = Vector2(5, 5)
+texture = ExtResource("1_38wwx")
+patch_margin_left = 18
+patch_margin_top = 18
+patch_margin_right = 18
+patch_margin_bottom = 18
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Panel" unique_id=1253799557]
+layout_mode = 0
+offset_left = -254.24019
+offset_top = -70.772644
+offset_right = -198.85564
+offset_bottom = 15.38121
+scale = Vector2(5, 5)
+texture = ExtResource("1_38wwx")
+patch_margin_left = 18
+patch_margin_top = 18
+patch_margin_right = 18
+patch_margin_bottom = 18
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=61155534]
 layout_mode = 1

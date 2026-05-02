@@ -123,4 +123,3 @@ renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/default_filters/use_nearest_mipmap_filter=true
 environment/defaults/default_clear_color=Color(0.0627451, 0.078431375, 0.12156863, 1)
-2d/snap/snap_2d_transforms_to_pixel=true

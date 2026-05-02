@@ -5,6 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://npmiktsd83pi" path="res://escenas/niveles/nivel_1/nivel_1.tscn" id="3_px3ix"]
 [ext_resource type="Texture2D" uid="uid://wfio73qfs63m" path="res://sprites/calavera.png" id="4_snudr"]
 [ext_resource type="AudioStream" uid="uid://cr4yo1lhc2gne" path="res://sonidos/Subir de LVL.wav" id="5_px3ix"]
+<<<<<<< Updated upstream
+=======
+[ext_resource type="PackedScene" uid="uid://ddtos17ovsay" path="res://escenas/escena_principal/pause_menu.tscn" id="6_sxsf2"]
+[ext_resource type="Texture2D" uid="uid://c360t2ln6fhg1" path="res://sprites/menu/menu_box2.png" id="7_lfmlb"]
+>>>>>>> Stashed changes
 
 [node name="main_scene" type="Node2D" unique_id=249913582 node_paths=PackedStringArray("kills_label", "xp_sound", "container") groups=["main"]]
 script = ExtResource("1_2fgrq")
@@ -37,3 +42,23 @@ text = "score:"
 [node name="XPSound" type="AudioStreamPlayer2D" parent="." unique_id=792690777]
 stream = ExtResource("5_px3ix")
 volume_db = 12.0
+<<<<<<< Updated upstream
+=======
+
+[node name="PauseMenu" parent="." unique_id=371080639 instance=ExtResource("6_sxsf2")]
+offset_left = 24.0
+offset_right = 24.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PauseMenu" unique_id=568211578]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 232.0
+offset_right = 432.0
+offset_bottom = 292.8
+scale = Vector2(5, 5)
+texture = ExtResource("7_lfmlb")
+patch_margin_left = 18
+patch_margin_top = 18
+patch_margin_right = 18
+patch_margin_bottom = 18
+>>>>>>> Stashed changes

@@ -9,8 +9,14 @@ extends CharacterBody2D
 var damage: int = 10
 var player: Node2D
 var fake_target := Vector2(500,200)
+<<<<<<< Updated upstream
 var health: int = 2
 
+=======
+var health: int
+var main: MainScene
+var experience_granted: int = 100
+>>>>>>> Stashed changes
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
