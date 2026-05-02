@@ -3,15 +3,15 @@
 [ext_resource type="PackedScene" uid="uid://b6ivfjjb3m8er" path="res://escenas/protagonista/protagonista.tscn" id="2_w5axy"]
 [ext_resource type="PackedScene" uid="uid://dcvjfv1emq3yt" path="res://escenas/enemigos/spawner/spawn_point.tscn" id="5_xjemj"]
 [ext_resource type="PackedScene" uid="uid://cpu2p4wy1q8ff" path="res://escenas/enemigos/spawner/spawner.tscn" id="6_7j4at"]
-[ext_resource type="PackedScene" uid="uid://drouppkd26ehg" path="res://escenas/niveles/nivel_3/mesa.tscn" id="6_gia3d"]
 [ext_resource type="PackedScene" uid="uid://k516ysstkdlm" path="res://escenas/protagonista/enchanted_stone/enchanted_stone.tscn" id="7_7j4at"]
 [ext_resource type="Texture2D" uid="uid://bdjogmn2wgyu6" path="res://sprites/new_lvl_3/tileset-new-fixed-final-last-one-v2.png" id="7_k2nsr"]
 [ext_resource type="Texture2D" uid="uid://biuy81qr4krco" path="res://sprites/new_lvl_3/alfombra.png" id="8_k2nsr"]
 [ext_resource type="Texture2D" uid="uid://cav7en0wscpmn" path="res://sprites/new_lvl_3/entrada-side.png" id="9_dj1lt"]
 [ext_resource type="Texture2D" uid="uid://do36w7sl1nmn8" path="res://sprites/new_lvl_3/sombras-piso.png" id="9_fiili"]
-[ext_resource type="AudioStream" uid="uid://dkxmf0iojrqps" path="res://sonidos/herofix.mp3" id="11_0nesf"]
+[ext_resource type="PackedScene" uid="uid://phmaxcg6fwbp" path="res://escenas/niveles/nivel_1/mesa.tscn" id="11_0nesf"]
 [ext_resource type="Texture2D" uid="uid://b8rowu03756dq" path="res://sprites/new_lvl_3/glow-big.png" id="11_4saa1"]
-[ext_resource type="Script" uid="uid://djfhop8ifkxut" path="res://escenas/niveles/nivel_1/level_music.gd" id="12_0nesf"]
+[ext_resource type="AudioStream" uid="uid://dkxmf0iojrqps" path="res://sonidos/herofix.mp3" id="11_67iee"]
+[ext_resource type="Script" path="res://escenas/niveles/nivel_1/level_music.gd" id="12_0nesf"]
 [ext_resource type="Texture2D" uid="uid://dfyd5517cxc7y" path="res://sprites/new_lvl_3/glow-small.png" id="12_2hd03"]
 [ext_resource type="Script" uid="uid://c1tjrjgmafnbu" path="res://escenas/niveles/nivel_1/food_spawner.gd" id="14_0nesf"]
 
@@ -231,10 +231,10 @@ position = Vector2(0, 128)
 
 [node name="Timer" type="Timer" parent="spawner" unique_id=230544045]
 
-[node name="Mesa" parent="." unique_id=131387098 groups=["mesa"] instance=ExtResource("6_gia3d")]
-position = Vector2(0, 1)
-
 [node name="Mapa" type="Node" parent="." unique_id=1804574656]
+
+[node name="Mesa" parent="Mapa" unique_id=1837936766 groups=["mesa"] instance=ExtResource("11_0nesf")]
+position = Vector2(0, 1)
 
 [node name="Sombras" type="TileMapLayer" parent="Mapa" unique_id=1812693363]
 z_index = -11
@@ -324,7 +324,7 @@ position = Vector2(142, -18)
 texture = ExtResource("12_2hd03")
 
 [node name="LevelMusic" type="AudioStreamPlayer2D" parent="." unique_id=1503651789 groups=["music"]]
-stream = ExtResource("11_0nesf")
+stream = ExtResource("11_67iee")
 volume_db = -9.0
 autoplay = true
 script = ExtResource("12_0nesf")
@@ -333,7 +333,7 @@ script = ExtResource("12_0nesf")
 position = Vector2(-158, 0)
 script = ExtResource("14_0nesf")
 timer = NodePath("Timer")
-mesa = NodePath("../Mesa")
+mesa = NodePath("../Mapa/Mesa")
 
 [node name="Timer" type="Timer" parent="food_spawner" unique_id=432491391]
 process_mode = 1

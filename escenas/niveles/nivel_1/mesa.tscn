@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://phmaxcg6fwbp"]
+
+[ext_resource type="Texture2D" uid="uid://c2170bmu4y4j7" path="res://sprites/mesa_Terminada.png" id="1_v46yi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cgure"]
+size = Vector2(76, 30)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ufsu6"]
+polygon = PackedVector2Array(-11, 15, 12, 15, 12, 14, 11, 14, 11, 12, 10, 12, 10, 11, 9, 11, 9, 6, -8, 6, -8, 11, -9, 11, -9, 12, -10, 12, -10, 14, -11, 14)
+
+[sub_resource type="Gradient" id="Gradient_eaa0b"]
+interpolation_mode = 2
+colors = PackedColorArray(0.8067032, 0.6452771, 0.34072414, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ufsu6"]
+gradient = SubResource("Gradient_eaa0b")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.92608696, 0.25652173)
+
+[node name="Mesa" type="StaticBody2D" unique_id=1837936766]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1422161903]
+texture = ExtResource("1_v46yi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1807678664]
+shape = SubResource("RectangleShape2D_cgure")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="." unique_id=1115250027]
+occluder = SubResource("OccluderPolygon2D_ufsu6")
+occluder_light_mask = 2
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1217251968]
+scale = Vector2(0.77073985, 0.7707398)
+energy = 0.3
+shadow_enabled = true
+shadow_filter = 2
+shadow_filter_smooth = 0.6
+texture = SubResource("GradientTexture2D_ufsu6")
+texture_scale = 2.23
