@@ -1,0 +1,132 @@
+[gd_scene format=3 uid="uid://bdyo2sxko8m7q"]
+
+[ext_resource type="AudioStream" path="res://sonidos/Eleccion-001.wav" id="2_38wwx"]
+[ext_resource type="AudioStream" path="res://sonidos/Eleccion-002.wav" id="3_f6ri0"]
+[ext_resource type="AudioStream" path="res://sonidos/Eleccion-003.wav" id="4_glok1"]
+
+[sub_resource type="GDScript" id="GDScript_nw1fb"]
+script/source = "extends Control
+
+var upgrades = []
+var main
+
+@onready var btn1: Button = $Panel/VBoxContainer/Button
+@onready var btn2: Button = $Panel/VBoxContainer/Button2
+@onready var btn3: Button  = $Panel/VBoxContainer/Button3
+
+@export var choose_sounds: Array[AudioStreamPlayer2D]
+
+func _ready():
+	btn1.mouse_entered.connect(hovered_over)
+	btn2.mouse_entered.connect(hovered_over)
+	btn3.mouse_entered.connect(hovered_over)
+
+func setup(options: Array, main_ref):
+	btn1.disabled = true
+	btn2.disabled = true
+	btn3.disabled = true
+	
+	upgrades = options
+	main = main_ref
+	
+	_configurar_boton(btn1, options[0])
+	_configurar_boton(btn2, options[1])
+	_configurar_boton(btn3, options[2])
+	
+	btn1.pressed.connect(func(): _on_selected(0))
+	btn2.pressed.connect(func(): _on_selected(1))
+	btn3.pressed.connect(func(): _on_selected(2))
+	
+	await get_tree().create_timer(0.5).timeout
+	
+	btn1.disabled = false
+	btn2.disabled = false
+	btn3.disabled = false
+
+
+func _configurar_boton(btn: Button, data):
+	btn.text = data[\"text\"]
+	btn.icon = data.get(\"icon\", null)
+
+
+func _on_selected(index):
+	var upgrade = upgrades[index]
+	upgrade[\"apply\"].call()
+	
+	main.cerrar_menu_mejoras()
+	queue_free()
+
+func hovered_over():
+	choose_sounds[randi_range(0,choose_sounds.size() - 1)].play()
+"
+
+[node name="UpgradeMenu" type="Control" unique_id=883324197 node_paths=PackedStringArray("choose_sounds")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_nw1fb")
+choose_sounds = [NodePath("Choose"), NodePath("Choose2"), NodePath("Choose3")]
+
+[node name="Panel" type="Panel" parent="." unique_id=1282820472]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.92108
+offset_top = -144.51184
+offset_right = 224.92108
+offset_bottom = 144.51184
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.0400012, 1.04)
+pivot_offset = Vector2(166.71594, 247.1154)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=61155534]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -227.8844
+offset_top = -139.90384
+offset_right = 227.8844
+offset_bottom = 139.90384
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="Button" type="Button" parent="Panel/VBoxContainer" unique_id=907163801]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "upgrade1"
+expand_icon = true
+
+[node name="Button2" type="Button" parent="Panel/VBoxContainer" unique_id=1448366537]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "upgrade2"
+expand_icon = true
+
+[node name="Button3" type="Button" parent="Panel/VBoxContainer" unique_id=1436730099]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "upgrade3"
+expand_icon = true
+
+[node name="Choose" type="AudioStreamPlayer2D" parent="." unique_id=1599439429]
+stream = ExtResource("2_38wwx")
+
+[node name="Choose2" type="AudioStreamPlayer2D" parent="." unique_id=1693612131]
+stream = ExtResource("3_f6ri0")
+
+[node name="Choose3" type="AudioStreamPlayer2D" parent="." unique_id=1217045103]
+stream = ExtResource("4_glok1")

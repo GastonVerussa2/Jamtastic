@@ -7,7 +7,7 @@ extends Node2D
 @export var xp_sound: AudioStreamPlayer2D
 @export var container: HBoxContainer
 
-const UpgradeMenu = preload("res://escenas/UpgradeMenu/control.tscn") 
+const UpgradeMenu = preload("res://escenas/UpgradeMenu/upgrade_menu.tscn") 
 
 const ICON_SPEED = preload("res://sprites/SPEED_UP.png")
 const ICON_DAMAGE = preload("res://sprites/dano_up.png")

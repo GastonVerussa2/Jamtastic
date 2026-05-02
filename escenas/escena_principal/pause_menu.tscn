@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://ddtos17ovsay"]
+
+[ext_resource type="Script" path="res://escenas/escena_principal/pause_menu.gd" id="1_gy8r7"]
+[ext_resource type="AudioStream" path="res://sonidos/PauseSound.wav" id="2_a86l0"]
+
+[node name="PauseMenu" type="Control" unique_id=371080639 node_paths=PackedStringArray("unpause_button", "timer", "canvas", "music_slider", "sound_slider", "pause_sound", "quit_button")]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gy8r7")
+unpause_button = NodePath("CanvasLayer/Panel/VBoxContainer/Button")
+timer = NodePath("Timer")
+canvas = NodePath("CanvasLayer")
+music_slider = NodePath("CanvasLayer/Panel/VBoxContainer/MusicSlider")
+sound_slider = NodePath("CanvasLayer/Panel/VBoxContainer/SoundSlider")
+pause_sound = NodePath("Pause")
+quit_button = NodePath("CanvasLayer/Quit")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=322167109]
+layer = 5
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1548455036]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -194.5
+offset_top = -82.0
+offset_right = 194.5
+offset_bottom = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel" unique_id=713322216]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 17.0
+offset_right = 365.0
+offset_bottom = 287.0
+
+[node name="Button" type="Button" parent="CanvasLayer/Panel/VBoxContainer" unique_id=533406623]
+layout_mode = 2
+action_mode = 0
+text = "Despausar"
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/VBoxContainer" unique_id=693592234]
+layout_mode = 2
+text = "Musica"
+horizontal_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="CanvasLayer/Panel/VBoxContainer" unique_id=1697016147]
+layout_mode = 2
+value = 100.0
+
+[node name="Label2" type="Label" parent="CanvasLayer/Panel/VBoxContainer" unique_id=1439751535]
+layout_mode = 2
+text = "Sonido"
+horizontal_alignment = 1
+
+[node name="SoundSlider" type="HSlider" parent="CanvasLayer/Panel/VBoxContainer" unique_id=1152067935]
+layout_mode = 2
+value = 100.0
+
+[node name="Quit" type="Button" parent="CanvasLayer" unique_id=608347401]
+modulate = Color(1, 0.21568628, 0.1882353, 1)
+offset_left = 481.0
+offset_top = 459.0
+offset_right = 668.0
+offset_bottom = 490.0
+text = "Abandonar la aventura"
+
+[node name="Timer" type="Timer" parent="." unique_id=1889528449]
+wait_time = 0.2
+one_shot = true
+
+[node name="Pause" type="AudioStreamPlayer2D" parent="." unique_id=923736920 groups=["sound"]]
+position = Vector2(-2, 35)
+stream = ExtResource("2_a86l0")

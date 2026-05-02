@@ -3,12 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://b6ivfjjb3m8er" path="res://escenas/protagonista/protagonista.tscn" id="2_w5axy"]
 [ext_resource type="PackedScene" uid="uid://dcvjfv1emq3yt" path="res://escenas/enemigos/spawner/spawn_point.tscn" id="5_xjemj"]
 [ext_resource type="PackedScene" uid="uid://cpu2p4wy1q8ff" path="res://escenas/enemigos/spawner/spawner.tscn" id="6_7j4at"]
-[ext_resource type="PackedScene" uid="uid://drouppkd26ehg" path="res://escenas/niveles/nivel_1/mesa.tscn" id="6_gia3d"]
 [ext_resource type="PackedScene" uid="uid://k516ysstkdlm" path="res://escenas/protagonista/enchanted_stone/enchanted_stone.tscn" id="7_7j4at"]
 [ext_resource type="Texture2D" uid="uid://bdjogmn2wgyu6" path="res://sprites/new_lvl_3/tileset-new-fixed-final-last-one-v2.png" id="7_k2nsr"]
 [ext_resource type="Texture2D" uid="uid://biuy81qr4krco" path="res://sprites/new_lvl_3/alfombra.png" id="8_k2nsr"]
 [ext_resource type="Texture2D" uid="uid://cav7en0wscpmn" path="res://sprites/new_lvl_3/entrada-side.png" id="9_dj1lt"]
 [ext_resource type="Texture2D" uid="uid://do36w7sl1nmn8" path="res://sprites/new_lvl_3/sombras-piso.png" id="9_fiili"]
+[ext_resource type="PackedScene" path="res://escenas/niveles/nivel_1/mesa.tscn" id="11_0nesf"]
 [ext_resource type="Texture2D" uid="uid://b8rowu03756dq" path="res://sprites/new_lvl_3/glow-big.png" id="11_4saa1"]
 [ext_resource type="Texture2D" uid="uid://dfyd5517cxc7y" path="res://sprites/new_lvl_3/glow-small.png" id="12_2hd03"]
 [ext_resource type="AudioStream" uid="uid://kudpjjfjjuca" path="res://musica/hero.wav" id="13_2hd03"]
@@ -457,9 +457,6 @@ position = Vector2(136, 0)
 [node name="SpawnPoint4" parent="spawner" unique_id=576299192 instance=ExtResource("5_xjemj")]
 position = Vector2(0, 128)
 
-[node name="Mesa" parent="." unique_id=131387098 instance=ExtResource("6_gia3d")]
-position = Vector2(0, 1)
-
 [node name="EnchantedStone" parent="." unique_id=169235792 instance=ExtResource("7_7j4at")]
 position = Vector2(18, 0)
 
@@ -558,6 +555,8 @@ texture = ExtResource("11_4saa1")
 [node name="GlowSmall8" type="Sprite2D" parent="Mapa/Brillos" unique_id=1399493930]
 position = Vector2(142, -18)
 texture = ExtResource("12_2hd03")
+
+[node name="Mesa" parent="Mapa" unique_id=1837936766 groups=["mesa"] instance=ExtResource("11_0nesf")]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1503651789]
 stream = ExtResource("13_2hd03")
