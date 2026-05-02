@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://bjamnxj3mc2mw"]
+
+[ext_resource type="AudioStream" uid="uid://4fx3qnmgknu3" path="res://sonidos/Spawn Rango.wav" id="1_2hkyt"]
+[ext_resource type="Script" uid="uid://dhyqprqux1awy" path="res://escenas/enemigos/enemigo/enemy_ranged.gd" id="2_k71ir"]
+[ext_resource type="Texture2D" uid="uid://dsmmxes0hfh4u" path="res://sprites/Enemigo_lvl_tres_terminado.png" id="4_fc68u"]
+
+[sub_resource type="Gradient" id="Gradient_eaa0b"]
+interpolation_mode = 2
+colors = PackedColorArray(0.8067032, 0.6452771, 0.34072414, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h2frt"]
+gradient = SubResource("Gradient_eaa0b")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.92608696, 0.25652173)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vs78y"]
+size = Vector2(46.666664, 53.333332)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_h2frt"]
+polygon = PackedVector2Array(-4, 9, 3, 9, 3, 3, -4, 3)
+
+[node name="enemy" type="Node2D" unique_id=726940585]
+
+[node name="sonido_spawn" type="AudioStreamPlayer2D" parent="." unique_id=1183346513 groups=["sound"]]
+stream = ExtResource("1_2hkyt")
+max_distance = 4096.0
+
+[node name="enemy" type="CharacterBody2D" parent="." unique_id=1142249714 node_paths=PackedStringArray("sonido_spawn", "sprite") groups=["enemy"]]
+collision_layer = 2
+collision_mask = 39
+motion_mode = 1
+script = ExtResource("2_k71ir")
+sonido_spawn = NodePath("../sonido_spawn")
+sprite = NodePath("Sprite2D")
+
+[node name="PointLight2D" type="PointLight2D" parent="enemy" unique_id=765514006]
+visible = false
+light_mask = 0
+scale = Vector2(0.23437499, 0.23437497)
+energy = 0.25
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_filter = 2
+shadow_filter_smooth = 0.6
+texture = SubResource("GradientTexture2D_h2frt")
+texture_scale = 2.23
+
+[node name="Sprite2D" type="Sprite2D" parent="enemy" unique_id=366780198]
+modulate = Color(1, 0, 1, 1)
+light_mask = 4
+texture = ExtResource("4_fc68u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy" unique_id=1250678375]
+light_mask = 2
+visibility_layer = 2
+scale = Vector2(0.3, 0.3)
+shape = SubResource("RectangleShape2D_vs78y")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="enemy" unique_id=1484537665]
+light_mask = 0
+visibility_layer = 0
+occluder = SubResource("OccluderPolygon2D_h2frt")
+occluder_light_mask = 3
+
+[node name="ChangeDirection" type="Timer" parent="enemy" unique_id=1798222535]
+autostart = true

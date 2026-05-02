@@ -7,7 +7,6 @@
 [ext_resource type="AudioStream" uid="uid://crfxhdjcwwu8d" path="res://sonidos/Rebote Piedra.wav" id="5_01hj4"]
 [ext_resource type="AudioStream" uid="uid://by1t435c6vmnd" path="res://sonidos/Tiro Piedra.wav" id="6_ho0en"]
 [ext_resource type="AudioStream" uid="uid://dgt5kusk7oyxr" path="res://sonidos/Vuelve Piedra.wav" id="7_cy58p"]
-[ext_resource type="Texture2D" uid="uid://b8rowu03756dq" path="res://sprites/new_lvl_3/glow-big.png" id="8_w1y23"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_10uyp"]
 polygon = PackedVector2Array(-2.5714283, 4.166666, 0, 4.166666, 2.5714283, 4.166666, 2.5714283, 3.3333328, 2.5714283, 3.3333328, 3.4285712, 3.3333328, 3.4285712, 2.4999995, 4.285714, 2.4999995, 4.285714, 0.8333332, 5.1428566, 0.8333332, 5.1428566, -2.4999995, 4.285714, -2.4999995, 4.285714, -3.3333328, 3.4285712, -3.3333328, 3.4285712, -4.166666, 1.7142856, -4.166666, 0, -4.166666, 0, -3.3333328, -2.5714283, -3.3333328, -2.5714283, -2.4999995, -3.4285712, -2.4999995, -3.4285712, -1.6666664, -4.285714, -1.6666664, -4.285714, -0.8333332, -5.1428566, -0.8333332, -5.1428566, 1.6666664, -4.285714, 1.6666664, -4.285714, 2.4999995, -3.4285712, 2.4999995, -3.4285712, 3.3333328, -2.5714283, 3.3333328)
@@ -26,11 +25,12 @@ particle_flag_disable_z = true
 spread = 0.0
 scale_max = 6.7999997
 
-[node name="EnchantedStone" type="CharacterBody2D" unique_id=169235792 node_paths=PackedStringArray("area_vuelta", "area_golpe", "hit_sound_1", "hit_sound_2", "solid_hit_sound", "throw_sound", "returning_sound") groups=["stone"]]
+[node name="EnchantedStone" type="CharacterBody2D" unique_id=169235792 node_paths=PackedStringArray("area_vuelta", "area_golpe", "particulas", "hit_sound_1", "hit_sound_2", "solid_hit_sound", "throw_sound", "returning_sound") groups=["stone"]]
 collision_layer = 0
 script = ExtResource("2_q4ae8")
 area_vuelta = NodePath("AreaVuelta")
 area_golpe = NodePath("AreaGolpe")
+particulas = NodePath("GPUParticles2D")
 hit_sound_1 = NodePath("Sonidos/HitSound1")
 hit_sound_2 = NodePath("Sonidos/HitSound2")
 solid_hit_sound = NodePath("Sonidos/SolidHitSound")

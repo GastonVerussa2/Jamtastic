@@ -8,6 +8,8 @@ signal hit_enemies(damage: int, enemies: Array[Node2D])
 @export var area_vuelta: Area2D
 @export var area_golpe: Area2D
 
+@export var particulas: GPUParticles2D
+
 #Sonidos
 @export var hit_sound_1: AudioStreamPlayer2D
 @export var hit_sound_2: AudioStreamPlayer2D
@@ -87,6 +89,7 @@ func _disappear():
 	is_attacking = false
 	global_position.x = 15000
 	global_position.y = 15000
+	particulas.restart()
 	
 func throw(starting_position: Vector2, objective_position: Vector2, player_node: Node2D):
 	is_attacking = true

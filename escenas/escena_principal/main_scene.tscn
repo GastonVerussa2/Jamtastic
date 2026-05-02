@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://npmiktsd83pi" path="res://escenas/niveles/nivel_1/nivel_1.tscn" id="3_px3ix"]
 [ext_resource type="Texture2D" uid="uid://wfio73qfs63m" path="res://sprites/calavera.png" id="4_snudr"]
 [ext_resource type="AudioStream" uid="uid://cr4yo1lhc2gne" path="res://sonidos/Subir de LVL.wav" id="5_px3ix"]
-[ext_resource type="PackedScene" uid="uid://ctkouvvi8qypb" path="res://escenas/escena_principal/pause_menu.tscn" id="6_sxsf2"]
+[ext_resource type="PackedScene" uid="uid://ddtos17ovsay" path="res://escenas/escena_principal/pause_menu.tscn" id="6_sxsf2"]
 
 [node name="main_scene" type="Node2D" unique_id=249913582 node_paths=PackedStringArray("kills_label", "xp_sound", "container", "pause_menu") groups=["main"]]
 z_index = 15

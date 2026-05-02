@@ -3,7 +3,6 @@ extends Node2D
 var food_scene = preload("res://escenas/collectables/comida.tscn")
 
 @export var timer: Timer
-@export var mesa: Node2D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -14,8 +13,8 @@ func _ready() -> void:
 
 func _spawn():
 	var lado_y = randi_range(0,1)
-	var x = randi_range(-140,140)
-	var y = randi_range(20,140)
+	var x = randi_range(-130,130)
+	var y = randi_range(20,130)
 	if lado_y == 0:
 		y = -y
 	
@@ -23,5 +22,5 @@ func _spawn():
 	
 	add_child(food)
 	
-	food.global_position.x = mesa.global_position.x + x
-	food.global_position.y = mesa.global_position.y + y
+	food.global_position.x = x
+	food.global_position.y = y
