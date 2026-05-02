@@ -4,6 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://d1y21qprigtny" path="res://sprites/manzana.png" id="2_3u7fy"]
 [ext_resource type="AudioStream" uid="uid://b6vh78cgh1u8t" path="res://sonidos/Manzana.wav" id="3_lyaof"]
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_lyaof"]
+polygon = PackedVector2Array(-1, 6, 2, 6, 5, 3, 3, 2, -2, 2, -4, 3)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3u7fy"]
 size = Vector2(14, 14)
 
@@ -13,8 +16,12 @@ area_2d = NodePath("Area2D")
 bite_sound = NodePath("BiteSound")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=471688884]
-modulate = Color(0.5537159, 0.27780348, 0.21307987, 1)
+modulate = Color(1.224, 1.224, 1.224, 1)
+light_mask = 2
 texture = ExtResource("2_3u7fy")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=354309617]
+occluder = SubResource("OccluderPolygon2D_lyaof")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=768852963]
 collision_layer = 8

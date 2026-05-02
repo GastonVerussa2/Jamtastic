@@ -5,8 +5,21 @@
 [ext_resource type="Texture2D" uid="uid://dsmmxes0hfh4u" path="res://sprites/Enemigo_lvl_tres_terminado.png" id="3_3w2dw"]
 [ext_resource type="Material" uid="uid://l47yfp615nd8" path="res://escenas/protagonista/material_personaje_rojo.tres" id="3_h2frt"]
 
+[sub_resource type="Gradient" id="Gradient_eaa0b"]
+interpolation_mode = 2
+colors = PackedColorArray(0.8067032, 0.6452771, 0.34072414, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h2frt"]
+gradient = SubResource("Gradient_eaa0b")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.92608696, 0.25652173)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vs78y"]
 size = Vector2(46.666664, 53.333332)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_h2frt"]
+polygon = PackedVector2Array(-4, 9, 3, 9, 3, 3, -4, 3)
 
 [node name="enemy" type="Node2D" unique_id=726940585]
 
@@ -23,7 +36,20 @@ sonido_spawn = NodePath("../sonido_spawn")
 material_personaje_rojo = ExtResource("3_h2frt")
 sprite = NodePath("Sprite2D")
 
+[node name="PointLight2D" type="PointLight2D" parent="enemy" unique_id=765514006]
+visible = false
+light_mask = 0
+scale = Vector2(0.23437499, 0.23437497)
+energy = 0.25
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_filter = 2
+shadow_filter_smooth = 0.6
+texture = SubResource("GradientTexture2D_h2frt")
+texture_scale = 2.23
+
 [node name="Sprite2D" type="Sprite2D" parent="enemy" unique_id=366780198]
+light_mask = 4
 texture = ExtResource("3_3w2dw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy" unique_id=1250678375]
@@ -31,3 +57,9 @@ light_mask = 2
 visibility_layer = 2
 scale = Vector2(0.3, 0.3)
 shape = SubResource("RectangleShape2D_vs78y")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="enemy" unique_id=1484537665]
+light_mask = 0
+visibility_layer = 0
+occluder = SubResource("OccluderPolygon2D_h2frt")
+occluder_light_mask = 3

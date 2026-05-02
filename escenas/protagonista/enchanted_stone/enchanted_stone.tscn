@@ -9,6 +9,9 @@
 [ext_resource type="AudioStream" uid="uid://dgt5kusk7oyxr" path="res://sonidos/Vuelve Piedra.wav" id="7_cy58p"]
 [ext_resource type="Texture2D" uid="uid://b8rowu03756dq" path="res://sprites/new_lvl_3/glow-big.png" id="8_w1y23"]
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_10uyp"]
+polygon = PackedVector2Array(-2.5714283, 4.166666, 0, 4.166666, 2.5714283, 4.166666, 2.5714283, 3.3333328, 2.5714283, 3.3333328, 3.4285712, 3.3333328, 3.4285712, 2.4999995, 4.285714, 2.4999995, 4.285714, 0.8333332, 5.1428566, 0.8333332, 5.1428566, -2.4999995, 4.285714, -2.4999995, 4.285714, -3.3333328, 3.4285712, -3.3333328, 3.4285712, -4.166666, 1.7142856, -4.166666, 0, -4.166666, 0, -3.3333328, -2.5714283, -3.3333328, -2.5714283, -2.4999995, -3.4285712, -2.4999995, -3.4285712, -1.6666664, -4.285714, -1.6666664, -4.285714, -0.8333332, -5.1428566, -0.8333332, -5.1428566, 1.6666664, -4.285714, 1.6666664, -4.285714, 2.4999995, -3.4285712, 2.4999995, -3.4285712, 3.3333328, -2.5714283, 3.3333328)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4ae8"]
 size = Vector2(10, 8)
 
@@ -17,6 +20,11 @@ size = Vector2(12, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2qrtu"]
 size = Vector2(14, 12)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_10uyp"]
+particle_flag_disable_z = true
+spread = 0.0
+scale_max = 6.7999997
 
 [node name="EnchantedStone" type="CharacterBody2D" unique_id=169235792 node_paths=PackedStringArray("area_vuelta", "area_golpe", "hit_sound_1", "hit_sound_2", "solid_hit_sound", "throw_sound", "returning_sound") groups=["stone"]]
 collision_layer = 0
@@ -33,7 +41,13 @@ returning_sound = NodePath("Sonidos/ReturningSound")
 scale = Vector2(1.1666667, 1.2000002)
 texture = ExtResource("2_10uyp")
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=68101239]
+scale = Vector2(1.1666667, 1.2000002)
+occluder = SubResource("OccluderPolygon2D_10uyp")
+occluder_light_mask = 4
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=677409852]
+visible = false
 modulate = Color(0.54497427, 0.5449743, 0.5449741, 1)
 shape = SubResource("RectangleShape2D_q4ae8")
 
@@ -66,7 +80,10 @@ stream = ExtResource("6_ho0en")
 [node name="ReturningSound" type="AudioStreamPlayer2D" parent="Sonidos" unique_id=740886915 groups=["sound"]]
 stream = ExtResource("7_cy58p")
 
-[node name="GlowBig" type="Sprite2D" parent="." unique_id=54363398]
-modulate = Color(9.806819, 5.58108, 9.032101, 0.3529412)
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=355161959]
+light_mask = 0
 z_index = -1
-texture = ExtResource("8_w1y23")
+amount = 33
+lifetime = 0.1
+collision_base_size = 0.0
+process_material = SubResource("ParticleProcessMaterial_10uyp")

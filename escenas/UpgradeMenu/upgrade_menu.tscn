@@ -1,9 +1,64 @@
-[gd_scene format=3 uid="uid://dt2fru3et062g"]
+[gd_scene format=3 uid="uid://bdyo2sxko8m7q"]
 
-[ext_resource type="Script" uid="uid://dpdblmfrt4uef" path="res://escenas/UpgradeMenu/upgrade_menu.gd" id="1_q6hoe"]
-[ext_resource type="AudioStream" uid="uid://daeo5isclow77" path="res://sonidos/Eleccion-001.wav" id="2_38wwx"]
-[ext_resource type="AudioStream" uid="uid://ckgn3yi8dsn8h" path="res://sonidos/Eleccion-002.wav" id="3_f6ri0"]
-[ext_resource type="AudioStream" uid="uid://bls8ksmpbmx27" path="res://sonidos/Eleccion-003.wav" id="4_glok1"]
+[ext_resource type="AudioStream" path="res://sonidos/Eleccion-001.wav" id="2_38wwx"]
+[ext_resource type="AudioStream" path="res://sonidos/Eleccion-002.wav" id="3_f6ri0"]
+[ext_resource type="AudioStream" path="res://sonidos/Eleccion-003.wav" id="4_glok1"]
+
+[sub_resource type="GDScript" id="GDScript_nw1fb"]
+script/source = "extends Control
+
+var upgrades = []
+var main
+
+@onready var btn1: Button = $Panel/VBoxContainer/Button
+@onready var btn2: Button = $Panel/VBoxContainer/Button2
+@onready var btn3: Button  = $Panel/VBoxContainer/Button3
+
+@export var choose_sounds: Array[AudioStreamPlayer2D]
+
+func _ready():
+	btn1.mouse_entered.connect(hovered_over)
+	btn2.mouse_entered.connect(hovered_over)
+	btn3.mouse_entered.connect(hovered_over)
+
+func setup(options: Array, main_ref):
+	btn1.disabled = true
+	btn2.disabled = true
+	btn3.disabled = true
+	
+	upgrades = options
+	main = main_ref
+	
+	_configurar_boton(btn1, options[0])
+	_configurar_boton(btn2, options[1])
+	_configurar_boton(btn3, options[2])
+	
+	btn1.pressed.connect(func(): _on_selected(0))
+	btn2.pressed.connect(func(): _on_selected(1))
+	btn3.pressed.connect(func(): _on_selected(2))
+	
+	await get_tree().create_timer(0.5).timeout
+	
+	btn1.disabled = false
+	btn2.disabled = false
+	btn3.disabled = false
+
+
+func _configurar_boton(btn: Button, data):
+	btn.text = data[\"text\"]
+	btn.icon = data.get(\"icon\", null)
+
+
+func _on_selected(index):
+	var upgrade = upgrades[index]
+	upgrade[\"apply\"].call()
+	
+	main.cerrar_menu_mejoras()
+	queue_free()
+
+func hovered_over():
+	choose_sounds[randi_range(0,choose_sounds.size() - 1)].play()
+"
 
 [node name="UpgradeMenu" type="Control" unique_id=883324197 node_paths=PackedStringArray("choose_sounds")]
 process_mode = 3
@@ -15,7 +70,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_q6hoe")
+script = SubResource("GDScript_nw1fb")
 choose_sounds = [NodePath("Choose"), NodePath("Choose2"), NodePath("Choose3")]
 
 [node name="Panel" type="Panel" parent="." unique_id=1282820472]

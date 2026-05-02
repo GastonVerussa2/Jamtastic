@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://ctkouvvi8qypb"]
+[gd_scene format=3 uid="uid://ddtos17ovsay"]
 
-[ext_resource type="Script" uid="uid://b7omrbkqhir5x" path="res://escenas/escena_principal/pause_menu.gd" id="1_gy8r7"]
-[ext_resource type="AudioStream" uid="uid://bclhk7jv8t05d" path="res://sonidos/PauseSound.wav" id="2_a86l0"]
+[ext_resource type="Script" path="res://escenas/escena_principal/pause_menu.gd" id="1_gy8r7"]
+[ext_resource type="AudioStream" path="res://sonidos/PauseSound.wav" id="2_a86l0"]
 
 [node name="PauseMenu" type="Control" unique_id=371080639 node_paths=PackedStringArray("unpause_button", "timer", "canvas", "music_slider", "sound_slider", "pause_sound", "quit_button")]
 process_mode = 2
