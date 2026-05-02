@@ -4,15 +4,20 @@
 [ext_resource type="PackedScene" uid="uid://dcvjfv1emq3yt" path="res://escenas/enemigos/spawner/spawn_point.tscn" id="5_xjemj"]
 [ext_resource type="PackedScene" uid="uid://cpu2p4wy1q8ff" path="res://escenas/enemigos/spawner/spawner.tscn" id="6_7j4at"]
 [ext_resource type="PackedScene" uid="uid://phmaxcg6fwbp" path="res://escenas/niveles/nivel_1/mesa.tscn" id="6_gia3d"]
+[ext_resource type="Texture2D" uid="uid://d35p031ul60ee" path="res://sprites/npc_merlin.png" id="6_irvrf"]
 [ext_resource type="PackedScene" uid="uid://k516ysstkdlm" path="res://escenas/protagonista/enchanted_stone/enchanted_stone.tscn" id="7_7j4at"]
 [ext_resource type="Texture2D" uid="uid://bdjogmn2wgyu6" path="res://sprites/new_lvl_3/tileset-new-fixed-final-last-one-v2.png" id="7_k2nsr"]
 [ext_resource type="Texture2D" uid="uid://biuy81qr4krco" path="res://sprites/new_lvl_3/alfombra.png" id="8_k2nsr"]
 [ext_resource type="Texture2D" uid="uid://cav7en0wscpmn" path="res://sprites/new_lvl_3/entrada-side.png" id="9_dj1lt"]
 [ext_resource type="Texture2D" uid="uid://do36w7sl1nmn8" path="res://sprites/new_lvl_3/sombras-piso.png" id="9_fiili"]
+[ext_resource type="Texture2D" uid="uid://bxgwvo50kdug3" path="res://sprites/merlinhideout.png" id="10_xjemj"]
 [ext_resource type="Texture2D" uid="uid://b8rowu03756dq" path="res://sprites/new_lvl_3/glow-big.png" id="11_4saa1"]
 [ext_resource type="AudioStream" uid="uid://dkxmf0iojrqps" path="res://sonidos/herofix.mp3" id="11_67iee"]
+[ext_resource type="Texture2D" uid="uid://xsxbf43bkn02" path="res://sprites/barrels2.png" id="11_cwlnf"]
 [ext_resource type="Texture2D" uid="uid://dfyd5517cxc7y" path="res://sprites/new_lvl_3/glow-small.png" id="12_2hd03"]
+[ext_resource type="Texture2D" uid="uid://c4gv3bm1xps4c" path="res://sprites/barrels.png" id="12_irvrf"]
 [ext_resource type="Script" uid="uid://djwh2f5dmu6wf" path="res://escenas/niveles/nivel_1/main_music.gd" id="13_67iee"]
+[ext_resource type="Texture2D" uid="uid://ba7og35t55sru" path="res://sprites/vases.png" id="13_pvuru"]
 [ext_resource type="Script" uid="uid://c1tjrjgmafnbu" path="res://escenas/niveles/nivel_1/food_spawner.gd" id="14_0nesf"]
 [ext_resource type="PackedScene" uid="uid://b83oa58q3prbw" path="res://escenas/light.tscn" id="14_67iee"]
 
@@ -27,11 +32,11 @@ tonemap_agx_contrast = 1.52
 ssao_radius = 1.13
 ssao_intensity = 4.35
 glow_enabled = true
-glow_intensity = 0.15
-glow_bloom = 0.22
-glow_hdr_threshold = 0.16
-glow_hdr_scale = 0.83
-glow_hdr_luminance_cap = 24.31
+glow_intensity = 0.19
+glow_bloom = 0.04
+glow_hdr_threshold = 0.41
+glow_hdr_scale = 0.67
+glow_hdr_luminance_cap = 11.22
 adjustment_enabled = true
 adjustment_brightness = 0.93
 adjustment_contrast = 1.04
@@ -386,6 +391,47 @@ texture_region_size = Vector2i(18, 18)
 tile_size = Vector2i(18, 18)
 sources/0 = SubResource("TileSetAtlasSource_dj1lt")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l3biy"]
+texture = ExtResource("10_xjemj")
+texture_region_size = Vector2i(18, 18)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6, -9, 9, -9, 9, 9, -6, 9)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fxy2k"]
+texture = ExtResource("11_cwlnf")
+texture_region_size = Vector2i(18, 18)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
+0:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nh5gx"]
+texture = ExtResource("12_irvrf")
+texture_region_size = Vector2i(18, 18)
+0:0/0 = 0
+0:0/0/z_index = 15
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, 4, 7, 4, 7, 9, -7, 9)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, -9, 7, -9, 7, 9, -7, 9)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ct6u0"]
+texture = ExtResource("13_pvuru")
+texture_region_size = Vector2i(18, 18)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, 4, 7, 4, 7, 9, -7, 9)
+0:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_kqfcl"]
+tile_size = Vector2i(18, 18)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_l3biy")
+sources/1 = SubResource("TileSetAtlasSource_fxy2k")
+sources/2 = SubResource("TileSetAtlasSource_nh5gx")
+sources/3 = SubResource("TileSetAtlasSource_ct6u0")
+
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0nesf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_67iee"]
@@ -472,6 +518,11 @@ environment = SubResource("Environment_67iee")
 [node name="CanvasModulate" type="CanvasModulate" parent="Mapa" unique_id=623456782]
 color = Color(0.36357164, 0.39148897, 0.4712714, 1)
 
+[node name="Merlin" type="Sprite2D" parent="Mapa" unique_id=1863841204]
+z_index = 1
+position = Vector2(127, -140)
+texture = ExtResource("6_irvrf")
+
 [node name="Sombras" type="TileMapLayer" parent="Mapa" unique_id=1812693363]
 z_index = -11
 tile_map_data = PackedByteArray("AAD4//j/AAAAAAAAAAD5//j/AAABAAAAAAD6//j/AAABAAAAAAD7//j/AAABAAAAAAD8//j/AAABAAAAAAD9//j/AAABAAAAAAD+//j/AAABAAAAAAABAPj/AAABAAAAAAACAPj/AAABAAAAAAADAPj/AAABAAAAAAAEAPj/AAABAAAAAAAFAPj/AAABAAAAAAAGAPj/AAABAAAAAAAHAPj/AAACAAAAAAD///j/AAABAAAAAAAAAPj/AAABAAAAAAAHAPn/AAACAAEAAAAHAPr/AAACAAEAAAAHAPv/AAACAAEAAAAHAPz/AAACAAEAAAAHAP3/AAACAAEAAAAHAP7/AAACAAEAAAAHAP//AAACAAEAAAAHAAAAAAACAAEAAAAHAAEAAAACAAEAAAAHAAIAAAACAAEAAAAHAAMAAAACAAEAAAAHAAQAAAACAAEAAAAHAAUAAAACAAEAAAAHAAYAAAACAAEAAAD4/wYAAAAAAAEAAAD4/wUAAAAAAAEAAAD4/wQAAAAAAAEAAAD4/wMAAAAAAAEAAAD4/wIAAAAAAAEAAAD4/wEAAAAAAAEAAAD4/wAAAAAAAAEAAAD4////AAAAAAEAAAD4//7/AAAAAAEAAAD4//3/AAAAAAEAAAD4//z/AAAAAAEAAAD4//v/AAAAAAEAAAD4//r/AAAAAAEAAAD4//n/AAAAAAEAAAD4/wcAAAAAAAEAAAAHAAcAAAACAAEAAAA=")
@@ -494,6 +545,10 @@ z_index = -10
 position = Vector2(0, 16)
 tile_map_data = PackedByteArray("AAD//wYAAAABAAAAAAD//wUAAAABAAAAAAAAAAUAAAACAAAAAAD//wQAAAABAAAAAAAAAAQAAAACAAAAAAD//wMAAAABAAAAAAAAAAMAAAACAAAAAAD//wIAAAABAAAAAAAAAAIAAAACAAAAAAD//wEAAAABAAAAAAAAAAEAAAACAAAAAAAAAPj/AAACAAAAAAD///n/AAABAAAAAAAAAPn/AAACAAAAAAD///r/AAABAAAAAAAAAPr/AAACAAAAAAD///v/AAABAAAAAAAAAPv/AAACAAAAAAD///z/AAABAAAAAAAAAPz/AAACAAAAAAD///3/AAABAAAAAAAAAP3/AAACAAAAAAD///7/AAABAAAAAAAAAP7/AAACAAAAAAD4////AAAAAAAAAAD5////AAAAAAAAAAD6////AAAAAAAAAAD7////AAAAAAAAAAD8////AAAAAAAAAAD9////AAAAAAAAAAD///j/AAABAAAAAAAAAAYAAAACAAAAAAD///f/AAABAAAAAAAAAPf/AAACAAAAAAD//wAAAAABAAAAAAAAAAAAAAACAAAAAAD/////AAAAAAAAAAAAAP//AAAAAAAAAAD+////AAAAAAAAAAABAP//AAAAAAAAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAHAP//AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_uq0ld")
+
+[node name="ItemsOnTop" type="TileMapLayer" parent="Mapa" unique_id=1523787351]
+tile_map_data = PackedByteArray("AAAGAPf/AAAAAAAAAAAGAPj/AAAAAAEAAAAHAPf/AAABAAAAAAAHAPj/AAABAAEAAAD4//f/AQAAAAAAAAD4//j/AQAAAAEAAAD5//f/AwAAAAAAABD5//j/AwAAAAEAABD4/wYAAgAAAAAAABD4/wcAAgAAAAEAABAHAAYAAgAAAAAAAAAHAAcAAgAAAAEAAAA=")
+tile_set = SubResource("TileSet_kqfcl")
 
 [node name="Brillos" type="Node2D" parent="Mapa" unique_id=211325882]
 modulate = Color(1, 1, 1, 0.19607843)
@@ -611,6 +666,56 @@ process_material = SubResource("ParticleProcessMaterial_0nesf")
 
 [node name="lights" type="Node2D" parent="." unique_id=1500475710]
 
+[node name="dimlights9" type="PointLight2D" parent="lights" unique_id=211468771]
+light_mask = 7
+position = Vector2(135, -146)
+scale = Vector2(0.08496104, 0.08496156)
+energy = 0.5
+shadow_filter = 2
+shadow_filter_smooth = 0.6
+shadow_item_cull_mask = 7
+texture = SubResource("GradientTexture2D_0nesf")
+
+[node name="dimlights8" type="PointLight2D" parent="lights" unique_id=1363955235]
+light_mask = 7
+position = Vector2(138.75, -147.25)
+scale = Vector2(0.13281249, 0.1328133)
+energy = 0.5
+shadow_filter = 2
+shadow_filter_smooth = 0.6
+shadow_item_cull_mask = 7
+texture = SubResource("GradientTexture2D_0nesf")
+
+[node name="dimlights7" type="PointLight2D" parent="lights" unique_id=18701899]
+light_mask = 7
+position = Vector2(132, -135)
+scale = Vector2(0.12500021, 0.12500021)
+energy = 0.5
+shadow_filter = 2
+shadow_filter_smooth = 0.6
+shadow_item_cull_mask = 7
+texture = SubResource("GradientTexture2D_0nesf")
+
+[node name="dimlights6" type="PointLight2D" parent="lights" unique_id=196602143]
+light_mask = 7
+position = Vector2(128, -131)
+scale = Vector2(0.15624997, 0.15624997)
+energy = 0.5
+shadow_filter = 2
+shadow_filter_smooth = 0.6
+shadow_item_cull_mask = 7
+texture = SubResource("GradientTexture2D_0nesf")
+
+[node name="dimlights5" type="PointLight2D" parent="lights" unique_id=636651348]
+light_mask = 7
+position = Vector2(119.00001, -132)
+scale = Vector2(0.2937514, 0.2937514)
+energy = 0.3
+shadow_filter = 2
+shadow_filter_smooth = 0.6
+shadow_item_cull_mask = 7
+texture = SubResource("GradientTexture2D_0nesf")
+
 [node name="dimlights3" type="PointLight2D" parent="lights" unique_id=994929809]
 light_mask = 7
 position = Vector2(80.59996, -74.399994)
@@ -660,10 +765,6 @@ position = Vector2(-1, 127)
 [node name="light10" parent="lights" unique_id=576792090 instance=ExtResource("14_67iee")]
 position = Vector2(-99, 126)
 
-[node name="light mesa" parent="lights" unique_id=2098585039 instance=ExtResource("14_67iee")]
-visible = false
-position = Vector2(-1, -4)
-
 [node name="light8" parent="lights" unique_id=1651457378 instance=ExtResource("14_67iee")]
 position = Vector2(-142, -9)
 
@@ -673,6 +774,7 @@ rotation = -1.5707964
 
 [node name="light4" parent="lights" unique_id=297904408 instance=ExtResource("14_67iee")]
 position = Vector2(107, -165)
+skew = -1.2426745
 
 [node name="light" parent="lights" unique_id=996191539 instance=ExtResource("14_67iee")]
 position = Vector2(-108, -167)

@@ -3,7 +3,7 @@
 [ext_resource type="AudioStream" uid="uid://4fx3qnmgknu3" path="res://sonidos/Spawn Rango.wav" id="1_kkvj2"]
 [ext_resource type="Script" uid="uid://dljxddnyvd6ik" path="res://escenas/enemigos/enemigo/enemy_ranged_slow.gd" id="2_udygc"]
 [ext_resource type="Shader" uid="uid://bsyjm47tok7cp" path="res://shaders/shader_rojo.tres" id="3_5ityj"]
-[ext_resource type="Texture2D" uid="uid://dsmmxes0hfh4u" path="res://sprites/Enemigo_lvl_tres_terminado.png" id="4_xvdyk"]
+[ext_resource type="Texture2D" uid="uid://cckai7i1chsob" path="res://sprites/enemy_wizard.png" id="4_kkvj2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kkvj2"]
 shader = ExtResource("3_5ityj")
@@ -55,9 +55,9 @@ texture = SubResource("GradientTexture2D_h2frt")
 texture_scale = 2.23
 
 [node name="Sprite2D" type="Sprite2D" parent="enemy" unique_id=366780198]
-modulate = Color(0.62754905, 0.62754905, 2.055, 1)
+modulate = Color(2.055, 2.055, 2.055, 1)
 light_mask = 4
-texture = ExtResource("4_xvdyk")
+texture = ExtResource("4_kkvj2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy" unique_id=1250678375]
 light_mask = 2

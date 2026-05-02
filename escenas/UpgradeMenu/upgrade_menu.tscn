@@ -4,6 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://daeo5isclow77" path="res://sonidos/Eleccion-001.wav" id="2_38wwx"]
 [ext_resource type="AudioStream" uid="uid://ckgn3yi8dsn8h" path="res://sonidos/Eleccion-002.wav" id="3_f6ri0"]
 [ext_resource type="AudioStream" uid="uid://bls8ksmpbmx27" path="res://sonidos/Eleccion-003.wav" id="4_glok1"]
+[ext_resource type="Texture2D" uid="uid://knv1r3rncxxb" path="res://sprites/menu/menu_box1.png" id="5_f6ri0"]
 
 [node name="UpgradeMenu" type="Control" unique_id=883324197 node_paths=PackedStringArray("choose_sounds")]
 process_mode = 3
@@ -75,3 +76,42 @@ stream = ExtResource("3_f6ri0")
 
 [node name="Choose3" type="AudioStreamPlayer2D" parent="." unique_id=1217045103 groups=["sound"]]
 stream = ExtResource("4_glok1")
+
+[node name="NinePatchRect3" type="NinePatchRect" parent="." unique_id=94896134]
+layout_mode = 0
+offset_left = 200.0
+offset_top = -196.00002
+offset_right = 257.6001
+offset_bottom = -125.59999
+scale = Vector2(5, 5)
+texture = ExtResource("5_f6ri0")
+patch_margin_left = 18
+patch_margin_top = 18
+patch_margin_right = 18
+patch_margin_bottom = 18
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="." unique_id=959232826]
+layout_mode = 0
+offset_left = -488.0
+offset_top = -196.0
+offset_right = -430.4
+offset_bottom = -125.59999
+scale = Vector2(5, 5)
+texture = ExtResource("5_f6ri0")
+patch_margin_left = 18
+patch_margin_top = 18
+patch_margin_right = 18
+patch_margin_bottom = 18
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=2028723293]
+layout_mode = 0
+offset_left = -136.0
+offset_top = -196.0
+offset_right = -80.0
+offset_bottom = -125.6
+scale = Vector2(5, 5)
+texture = ExtResource("5_f6ri0")
+patch_margin_left = 18
+patch_margin_top = 18
+patch_margin_right = 18
+patch_margin_bottom = 18
