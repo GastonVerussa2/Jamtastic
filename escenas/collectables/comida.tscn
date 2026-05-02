@@ -17,11 +17,11 @@ bite_sound = NodePath("BiteSound")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=471688884]
 modulate = Color(1.224, 1.224, 1.224, 1)
-light_mask = 2
 texture = ExtResource("2_3u7fy")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=354309617]
 occluder = SubResource("OccluderPolygon2D_lyaof")
+occluder_light_mask = 2
 
 [node name="Area2D" type="Area2D" parent="." unique_id=768852963]
 collision_layer = 8
